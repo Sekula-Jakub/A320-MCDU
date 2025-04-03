@@ -9,7 +9,7 @@ int main() {
     //dodanie ikony do okna
     sf::Image icon;
     if (!icon.loadFromFile("assets/icon.png")) {
-        std::cerr << "Nie można załadować ikony!" << std::endl;
+        std::cerr << "Niegit add .gitignore można załadować ikony!" << std::endl;
     }
     else {
         window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
