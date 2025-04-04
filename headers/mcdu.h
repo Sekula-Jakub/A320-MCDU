@@ -5,9 +5,14 @@
 
 class MCDU {
     private:
-        sf::RectangleShape background;
-        sf::RectangleShape screen;
-        std::vector<Button> buttons;
+        sf::RectangleShape background;          //niebieskie tło
+
+        sf::RectangleShape screen_background;   //czarne tło ekranu
+        Screen screen_display;                  //zawartosc ekranu (napisy)
+
+        sf::RectangleShape func_buttons_background[12];    //tło przycisków funkcyjnych
+
+        std::vector<Button> func_buttons;                          //funkcjonalnosc przyciskow
 
     public:
         //konstruktor

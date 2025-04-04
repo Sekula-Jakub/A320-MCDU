@@ -10,9 +10,30 @@ MCDU::MCDU() {
       background.setPosition(0, 0);
 
       //tworzenie wyświetlacza
-      screen.setSize(sf::Vector2f(250, 250));
-      screen.setFillColor(sf::Color::Black);
-      screen.setPosition(450 / 2 - 125, 600 / 2 - 250);
+      screen_background.setSize(sf::Vector2f(290, 234));
+      screen_background.setFillColor(sf::Color::Black);
+      screen_background.setPosition(450 / 2 - 145, 600 / 2 - 250);
+
+      //tworzenie przycisków z lewej strony ekranu
+      float startX = 40, startY = 50 + 20;
+
+      for (int i=0; i<6; i++) {
+            func_buttons_background[i].setSize(sf::Vector2f(30, 20));
+            func_buttons_background[i].setPosition(startX, startY);
+            func_buttons_background[i].setFillColor(sf::Color::Black);
+            startY += (35);
+      }
+
+      //tworzenie przyciskow z prawej strony ekranu
+      startX = 370 + 10;
+      startY = 50 + 20;
+
+      for (int i=6; i<12; i++) {
+            func_buttons_background[i].setSize(sf::Vector2f(30, 20));
+            func_buttons_background[i].setPosition(startX, startY);
+            func_buttons_background[i].setFillColor(sf::Color::Black);
+            startY += (35);
+      }
 }
 
 void MCDU::update() {
@@ -21,5 +42,8 @@ void MCDU::update() {
 
 void MCDU::render(sf::RenderWindow& window) {
       window.draw(background);
-      window.draw(screen);
+      window.draw(screen_background);
+      for (int i=0; i<12; i++) {
+            window.draw(func_buttons_background[i]);
+      }
 }
