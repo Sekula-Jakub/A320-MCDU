@@ -6,7 +6,7 @@
 class MCDU {
     private:
         sf::RectangleShape background;
-        Screen screen;
+        sf::RectangleShape screen;
         std::vector<Button> buttons;
 
     public:
