@@ -8,6 +8,6 @@ FETCHCONTENT_MAKEAVAILABLE(SFML)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(MCDU main.cpp mcdu.cpp)
+add_executable(MCDU main.cpp mcdu.cpp screen.cpp)
 
 target_link_libraries(MCDU sfml-graphics)

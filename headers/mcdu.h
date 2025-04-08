@@ -11,8 +11,11 @@ class MCDU {
         Screen screen_display;                  //zawartosc ekranu (napisy)
 
         sf::RectangleShape func_buttons_background[12];    //tło przycisków funkcyjnych
+        sf::RectangleShape func_buttons_white_strip[12];
 
         std::vector<Button> func_buttons;                          //funkcjonalnosc przyciskow
+
+        Screen screen;  //klasa Screen
 
     public:
         //konstruktor
