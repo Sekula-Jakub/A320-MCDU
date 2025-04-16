@@ -2,8 +2,8 @@
 8451	8931	7665230421174303	_deps/sfml-build/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cpp.obj	8a4194065df8e0a2
 2687	3482	7665230363523949	_deps/sfml-build/src/SFML/Window/CMakeFiles/sfml-window.dir/VideoMode.cpp.obj	c4ab7f8c0fa7c5b4
 44	2408	7665230337098818	_deps/sfml-build/src/SFML/System/CMakeFiles/sfml-system.dir/Mutex.cpp.obj	af6ae038aaef0d70
-15	932	7665273546947658	CMakeFiles/MCDU.dir/main.cpp.obj	ee111797eed20654
-777	1339	7665275462157201	MCDU.exe	99f1999b2120b18
+12	1001	7665433666491897	CMakeFiles/MCDU.dir/main.cpp.obj	ee111797eed20654
+961	1837	7665445823613486	MCDU.exe	ca39d19037a82967
 9174	9807	7665230428402205	_deps/sfml-build/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.cpp.obj	8c2a8528b9cf041c
 5488	8873	7665230391535545	_deps/sfml-build/src/SFML/Window/CMakeFiles/sfml-window.dir/Win32/WindowImplWin32.cpp.obj	4d88974a6e602c8f
 78	694	7665230337431469	_deps/sfml-build/src/SFML/System/CMakeFiles/sfml-system.dir/FileInputStream.cpp.obj	b63bb1240ab43d69
@@ -75,7 +75,8 @@
 10128	11911	7665230437942910	_deps/sfml-build/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.obj	3d606e15ccbf8354
 10045	12240	7665230437111266	_deps/sfml-build/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.obj	1f0d610312141588
 12240	12475	7665230459055922	_deps/sfml-build/lib/libsfml-graphics-s-d.a	f50c2ffd35ac8d77
-9	596	7665278096746699	build.ninja	e97942e220d6e231
-19	1000	7665273546988057	CMakeFiles/MCDU.dir/mcdu.cpp.obj	89b026bc2274f0e7
-10557	11843	7665230442229463	CMakeFiles/MCDU.dir/screen.cpp.obj	3590019de700e45
-13	777	7665275454517341	CMakeFiles/MCDU.dir/button.cpp.obj	871386bfa4492620
+6	571	7665420580237921	build.ninja	e97942e220d6e231
+11	960	7665445814114700	CMakeFiles/MCDU.dir/mcdu.cpp.obj	89b026bc2274f0e7
+11	843	7665411482309685	CMakeFiles/MCDU.dir/screen.cpp.obj	3590019de700e45
+12	832	7665437298487863	CMakeFiles/MCDU.dir/button.cpp.obj	871386bfa4492620
+11	785	7665420982396300	CMakeFiles/MCDU.dir/font_manager.cpp.obj	930917d7421cdfce

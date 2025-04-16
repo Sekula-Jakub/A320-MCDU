@@ -1,12 +1,13 @@
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "headers/screen.h"
+#include <iostream>
 
 //konstruktor
 Screen::Screen() {
+
     //wczytanie czcionki
     if(font.loadFromFile("fonts/Inter_24pt-Regular.ttf") == false) {
-      std::cerr << "Error loading font" << std::endl;
+        std::cerr << "Error loading font" << std::endl;
     }
 
     //tytul strony
@@ -14,7 +15,7 @@ Screen::Screen() {
     page_title.setCharacterSize(14);
     page_title.setString("MCDU MENU");
     page_title.setFillColor(sf::Color::White);
-    page_title.setPosition(170, 52);
+    page_title.setPosition(170, 30);
 
     //teksty
     for(int i=0; i<12; i++) {
@@ -25,7 +26,7 @@ Screen::Screen() {
     }
 
     //pozycja tekstow z lewej strony
-    float startX = 90, startY = 50 + 20;
+    float startX = 90, startY = 45;
 
     for(int i=0; i<6; i++) {
         texts[i].setPosition(startX, startY);
@@ -34,7 +35,7 @@ Screen::Screen() {
 
     //pozycja tekstow z prawej strony
     startX = 310 + 10;
-    startY = 50 + 20;
+    startY = 45;
 
     for(int i=6; i<12; i++) {
         texts[i].setPosition(startX, startY);

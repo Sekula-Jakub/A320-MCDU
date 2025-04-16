@@ -1,8 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include "headers/mcdu.h"
+#include "headers/font_manager.h"
 #include <iostream>
 
 int main() {
+
+    //zaladowanie czcionki
+    FontManager::loadFont("fonts/Inter_24pt-Medium.ttf");
+
     //renderowanie okna
     sf::RenderWindow window(sf::VideoMode(450, 600), "Airbus A320 MCDU");
 

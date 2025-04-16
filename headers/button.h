@@ -4,15 +4,21 @@
 class Button {
     public:
 
-        std::string button_text;
+        bool clicked;       //czy klikniety
 
-        //domyślny konstruktor
+        //tekst na przycisku
+        sf::Text text;
+        std::string string_text;
+        sf::Font font;
 
-        Button(float x, float y, float width, float height);
+        //konstruktor
+        Button(float x, float y, float width, float height, const std::string& button_text, float text_x, float text_y);
 
-        bool isMouseOver(sf::RenderWindow& window);
+        //mysz nad przyciskiem (const podpowiedzial edytor)
+        bool isMouseOver(const sf::RenderWindow& window) const;
 
-        bool isMousePressed();
+        //lewy przycisk myszy klikniety
+        static bool isMousePressed();
 
         bool isClicked(sf::RenderWindow& window);   //MouseOver + MousePressed
 
