@@ -11,15 +11,15 @@ Screen::Screen() {
 
     //tytul strony
     page_title.setFont(font);
-    page_title.setCharacterSize(30);
-    page_title.setString("Page Title");
+    page_title.setCharacterSize(14);
+    page_title.setString("MCDU MENU");
     page_title.setFillColor(sf::Color::White);
-    page_title.setPosition(450 / 2 - 145, 600 / 2 - 250);
+    page_title.setPosition(170, 52);
 
     //teksty
     for(int i=0; i<12; i++) {
         texts[i].setFont(font);
-        texts[i].setCharacterSize(16);
+        texts[i].setCharacterSize(14);
         texts[i].setString("dupa");
         texts[i].setFillColor(sf::Color::White);
     }
@@ -43,10 +43,14 @@ Screen::Screen() {
 }
 
 void Screen::update_Text(int index, const std::string& str) {
-
+    if(index >= 0 && index < 12) {
+        texts[index].setString(str);
+    }
 }
 
 void Screen::display_screen(sf::RenderWindow &window) {
+    window.draw(page_title);
+
     for(int i=0; i<12; i++) {
       window.draw(texts[i]);
     }

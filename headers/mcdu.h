@@ -10,8 +10,7 @@ class MCDU {
         sf::RectangleShape screen_background;   //czarne tło ekranu
         Screen screen_display;                  //zawartosc ekranu (napisy)
 
-        sf::RectangleShape func_buttons_background[12];    //tło przycisków funkcyjnych
-        sf::RectangleShape func_buttons_white_strip[12];
+        //sf::RectangleShape func_buttons_background[12];    //tło przycisków funkcyjnych
 
         std::vector<Button> func_buttons;                          //funkcjonalnosc przyciskow
 
@@ -21,7 +20,7 @@ class MCDU {
         //konstruktor
         MCDU();
 
-        void update();
+        void update(sf::RenderWindow& window);
         void render(sf::RenderWindow& window);  //przekazanie referencji do oryginalnego obiektu window
 
 };

@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "headers/mcdu.h"
+#include <iostream>
 
 //konstruktor
 MCDU::MCDU() {
@@ -18,10 +19,9 @@ MCDU::MCDU() {
       float startX = 40, startY = 50 + 20;
 
       for (int i=0; i<6; i++) {
-            func_buttons_background[i].setSize(sf::Vector2f(30, 20));
-            func_buttons_background[i].setPosition(startX, startY);
-            func_buttons_background[i].setFillColor(sf::Color(20, 20, 20));
-            startY += (35);
+            float width = 30.f, height = 20.f;
+            func_buttons.emplace_back(startX, startY, width, height);
+            startY += 35;
       }
 
       //tworzenie przyciskow z prawej strony ekranu
@@ -29,9 +29,8 @@ MCDU::MCDU() {
       startY = 50 + 20;
 
       for (int i=6; i<12; i++) {
-            func_buttons_background[i].setSize(sf::Vector2f(30, 20));
-            func_buttons_background[i].setPosition(startX, startY);
-            func_buttons_background[i].setFillColor(sf::Color(20, 20, 20));
+            float width = 30.f, height = 20.f;
+            func_buttons.emplace_back(startX, startY, width, height);
             startY += (35);
       }
 
@@ -40,8 +39,12 @@ MCDU::MCDU() {
 
 }
 
-void MCDU::update() {
-
+void MCDU::update(sf::RenderWindow& window) {
+      for (int i=0; i<12; i++) {
+            if (func_buttons[i].isClicked(window)) {
+                  std::cout << "Kliknieto przycisk " << i <<std::endl;
+            }
+      }
 }
 
 void MCDU::render(sf::RenderWindow& window) {
@@ -51,9 +54,10 @@ void MCDU::render(sf::RenderWindow& window) {
       //wyswietlacz
       screen.display_screen(window);
 
-      for (int i=0; i<12; i++) {
-            window.draw(func_buttons_background[i]);
+      for (auto& button : func_buttons) {
+            button.draw(window);
       }
+
 
 
 }

@@ -30,7 +30,7 @@ int main() {
         }
 
         //aktualizacja logiki mcdu
-        mcdu.update();
+        mcdu.update(window);
 
         //renderowanie
         window.clear();

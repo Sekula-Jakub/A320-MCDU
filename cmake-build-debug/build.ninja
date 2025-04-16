@@ -73,6 +73,14 @@ build CMakeFiles/MCDU.dir/screen.cpp.obj: CXX_COMPILER__MCDU_unscanned_Debug C$:
   OBJECT_DIR = CMakeFiles\MCDU.dir
   OBJECT_FILE_DIR = CMakeFiles\MCDU.dir
 
+build CMakeFiles/MCDU.dir/button.cpp.obj: CXX_COMPILER__MCDU_unscanned_Debug C$:/projekty/cpp/MCDU/button.cpp || cmake_object_order_depends_target_MCDU
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\MCDU.dir\button.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\MCDU.dir
+  OBJECT_FILE_DIR = CMakeFiles\MCDU.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target MCDU
@@ -81,7 +89,7 @@ build CMakeFiles/MCDU.dir/screen.cpp.obj: CXX_COMPILER__MCDU_unscanned_Debug C$:
 #############################################
 # Link the executable MCDU.exe
 
-build MCDU.exe: CXX_EXECUTABLE_LINKER__MCDU_Debug CMakeFiles/MCDU.dir/main.cpp.obj CMakeFiles/MCDU.dir/mcdu.cpp.obj CMakeFiles/MCDU.dir/screen.cpp.obj | _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-src/extlibs/libs-mingw/x64/libfreetype.a || _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a
+build MCDU.exe: CXX_EXECUTABLE_LINKER__MCDU_Debug CMakeFiles/MCDU.dir/main.cpp.obj CMakeFiles/MCDU.dir/mcdu.cpp.obj CMakeFiles/MCDU.dir/screen.cpp.obj CMakeFiles/MCDU.dir/button.cpp.obj | _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-src/extlibs/libs-mingw/x64/libfreetype.a || _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a
   FLAGS = -g
   LINK_LIBRARIES = _deps/sfml-build/lib/libsfml-graphics-s-d.a  _deps/sfml-build/lib/libsfml-window-s-d.a  _deps/sfml-build/lib/libsfml-system-s-d.a  -lwinmm  -lgdi32  -lopengl32  -lglu32  _deps/sfml-src/extlibs/libs-mingw/x64/libfreetype.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\MCDU.dir
