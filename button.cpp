@@ -12,7 +12,7 @@ Button::Button(float x, float y, float width, float height, const std::string& b
 
     text.setString(button_text);
     text.setPosition(text_x, text_y);
-    text.setCharacterSize(12);
+    text.setCharacterSize(11);
     text.setFont(FontManager::getFont());
 
     clicked = false;

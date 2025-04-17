@@ -12,7 +12,10 @@ class MCDU {
 
         std::vector<Button> func_buttons;       //12 przyciskow funkcyjnych po bokach ekranu
 
-        std::vector<Button> top_buttons;        //12 przyciskow zaraz pod wyswietlaczem
+        std::vector<Button> top_buttons;        //18 przyciskow zaraz pod wyswietlaczem
+
+        sf::Texture arrow_tekstura;
+        std::vector<sf::Sprite> arrows;
 
         Screen screen;  //klasa Screen
 

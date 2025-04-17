@@ -35,9 +35,9 @@ MCDU::MCDU() {
       }
 
       //tworzenie przyciskow na dole pod wyswietlaczem
-      startX = 80;
-      startY = 270;
-      width = 40.f, height = 30.f;
+      startX = 77;
+      startY = 265;
+      width = 46.f, height = 28.f;
 
       //nazwy przycisków
       std::string top_button_names[12] = {"DIR", "PROG", " PERF", "  INIT", "DATA", " ", "F-PLN", "  RAD\n  NAV", "  FUEL\n PRED", " SEC\nF-PLN", "  ATC\nCOMM", "MCDU\nMENU"};
@@ -59,8 +59,65 @@ MCDU::MCDU() {
                   startX += 50;
                   counter++;
             }
-            startX = 80;
-            startY += 35;
+            startX = 77;
+            startY += 32;
+      }
+
+      //dodanie zdjecia strzalki
+      if (!arrow_tekstura.loadFromFile("assets/arrow_4.png")) {
+            printf("Error loading arrow_icon.png\n");
+            exit(1);
+      }
+
+      startX = 77;
+      startY = 330;
+      for (int i=0; i<3; i++) {
+            for (int j=0; j<2; j++) {
+
+                  if (counter == 12) {
+                        top_buttons.emplace_back(startX, startY, width, height, "  AIR\nPORT", startX + width / 2 - 16, startY + height / 2 - 13);
+                  }
+
+                  else if (counter == 13) {
+                        top_buttons.emplace_back(startX, startY, width, height, "", startX + width / 2 - 16, startY + height / 2 - 13);
+                  }
+
+                  else if (counter == 14) {
+                        top_buttons.emplace_back(startX, startY, width, height, "", startX + width / 2 - 3, startY + height / 2 - 8 );
+                        sf::Sprite arrow_left(arrow_tekstura);
+                        arrow_left.setPosition(startX + 10, startY + 26);
+                        arrow_left.setRotation(270);
+                        arrows.emplace_back(arrow_left);
+                  }
+
+                  else if (counter == 15) {
+                        top_buttons.emplace_back(startX, startY, width, height, "", startX + width / 2 - 3, startY + height / 2 - 8);
+                        sf::Sprite arrow_top(arrow_tekstura);
+                        arrow_top.setPosition(startX + 10, startY + 2);
+                        arrows.emplace_back(arrow_top);
+                  }
+
+                  else if (counter == 16) {
+                        top_buttons.emplace_back(startX, startY, width, height, "", startX + width / 2 - 3, startY + height / 2 - 8);
+                        sf::Sprite arrow_right(arrow_tekstura);
+                        arrow_right.setPosition(startX + 34, startY + 2);
+                        arrow_right.setRotation(90);
+                        arrows.emplace_back(arrow_right);
+                  }
+
+                  else {
+                        top_buttons.emplace_back(startX, startY, width, height, "", startX + width / 2 - 3, startY + height / 2 - 8);
+                        sf::Sprite arrow_down(arrow_tekstura);
+                        arrow_down.setPosition(startX + 34, startY + 26);
+                        arrow_down.setRotation(180);
+                        arrows.emplace_back(arrow_down);
+                  }
+
+                  startX += 50;
+                  counter++;
+            }
+            startX = 77;
+            startY += 32;
       }
 }
 
@@ -73,7 +130,7 @@ void MCDU::update(sf::RenderWindow& window) {
       }
 
       //update po przyciskach top_buttton
-      for (int i=0; i<12; i++) {
+      for (int i=0; i<18; i++) {
             if (top_buttons[i].isClicked(window)) {
                   std::cout << "Kliknieto przycisk " << i + 12 <<std::endl;
             }
@@ -94,7 +151,12 @@ void MCDU::render(sf::RenderWindow& window) {
       }
 
       //przyciski top_buttons pod wyswietlaczem
-      for (int i=0; i<12 ;i++) {
+      for (int i=0; i<18 ;i++) {
             top_buttons[i].draw(window);
+      }
+
+      //strzalki na przyciskach
+      for (int i=0; i<arrows.size(); i++) {
+            window.draw(arrows[i]);
       }
 }

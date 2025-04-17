@@ -6,7 +6,7 @@
 int main() {
 
     //zaladowanie czcionki
-    FontManager::loadFont("fonts/Inter_24pt-Medium.ttf");
+    FontManager::loadFont("fonts/Inter_28pt-Black.ttf");
 
     //renderowanie okna
     sf::RenderWindow window(sf::VideoMode(450, 600), "Airbus A320 MCDU");
