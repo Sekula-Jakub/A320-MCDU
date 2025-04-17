@@ -5,9 +5,13 @@
 
 //konstruktor
 Button::Button(float x, float y, float width, float height, const std::string& button_text, float text_x, float text_y) {
-    button_shape.setSize(sf::Vector2f(width, height));
-    button_shape.setPosition(x, y);
-    button_shape.setFillColor(sf::Color(20, 20, 20));
+    button_rectangle_shape.setSize(sf::Vector2f(width, height));
+    button_rectangle_shape.setPosition(x, y);
+    button_rectangle_shape.setFillColor(sf::Color(20, 20, 20));
+
+    button_circle_shape.setRadius(14);
+    button_circle_shape.setPosition(x, y);
+    button_circle_shape.setFillColor(sf::Color(20, 20, 20));
 
 
     text.setString(button_text);
@@ -18,12 +22,20 @@ Button::Button(float x, float y, float width, float height, const std::string& b
     clicked = false;
 }
 
-bool Button::isMouseOver(const sf::RenderWindow &window) const {
+bool Button::isMouseOver_rectangle(const sf::RenderWindow &window) const {
 
   //rzutowanie z int na float
   sf::Vector2f mousePosition_float = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
 
-    return button_shape.getGlobalBounds().contains(mousePosition_float);
+    return button_rectangle_shape.getGlobalBounds().contains(mousePosition_float);
+}
+
+bool Button::isMouseOver_circle(const sf::RenderWindow &window) const {
+
+    //rzutowanie z int na float
+    sf::Vector2f mousePosition_float = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
+
+    return button_rectangle_shape.getGlobalBounds().contains(mousePosition_float);
 }
 
 bool Button::isMousePressed() {
@@ -31,7 +43,7 @@ bool Button::isMousePressed() {
 }
 
 bool Button::isClicked(sf::RenderWindow &window) {
-    if (isMouseOver(window) && isMousePressed() && !clicked) {
+    if (isMouseOver_rectangle(window) && isMousePressed() && !clicked) {
         clicked = true;
         return true;
     }
@@ -41,13 +53,24 @@ bool Button::isClicked(sf::RenderWindow &window) {
     return false;
 }
 
-void Button::draw(sf::RenderWindow &window) {
-    if (isMouseOver(window)) {
-        button_shape.setFillColor(sf::Color::Green);
+void Button::draw_rectangle(sf::RenderWindow &window) {
+    if (isMouseOver_rectangle(window)) {
+        button_rectangle_shape.setFillColor(sf::Color(77, 77, 77));
     }
     else {
-        button_shape.setFillColor(sf::Color(20, 20, 20));
+        button_rectangle_shape.setFillColor(sf::Color(20, 20, 20));
     }
-    window.draw(button_shape);
+    window.draw(button_rectangle_shape);
+    window.draw(text);
+}
+
+void Button::draw_circle(sf::RenderWindow &window) {
+    if (isMouseOver_circle(window)) {
+        button_circle_shape.setFillColor(sf::Color(77, 77, 77));
+    }
+    else {
+        button_circle_shape.setFillColor(sf::Color(20, 20, 20));
+    }
+    window.draw(button_circle_shape);
     window.draw(text);
 }

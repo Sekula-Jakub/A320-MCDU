@@ -17,6 +17,10 @@ class MCDU {
         sf::Texture arrow_tekstura;
         std::vector<sf::Sprite> arrows;
 
+        std::vector<Button> alphabet_buttons;   //30 przycisków z literami z prawej strony
+
+        std::vector<Button> number_buttons;    //12 przyciskow z cyframi na dole z lewej
+
         Screen screen;  //klasa Screen
 
     public:
