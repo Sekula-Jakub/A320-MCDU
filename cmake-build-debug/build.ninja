@@ -53,7 +53,7 @@ build CMakeFiles/MCDU.dir/main.cpp.obj: CXX_COMPILER__MCDU_unscanned_Debug C$:/p
   DEFINES = -DSFML_STATIC
   DEP_FILE = CMakeFiles\MCDU.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
+  INCLUDES = -IC:/projekty/cpp/MCDU/headers -IC:/projekty/cpp/MCDU/pages/pages_headers -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
   OBJECT_DIR = CMakeFiles\MCDU.dir
   OBJECT_FILE_DIR = CMakeFiles\MCDU.dir
 
@@ -61,7 +61,7 @@ build CMakeFiles/MCDU.dir/mcdu.cpp.obj: CXX_COMPILER__MCDU_unscanned_Debug C$:/p
   DEFINES = -DSFML_STATIC
   DEP_FILE = CMakeFiles\MCDU.dir\mcdu.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
+  INCLUDES = -IC:/projekty/cpp/MCDU/headers -IC:/projekty/cpp/MCDU/pages/pages_headers -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
   OBJECT_DIR = CMakeFiles\MCDU.dir
   OBJECT_FILE_DIR = CMakeFiles\MCDU.dir
 
@@ -69,7 +69,7 @@ build CMakeFiles/MCDU.dir/screen.cpp.obj: CXX_COMPILER__MCDU_unscanned_Debug C$:
   DEFINES = -DSFML_STATIC
   DEP_FILE = CMakeFiles\MCDU.dir\screen.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
+  INCLUDES = -IC:/projekty/cpp/MCDU/headers -IC:/projekty/cpp/MCDU/pages/pages_headers -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
   OBJECT_DIR = CMakeFiles\MCDU.dir
   OBJECT_FILE_DIR = CMakeFiles\MCDU.dir
 
@@ -77,7 +77,7 @@ build CMakeFiles/MCDU.dir/button.cpp.obj: CXX_COMPILER__MCDU_unscanned_Debug C$:
   DEFINES = -DSFML_STATIC
   DEP_FILE = CMakeFiles\MCDU.dir\button.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
+  INCLUDES = -IC:/projekty/cpp/MCDU/headers -IC:/projekty/cpp/MCDU/pages/pages_headers -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
   OBJECT_DIR = CMakeFiles\MCDU.dir
   OBJECT_FILE_DIR = CMakeFiles\MCDU.dir
 
@@ -85,9 +85,17 @@ build CMakeFiles/MCDU.dir/font_manager.cpp.obj: CXX_COMPILER__MCDU_unscanned_Deb
   DEFINES = -DSFML_STATIC
   DEP_FILE = CMakeFiles\MCDU.dir\font_manager.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
+  INCLUDES = -IC:/projekty/cpp/MCDU/headers -IC:/projekty/cpp/MCDU/pages/pages_headers -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
   OBJECT_DIR = CMakeFiles\MCDU.dir
   OBJECT_FILE_DIR = CMakeFiles\MCDU.dir
+
+build CMakeFiles/MCDU.dir/pages/mcdu_menu.cpp.obj: CXX_COMPILER__MCDU_unscanned_Debug C$:/projekty/cpp/MCDU/pages/mcdu_menu.cpp || cmake_object_order_depends_target_MCDU
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\MCDU.dir\pages\mcdu_menu.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -IC:/projekty/cpp/MCDU/headers -IC:/projekty/cpp/MCDU/pages/pages_headers -IC:/projekty/cpp/MCDU/cmake-build-debug/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\MCDU.dir
+  OBJECT_FILE_DIR = CMakeFiles\MCDU.dir\pages
 
 
 # =============================================================================
@@ -97,7 +105,7 @@ build CMakeFiles/MCDU.dir/font_manager.cpp.obj: CXX_COMPILER__MCDU_unscanned_Deb
 #############################################
 # Link the executable MCDU.exe
 
-build MCDU.exe: CXX_EXECUTABLE_LINKER__MCDU_Debug CMakeFiles/MCDU.dir/main.cpp.obj CMakeFiles/MCDU.dir/mcdu.cpp.obj CMakeFiles/MCDU.dir/screen.cpp.obj CMakeFiles/MCDU.dir/button.cpp.obj CMakeFiles/MCDU.dir/font_manager.cpp.obj | _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-src/extlibs/libs-mingw/x64/libfreetype.a || _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a
+build MCDU.exe: CXX_EXECUTABLE_LINKER__MCDU_Debug CMakeFiles/MCDU.dir/main.cpp.obj CMakeFiles/MCDU.dir/mcdu.cpp.obj CMakeFiles/MCDU.dir/screen.cpp.obj CMakeFiles/MCDU.dir/button.cpp.obj CMakeFiles/MCDU.dir/font_manager.cpp.obj CMakeFiles/MCDU.dir/pages/mcdu_menu.cpp.obj | _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-src/extlibs/libs-mingw/x64/libfreetype.a || _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a
   FLAGS = -g
   LINK_FLAGS = -static
   LINK_LIBRARIES = _deps/sfml-build/lib/libsfml-graphics-s-d.a  _deps/sfml-build/lib/libsfml-window-s-d.a  _deps/sfml-build/lib/libsfml-system-s-d.a  -lwinmm  -lgdi32  -lopengl32  -lglu32  _deps/sfml-src/extlibs/libs-mingw/x64/libfreetype.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
