@@ -167,28 +167,33 @@ void MCDU::update(sf::RenderWindow& window) {
       //update po przyciskach func_buttton
       for (int i=0; i<func_buttons.size(); i++) {
             if (func_buttons[i].isClicked(window)) {
-                  std::cout << "Kliknieto przycisk " << i <<std::endl;
+                  button_clicked = i;
+                  std::cout << "Kliknieto przycisk " << button_clicked <<std::endl;
+
             }
       }
 
       //update po przyciskach top_buttton
       for (int i=0; i<top_buttons.size(); i++) {
             if (top_buttons[i].isClicked(window)) {
-                  std::cout << "Kliknieto przycisk " << i + 12 <<std::endl;
+                  button_clicked = i + 12;
+                  std::cout << "Kliknieto przycisk " << button_clicked <<std::endl;
             }
       }
 
       //update po przyciskach alpgabet_buttons
       for (int i=0; i<alphabet_buttons.size(); i++) {
             if (alphabet_buttons[i].isClicked(window)) {
-                  std::cout << "Kliknieto przycisk " << i + 30 <<std::endl;
+                  button_clicked = i + 30;
+                  std::cout << "Kliknieto przycisk " << button_clicked <<std::endl;
             }
       }
 
       //update po przyciskach number_buttons
       for (int i=0; i<number_buttons.size(); i++) {
             if (number_buttons[i].isClicked(window)) {
-                  std::cout << "Kliknieto przycisk " << i + 60 <<std::endl;
+                  button_clicked = i + 60;
+                  std::cout << "Kliknieto przycisk " << button_clicked <<std::endl;
             }
       }
 
@@ -199,7 +204,7 @@ void MCDU::render(sf::RenderWindow& window) {
       window.draw(screen_background);
 
       //wyswietlacz
-      screen.display_screen(window);
+      screen.display_screen(window, button_clicked);
 
       //przyciski z prawej i lewej strony wyswietlacza
       for (int i=0; i<12; i++) {

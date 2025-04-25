@@ -3,7 +3,7 @@
 #include <iostream>
 
 //konstruktor
-Screen::Screen() {
+Screen::Screen() : mcdu_menu(this) {
 
     //wczytanie czcionki
     if(font.loadFromFile("fonts/Inter_24pt-Regular.ttf") == false) {
@@ -19,24 +19,23 @@ Screen::Screen() {
     //tytul strony
     page_title.setFont(font);
     page_title.setCharacterSize(12);
-    page_title.setString("MCDU MENU");
     page_title.setFillColor(sf::Color::White);
     page_title.setPosition(170, 26);
 
     //teksty glowne
     for(int i=0; i<36; i++) {
         texts[i].setFont(font);
-        texts[i].setString("dupa");
+        //texts[i].setString("dupa");
         texts[i].setFillColor(sf::Color::White);
     }
 
-    //========LEWA STRONA========
+    //===========LEWA STRONA===========
     //main texts
     float startX = 90, startY = 48;
 
     for(int i=0; i<6; i++) {
         texts[i].setPosition(startX, startY);
-        texts[i].setCharacterSize(14);
+        texts[i].setCharacterSize(12);
         startY += 35;
     }
     //upper_texts
@@ -48,14 +47,14 @@ Screen::Screen() {
         startY += 35;
     }
 
-    //========ŚRODEK========
+    //===========ŚRODEK===========
     //pozycja tekstow na środku
     startX = 200;
     startY = 48;
 
     for(int i=12; i<18; i++) {
         texts[i].setPosition(startX, startY);
-        texts[i].setCharacterSize(14);
+        texts[i].setCharacterSize(12);
         startY += 35;
     }
 
@@ -69,19 +68,19 @@ Screen::Screen() {
         startY += 35;
     }
 
-    //========PRAWA STRONA========
+    //===========PRAWA STRONA===========
     //pozycja tekstow z prawej strony
-    startX = 310 + 10;
+    startX = 300;
     startY = 48;
 
     for(int i=24; i<30; i++) {
         texts[i].setPosition(startX, startY);
-        texts[i].setCharacterSize(14);
+        texts[i].setCharacterSize(12);
         startY += 35;
     }
 
-    //pozycja tekstow na srodku
-    startX = 320;
+    //upper_texts z prawej
+    startX = 300;
     startY = 40;
 
     for(int i=30; i<36; i++) {
@@ -101,7 +100,17 @@ void Screen::draw_text(int index, const std::string &text, sf::Color color) {
     texts[index].setColor(color);
 }
 
-void Screen::display_screen(sf::RenderWindow &window) {
+void Screen::draw_title(const std::string text, sf::Color color) {
+        page_title.setString(text);
+        page_title.setColor(color);
+}
+
+void Screen::display_screen(sf::RenderWindow &window, int button_clicked) const {
+
+    if (button_clicked == 23) {
+        mcdu_menu.render();
+    }
+
     window.draw(page_title);
 
     for(int i=0; i<36; i++) {

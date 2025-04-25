@@ -1,3 +1,4 @@
+#pragma once
 #include <SFML/Graphics.hpp>
 #include "../pages/pages_headers/mcdu_menu.h"
 
@@ -14,14 +15,21 @@ class Screen {
 
         sf::Font font;      //czcionka
 
+        //podstrony
+        Mcdu_Menu mcdu_menu;
+
     public:
         //konstruktor
         Screen();
 
+        //update tytulu strony
+        void draw_title(std::string title, sf::Color color);
+
         //update tekstu
         void draw_text(int index, const std::string& str, sf::Color color);
 
+
         //wyswietlanie zawartosci ekranu
-        void display_screen(sf::RenderWindow &window);
+        void display_screen(sf::RenderWindow &window, int button_clicked) const;
 
 };

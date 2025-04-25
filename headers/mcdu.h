@@ -8,7 +8,7 @@ class MCDU {
         sf::RectangleShape background;          //niebieskie tło
 
         sf::RectangleShape screen_background;   //czarne tło ekranu
-        Screen screen_display;                  //zawartosc ekranu (napisy)
+        //Screen screen_display;                  //zawartosc ekranu (napisy)
 
         std::vector<Button> func_buttons;       //12 przyciskow funkcyjnych po bokach ekranu
 
@@ -22,6 +22,8 @@ class MCDU {
         std::vector<Button> number_buttons;    //12 przyciskow z cyframi na dole z lewej
 
         Screen screen;  //klasa Screen
+
+        int button_clicked = -1;
 
     public:
         //konstruktor
