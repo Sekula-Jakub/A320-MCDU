@@ -95,7 +95,7 @@ Screen::Screen()
 
 void Screen::draw_text(int index, const std::string &text, sf::Color color) {
     //obsluga bledu
-    if (index > 36 || index < 0) {
+    if (index >= 36 || index < 0) {
         return;
     }
     texts[index].setString(text);
