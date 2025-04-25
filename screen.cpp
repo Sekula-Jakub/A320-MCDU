@@ -3,7 +3,9 @@
 #include <iostream>
 
 //konstruktor
-Screen::Screen() : mcdu_menu(this) {
+Screen::Screen()
+    : mcdu_menu(this),
+    atsu(this) {
 
     //wczytanie czcionki
     if(font.loadFromFile("fonts/Inter_24pt-Regular.ttf") == false) {
@@ -70,7 +72,7 @@ Screen::Screen() : mcdu_menu(this) {
 
     //===========PRAWA STRONA===========
     //pozycja tekstow z prawej strony
-    startX = 300;
+    startX = 290;
     startY = 48;
 
     for(int i=24; i<30; i++) {
@@ -109,6 +111,10 @@ void Screen::display_screen(sf::RenderWindow &window, int button_clicked) const 
 
     if (button_clicked == 23) {
         mcdu_menu.render();
+    }
+
+    if (button_clicked == 1) {
+        atsu.render();
     }
 
     window.draw(page_title);

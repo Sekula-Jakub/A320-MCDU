@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "../pages/pages_headers/mcdu_menu.h"
+#include "../pages/pages_headers/atsu.h"
 
 class Screen {
     private:
@@ -17,6 +18,7 @@ class Screen {
 
         //podstrony
         Mcdu_Menu mcdu_menu;
+        Atsu atsu;
 
     public:
         //konstruktor
