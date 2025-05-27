@@ -1,14 +1,17 @@
 #include <SFML/Graphics.hpp>
 #include "headers/screen.h"
 #include <iostream>
+#include "pages/mcdu_menu.h"
 
 //konstruktor
-Screen::Screen()
-    : mcdu_menu(this),
-    atsu(this) {
+Screen::Screen() {
+
+    mcdu_menu = new Mcdu_Menu(this);
+
+    Active_Screen current_page = Active_Screen::null;
 
     //wczytanie czcionki
-    if(font.loadFromFile("fonts/Inter_24pt-Regular.ttf") == false) {
+    if (font.loadFromFile("fonts/Inter_24pt-Regular.ttf") == false) {
         std::cerr << "Error loading font" << std::endl;
     }
 
@@ -20,12 +23,12 @@ Screen::Screen()
 
     //tytul strony
     page_title.setFont(font);
-    page_title.setCharacterSize(12);
+    page_title.setCharacterSize(13);
     page_title.setFillColor(sf::Color::White);
     page_title.setPosition(170, 26);
 
     //teksty glowne
-    for(int i=0; i<36; i++) {
+    for (int i = 0; i < 36; i++) {
         texts[i].setFont(font);
         //texts[i].setString("dupa");
         texts[i].setFillColor(sf::Color::White);
@@ -35,17 +38,17 @@ Screen::Screen()
     //main texts
     float startX = 90, startY = 48;
 
-    for(int i=0; i<6; i++) {
+    for (int i = 0; i < 6; i++) {
         texts[i].setPosition(startX, startY);
-        texts[i].setCharacterSize(12);
+        texts[i].setCharacterSize(14);
         startY += 35;
     }
     //upper_texts
     startX = 90, startY = 40;
 
-    for(int i=6; i<12; i++) {
+    for (int i = 6; i < 12; i++) {
         texts[i].setPosition(startX, startY);
-        texts[i].setCharacterSize(9);
+        texts[i].setCharacterSize(10);
         startY += 35;
     }
 
@@ -54,9 +57,9 @@ Screen::Screen()
     startX = 200;
     startY = 48;
 
-    for(int i=12; i<18; i++) {
+    for (int i = 12; i < 18; i++) {
         texts[i].setPosition(startX, startY);
-        texts[i].setCharacterSize(12);
+        texts[i].setCharacterSize(14);
         startY += 35;
     }
 
@@ -64,33 +67,38 @@ Screen::Screen()
     startX = 200;
     startY = 40;
 
-    for(int i=18; i<24; i++) {
+    for (int i = 18; i < 24; i++) {
         texts[i].setPosition(startX, startY);
-        texts[i].setCharacterSize(9);
+        texts[i].setCharacterSize(10);
         startY += 35;
     }
 
     //===========PRAWA STRONA===========
     //pozycja tekstow z prawej strony
-    startX = 290;
+    startX = 260;
     startY = 48;
 
-    for(int i=24; i<30; i++) {
+    for (int i = 24; i < 30; i++) {
         texts[i].setPosition(startX, startY);
-        texts[i].setCharacterSize(12);
+        texts[i].setCharacterSize(14);
         startY += 35;
     }
 
     //upper_texts z prawej
-    startX = 300;
+    startX = 260;
     startY = 40;
 
-    for(int i=30; i<36; i++) {
+    for (int i = 30; i < 36; i++) {
         texts[i].setPosition(startX, startY);
-        texts[i].setCharacterSize(9);
+        texts[i].setCharacterSize(10);
         startY += 35;
     }
+}
 
+//destruktor
+Screen::~Screen() {
+    delete mcdu_menu;
+    mcdu_menu = nullptr;
 }
 
 void Screen::draw_text(int index, const std::string &text, sf::Color color) {
@@ -107,19 +115,23 @@ void Screen::draw_title(const std::string text, sf::Color color) {
         page_title.setColor(color);
 }
 
-void Screen::display_screen(sf::RenderWindow &window, int button_clicked) const {
+void Screen::display_screen(sf::RenderWindow &window, int button_clicked) {
 
-    if (button_clicked == 23) {
-        mcdu_menu.render();
+    //Mcdu_Menu page
+    if (button_clicked == 23 && current_page != Active_Screen::mcdu_menu_page) {
+        button_clicked = -1;
+        current_page = Active_Screen::mcdu_menu_page;
+        mcdu_menu -> render();
+        std::cout << "mcdu menu" <<std::endl;
     }
 
-    if (button_clicked == 1) {
-        atsu.render();
+    if (current_page == Active_Screen::mcdu_menu_page) {
+        mcdu_menu -> input_handler(button_clicked, current_page);
     }
 
     window.draw(page_title);
 
     for(int i=0; i<36; i++) {
-      window.draw(texts[i]);
+        window.draw(texts[i]);
     }
 }

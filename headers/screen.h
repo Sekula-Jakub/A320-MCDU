@@ -1,7 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../pages/pages_headers/mcdu_menu.h"
-#include "../pages/pages_headers/atsu.h"
+#include "../pages/active_screen.h"
+
+class Mcdu_Menu;
 
 class Screen {
     private:
@@ -17,12 +18,17 @@ class Screen {
         sf::Font font;      //czcionka
 
         //podstrony
-        Mcdu_Menu mcdu_menu;
-        Atsu atsu;
+        Mcdu_Menu* mcdu_menu;
 
     public:
+
+        Active_Screen current_page = Active_Screen::null;
+
         //konstruktor
         Screen();
+
+        //destruktor
+        ~Screen();
 
         //update tytulu strony
         void draw_title(std::string title, sf::Color color);
@@ -30,8 +36,6 @@ class Screen {
         //update tekstu
         void draw_text(int index, const std::string& str, sf::Color color);
 
-
         //wyswietlanie zawartosci ekranu
-        void display_screen(sf::RenderWindow &window, int button_clicked) const;
-
+        void display_screen(sf::RenderWindow &window, int button_clicked);
 };

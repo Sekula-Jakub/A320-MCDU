@@ -4,7 +4,13 @@
 
 Atsu::Atsu(Screen* screen_ptr) {
     screen = screen_ptr;
+
 }
+
+Atsu::~Atsu() {
+
+}
+
 
 void Atsu::render() const {
     //wyczyszczenie poprzednich wartosci
@@ -18,6 +24,6 @@ void Atsu::render() const {
     screen -> draw_title("ATSU DATALINK", sf::Color::White);
 
     screen -> draw_text(0, "<ATC MENU", sf::Color::White);
-    screen -> draw_text(25, "AOC MENU>", sf::Color::White);
-    screen -> draw_text(29, "        COMM>", sf::Color::White);
+    screen -> draw_text(24, "     AOC MENU>", sf::Color::White);
+    screen -> draw_text(29, "  COMM MENU>", sf::Color::White);
 }

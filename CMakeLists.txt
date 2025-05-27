@@ -14,7 +14,8 @@ add_executable(MCDU
         button.cpp
         font_manager.cpp
         pages/mcdu_menu.cpp
-        pages/atsu.cpp
+        pages/mcdu_menu_branch/atsu.cpp
+        pages/mcdu_menu_branch/fmgc.cpp
 )
 
 target_include_directories(MCDU PRIVATE
