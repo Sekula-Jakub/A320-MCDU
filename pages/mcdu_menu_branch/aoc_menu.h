@@ -1,30 +1,25 @@
 #pragma once
-#include "aoc_menu.h"
-#include "../active_screen.h"
-
+#include <screen.h>
+#include "flt_init.h"
 //class Screen;
 
-class Atsu {
+class Aoc_menu {
 private:
     Screen* screen;    //wskaznik do obiektu klasy Screen
 
     //podstrony
-    Aoc_menu* aoc_menu;
-
-    //deklaracja przyjaciela
-    friend class Screen;
+    Flt_Init* flt_init;
 
 public:
 
     //konstruktor
-    explicit Atsu(Screen* screen_ptr);
+    explicit Aoc_menu(Screen* screen_ptr);
 
     //destruktor
-    ~Atsu();
+    ~Aoc_menu();
 
     //renderowanie
     void render() const;
 
     void input_handler(int button_clicked, Active_Screen& current_page);
 };
-

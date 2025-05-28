@@ -129,6 +129,14 @@ void Screen::display_screen(sf::RenderWindow &window, int button_clicked) {
         mcdu_menu -> input_handler(button_clicked, current_page);
     }
 
+    if (current_page == Active_Screen::atsu_menu_page) {
+        mcdu_menu -> atsu -> input_handler(button_clicked, current_page);
+    }
+
+    if (current_page == Active_Screen::aoc_menu_page) {
+        mcdu_menu -> atsu -> aoc_menu -> input_handler(button_clicked, current_page);
+    }
+
     window.draw(page_title);
 
     for(int i=0; i<36; i++) {

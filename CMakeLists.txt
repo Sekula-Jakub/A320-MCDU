@@ -16,11 +16,13 @@ add_executable(MCDU
         pages/mcdu_menu.cpp
         pages/mcdu_menu_branch/atsu.cpp
         pages/mcdu_menu_branch/fmgc.cpp
+        pages/mcdu_menu_branch/aoc_menu.cpp
+        pages/mcdu_menu_branch/flt_init.cpp
 )
 
 target_include_directories(MCDU PRIVATE
         ${PROJECT_SOURCE_DIR}/headers
-        ${PROJECT_SOURCE_DIR}/pages/pages_headers
+        ${PROJECT_SOURCE_DIR}/pages/mcdu_menu_branch
 )
 
 target_link_libraries(MCDU sfml-graphics)

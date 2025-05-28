@@ -6,14 +6,18 @@
 class Mcdu_Menu {
 private:
     Screen* screen;    //wskaznik do obiektu klasy Screen
+
+    //podstrony
     Atsu* atsu;
     Fmgc* fmgc;
 
+    //deklaracja klasy przyjaciela, żeby screen mogl wywolywac mcdu_manu->atsu
+    friend class Screen;
 
 public:
 
     //konstruktor
-    Mcdu_Menu(Screen* screen_ptr);
+    explicit Mcdu_Menu(Screen* screen_ptr);
 
     //destruktor
     ~Mcdu_Menu();

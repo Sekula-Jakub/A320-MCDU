@@ -1,11 +1,12 @@
 #include <../cmake-build-debug/_deps/sfml-src/include/SFML/Graphics.hpp>
 #include "mcdu_menu.h"
-#include <iostream>
 #include <../headers/screen.h>
+#include <iostream>
 
 //konstruktor
 Mcdu_Menu::Mcdu_Menu(Screen* screen_ptr) {
     screen = screen_ptr;
+    //Zaalokowanie pamieci
     atsu = new Atsu(screen); //Przekazanie wskaznika na ekran
     fmgc = new Fmgc(screen);
 }

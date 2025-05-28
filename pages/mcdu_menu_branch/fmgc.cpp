@@ -27,8 +27,8 @@ void Fmgc::render() const {
     screen -> draw_text(0, "V2527-A5", sf::Color::Green);
 
     screen -> draw_text(7, "    ACTIVE NAV DATA BASE", sf::Color::White);
-    screen -> draw_text(1, "    12AUG21-08SEP21", sf::Color::Cyan);
+    screen -> draw_text(1, "    15MAY25 - 12JUN25", sf::Color::Cyan);
 
     screen -> draw_text(8, "    SECOND NAV DATA BASE", sf::Color::White);
-    screen -> draw_text(2, "   <- 12AUG21-08SEP21", sf::Color::Cyan);
+    screen -> draw_text(2, "   <- 15MAY25 - 12JUN25", sf::Color::Cyan);
 }
