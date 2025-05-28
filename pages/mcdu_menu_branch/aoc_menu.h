@@ -10,6 +10,8 @@ private:
     //podstrony
     Flt_Init* flt_init;
 
+    friend class Screen;
+
 public:
 
     //konstruktor

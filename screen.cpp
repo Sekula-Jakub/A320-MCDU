@@ -28,7 +28,7 @@ Screen::Screen() {
     page_title.setPosition(170, 26);
 
     //teksty glowne
-    for (int i = 0; i < 36; i++) {
+    for (int i = 0; i < 37; i++) {
         texts[i].setFont(font);
         //texts[i].setString("dupa");
         texts[i].setFillColor(sf::Color::White);
@@ -93,6 +93,11 @@ Screen::Screen() {
         texts[i].setCharacterSize(10);
         startY += 35;
     }
+
+    //===========DOLNY INPUT============
+    texts[36].setPosition(92, 237);
+    texts[36].setCharacterSize(14);
+    //texts[36].setString("Input");
 }
 
 //destruktor
@@ -137,9 +142,15 @@ void Screen::display_screen(sf::RenderWindow &window, int button_clicked) {
         mcdu_menu -> atsu -> aoc_menu -> input_handler(button_clicked, current_page);
     }
 
+    /*
+    if (current_page == Active_Screen::flt_init_page) {
+        mcdu_menu -> atsu -> aoc_menu -> flt_init -> getInput(button_clicked);
+    }
+    */
+
     window.draw(page_title);
 
-    for(int i=0; i<36; i++) {
+    for(int i=0; i<37; i++) {
         window.draw(texts[i]);
     }
 }

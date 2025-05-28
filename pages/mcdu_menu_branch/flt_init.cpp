@@ -21,29 +21,67 @@ void Flt_Init::render() {
     screen -> draw_title("AOC FLT INIT", sf::Color::White);
 
     //LEWA STRONA EKRANU
+
+    //FLT NO
     screen -> draw_text(6, "FLT NO", sf::Color::White);
-    screen -> draw_text(0, "[ ][ ][ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
+    if(flt_no.empty()) {
+        screen -> draw_text(0, "[ ][ ][ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
+    }
+    else {
+        screen -> draw_text(0, flt_no, sf::Color::White);
+    }
+
+    //DEP
     screen -> draw_text(7, "DEP", sf::Color::White);
-    screen -> draw_text(1, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
+    if(dep.empty()) {
+        screen -> draw_text(1, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
+    }
+    else {
+        screen -> draw_text(1, dep, sf::Color::White);
+    }
+
+    //DEST
     screen -> draw_text(8, "DEST", sf::Color::White);
-    screen -> draw_text(2, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
-    screen -> draw_text(9, "ALT", sf::Color::White);
-    screen -> draw_text(3, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
+    if(dest.empty()) {
+        screen -> draw_text(2, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
+    }
+    else {
+        screen -> draw_text(2, dest, sf::Color::White);
+    }
+
+    //ALT
+    screen -> draw_text(9, "ALTN", sf::Color::White);
+    if(altn.empty()) {
+        screen -> draw_text(3, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
+    }
+    else {
+        screen -> draw_text(3, altn, sf::Color::White);
+    }
+
+    //ETE
     screen -> draw_text(10, "ETE", sf::Color::White);
-    screen -> draw_text(4, "[ ][ ][ ][  ]", sf::Color{255, 153, 0}); //orange color
+    if(ete.empty()) {
+        screen -> draw_text(4, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
+    }
+    else {
+        screen -> draw_text(4, altn, sf::Color::White);
+    }
 
     //PRAWA STRONA EKRANU
     screen -> draw_text(30, "                      UTC", sf::Color::White);
     screen -> draw_text(24, getTimeUTC(), sf::Color::Green);
     screen -> draw_text(32, "                     DATE", sf::Color::White);
     screen -> draw_text(26, getDateUTC(), sf::Color::Green);
+
+    //input uzytkownika
+    screen -> draw_text(36, input_string, sf::Color::White);
 }
 
 std::string Flt_Init :: getDateUTC() {
     std::time_t t = std::time(nullptr);
     std::tm* utc = std::gmtime(&t);
 
-    char date[11]; //10 + '\n'
+    char date[11]; //10 + '\0'
 
     //sprintf zapisuje dane do bufora (chara)
     std::sprintf(date, "      %02d/%02d/%04d", utc->tm_mday, utc->tm_mon + 1, utc->tm_year + 1900);
@@ -65,4 +103,8 @@ std::string Flt_Init :: getTimeUTC() {
     std::string timeUTC = time;
 
     return timeUTC;
+}
+
+void getInput(int button_clicked) {
+
 }

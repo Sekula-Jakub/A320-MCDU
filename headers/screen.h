@@ -12,7 +12,7 @@ class Screen {
         sf::Texture arrow_tekstura;
         std::vector<sf::Sprite> arrows;
 
-        sf::Text texts[36];     //36 napisow, 3 kolumny w każdej po 6 wierszy, w wierszach po dwa napisy - mniejszy nad większym
+        sf::Text texts[37];     //36 napisow, 3 kolumny w każdej po 6 wierszy, w wierszach po dwa napisy - mniejszy nad większym + 1 napis input uzytkownika na dole
         sf::Color texts_colors[36] = {sf::Color::White};            //kolory napisow
 
         sf::Font font;      //czcionka
