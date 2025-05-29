@@ -97,7 +97,6 @@ Screen::Screen() {
     //===========DOLNY INPUT============
     texts[36].setPosition(92, 237);
     texts[36].setCharacterSize(14);
-    //texts[36].setString("Input");
 }
 
 //destruktor
@@ -108,7 +107,7 @@ Screen::~Screen() {
 
 void Screen::draw_text(int index, const std::string &text, sf::Color color) {
     //obsluga bledu
-    if (index >= 36 || index < 0) {
+    if (index > 36 || index < 0) {
         return;
     }
     texts[index].setString(text);
@@ -120,7 +119,7 @@ void Screen::draw_title(const std::string text, sf::Color color) {
         page_title.setColor(color);
 }
 
-void Screen::display_screen(sf::RenderWindow &window, int button_clicked) {
+void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
 
     //Mcdu_Menu page
     if (button_clicked == 23 && current_page != Active_Screen::mcdu_menu_page) {
@@ -142,11 +141,14 @@ void Screen::display_screen(sf::RenderWindow &window, int button_clicked) {
         mcdu_menu -> atsu -> aoc_menu -> input_handler(button_clicked, current_page);
     }
 
-    /*
+
     if (current_page == Active_Screen::flt_init_page) {
-        mcdu_menu -> atsu -> aoc_menu -> flt_init -> getInput(button_clicked);
+        if (button_clicked != -1) {
+            mcdu_menu -> atsu -> aoc_menu -> flt_init -> getInput(button_clicked);
+            mcdu_menu -> atsu -> aoc_menu -> flt_init -> render();
+        }
+        //std::cout<<"button_clicked: "<<button_clicked<<std::endl;
     }
-    */
 
     window.draw(page_title);
 

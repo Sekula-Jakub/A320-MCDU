@@ -18,6 +18,7 @@ add_executable(MCDU
         pages/mcdu_menu_branch/fmgc.cpp
         pages/mcdu_menu_branch/aoc_menu.cpp
         pages/mcdu_menu_branch/flt_init.cpp
+        pages/input.cpp
 )
 
 target_include_directories(MCDU PRIVATE

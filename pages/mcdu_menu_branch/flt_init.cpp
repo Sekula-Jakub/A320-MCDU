@@ -1,5 +1,6 @@
 #include "flt_init.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 Flt_Init::Flt_Init(Screen* screen_ptr) {
     screen = screen_ptr;
@@ -14,7 +15,7 @@ void Flt_Init::render() {
     screen -> draw_title("", sf::Color::White);
 
     //wyczyszczenie napisow
-    for (int i=0; i<36; i++) {
+    for (int i=0; i<37; i++) {
         screen -> draw_text(i,"", sf::Color::White);
     }
 
@@ -74,7 +75,7 @@ void Flt_Init::render() {
     screen -> draw_text(26, getDateUTC(), sf::Color::Green);
 
     //input uzytkownika
-    screen -> draw_text(36, input_string, sf::Color::White);
+    screen -> draw_text(36, vector_to_string(flt_init_input), sf::Color::White);
 }
 
 std::string Flt_Init :: getDateUTC() {
@@ -105,6 +106,9 @@ std::string Flt_Init :: getTimeUTC() {
     return timeUTC;
 }
 
-void getInput(int button_clicked) {
-
+void Flt_Init::getInput(int &button_clicked) {
+    get_input(button_clicked, flt_init_input);
+    std::cout << "flt_init_input.size() = \n" << flt_init_input.size() << std::endl;
+    std::cout << vector_to_string(flt_init_input) << std::endl;
 }
+

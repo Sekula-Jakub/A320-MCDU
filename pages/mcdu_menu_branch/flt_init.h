@@ -2,13 +2,11 @@
 #include <screen.h>
 #include <string>
 #include <vector>
+#include "../input.h"
 
 class Flt_Init {
 private:
     Screen* screen;    //wskaznik do obiektu klasy Screen
-
-    //input uzytkownika jako wektor
-    std::vector<char> input;
 
     //input jako string
     std::string input_string;
@@ -20,10 +18,12 @@ private:
     std::string altn;
     std::string ete;
 
-
     //podstrony
 
 public:
+
+    //pusty wektor na input
+    std::vector<char> flt_init_input = {};
 
     //konstruktor
     explicit Flt_Init(Screen* screen_ptr);
@@ -35,9 +35,9 @@ public:
     void render();
 
     //data i czas
-    std::string getDateUTC();
-    std::string getTimeUTC();
+    static std::string getDateUTC();
+    static std::string getTimeUTC();
 
     //obsluga inputu uzytkownika
-    void getInput(int button_clicked);
+    void getInput(int &button_clicked);
 };

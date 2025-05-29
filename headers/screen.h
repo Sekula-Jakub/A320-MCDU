@@ -37,5 +37,5 @@ class Screen {
         void draw_text(int index, const std::string& str, sf::Color color);
 
         //wyswietlanie zawartosci ekranu
-        void display_screen(sf::RenderWindow &window, int button_clicked);
+        void display_screen(sf::RenderWindow &window, int& button_clicked);
 };
