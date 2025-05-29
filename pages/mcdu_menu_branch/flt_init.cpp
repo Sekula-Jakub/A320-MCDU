@@ -11,6 +11,9 @@ Flt_Init::~Flt_Init() {
 }
 
 void Flt_Init::render() {
+
+    std::cout << "[DEBUG] flt_no = " << flt_no << std::endl;
+
     //wyczyszczenie poprzednich wartosci
     screen -> draw_title("", sf::Color::White);
 
@@ -29,7 +32,7 @@ void Flt_Init::render() {
         screen -> draw_text(0, "[ ][ ][ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
     }
     else {
-        screen -> draw_text(0, flt_no, sf::Color::White);
+        screen -> draw_text(0, flt_no, sf::Color(0, 255, 255));
     }
 
     //DEP
@@ -38,7 +41,7 @@ void Flt_Init::render() {
         screen -> draw_text(1, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
     }
     else {
-        screen -> draw_text(1, dep, sf::Color::White);
+        screen -> draw_text(1, dep, sf::Color(0, 255, 255));
     }
 
     //DEST
@@ -47,7 +50,7 @@ void Flt_Init::render() {
         screen -> draw_text(2, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
     }
     else {
-        screen -> draw_text(2, dest, sf::Color::White);
+        screen -> draw_text(2, dest, sf::Color(0, 255, 255));
     }
 
     //ALT
@@ -56,7 +59,7 @@ void Flt_Init::render() {
         screen -> draw_text(3, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
     }
     else {
-        screen -> draw_text(3, altn, sf::Color::White);
+        screen -> draw_text(3, altn, sf::Color(0, 255, 255));
     }
 
     //ETE
@@ -65,7 +68,7 @@ void Flt_Init::render() {
         screen -> draw_text(4, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
     }
     else {
-        screen -> draw_text(4, altn, sf::Color::White);
+        screen -> draw_text(4, altn, sf::Color(0, 255, 255));
     }
 
     //PRAWA STRONA EKRANU
@@ -109,6 +112,47 @@ std::string Flt_Init :: getTimeUTC() {
 void Flt_Init::getInput(int &button_clicked) {
     get_input(button_clicked, flt_init_input);
     std::cout << "flt_init_input.size() = \n" << flt_init_input.size() << std::endl;
-    std::cout << vector_to_string(flt_init_input) << std::endl;
+    //std::cout << vector_to_string(flt_init_input) << std::endl;
+
 }
 
+void Flt_Init::insert_data(int &button_clicked) {
+
+    switch (button_clicked) {
+        case 0:
+            insert_into_flt_no(vector_to_string(flt_init_input));
+        break;
+
+        default:
+            break;
+    }
+
+}
+
+void Flt_Init::insert_into_flt_no(const std::string& input) {
+
+    if (input.empty()) {
+        return;
+    }
+
+    if (input.size() <= 3 && input.size() > 0) {
+        flt_init_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+        return;
+    }
+
+    if (input.size() >=3) {
+        for (int i=0; i<3; i++) {
+            if (input[i] <'A' || input[i] > 'Z') {
+                flt_init_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+                return;
+            }
+        }
+    }
+
+    flt_no = input;
+    std::cout << "[DEBUG] Zapisywanie FLT_NO: " << input << std::endl;
+
+    //wyczyszcenie inputu wektora
+    flt_init_input.clear();
+
+}

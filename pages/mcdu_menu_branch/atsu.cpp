@@ -9,6 +9,8 @@ Atsu::Atsu(Screen* screen_ptr) {
 
     //zaalokowanie pamieci
     aoc_menu = new Aoc_menu(screen);
+    std::cout << "[DEBUG] Konstruktor ATSU wywołany" << std::endl;
+
 }
 
 //destruktor

@@ -21,7 +21,6 @@ private:
     //podstrony
 
 public:
-
     //pusty wektor na input
     std::vector<char> flt_init_input = {};
 
@@ -40,4 +39,14 @@ public:
 
     //obsluga inputu uzytkownika
     void getInput(int &button_clicked);
+
+    //zatwierdzenie danych
+    void insert_data(int &button_clicked);
+
+    //wstawianie w pole wektora z inputu
+    void insert_into_flt_no(const std::string& input);
+
+    void insert_into_dep(const std::string& input);
+
+    void insert_into_dest(const std::string& input);
 };

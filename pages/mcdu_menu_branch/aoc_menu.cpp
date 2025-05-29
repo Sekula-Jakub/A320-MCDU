@@ -7,6 +7,9 @@ Aoc_menu::Aoc_menu(Screen* screen_ptr) {
 
     //zaalokowanie pamieci
     flt_init = new Flt_Init(screen);
+
+    std::cout << "[DEBUG] Konstruktor AOC_MENU wywołany" << std::endl;
+
 }
 
 Aoc_menu::~Aoc_menu() {

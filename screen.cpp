@@ -141,11 +141,13 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         mcdu_menu -> atsu -> aoc_menu -> input_handler(button_clicked, current_page);
     }
 
-
     if (current_page == Active_Screen::flt_init_page) {
         if (button_clicked != -1) {
+            std::cout<<"wchodze\n";
             mcdu_menu -> atsu -> aoc_menu -> flt_init -> getInput(button_clicked);
+            mcdu_menu -> atsu -> aoc_menu -> flt_init -> insert_data(button_clicked);
             mcdu_menu -> atsu -> aoc_menu -> flt_init -> render();
+            button_clicked = -1;
         }
         //std::cout<<"button_clicked: "<<button_clicked<<std::endl;
     }
