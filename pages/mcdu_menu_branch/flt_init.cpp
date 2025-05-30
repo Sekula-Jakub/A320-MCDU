@@ -1,6 +1,9 @@
 #include "flt_init.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "../input.h"
+#include <../../database_sqlite3_files/sqlite3.h>
+#include "../../headers/data_base_manager.h"
 
 Flt_Init::Flt_Init(Screen* screen_ptr) {
     screen = screen_ptr;
@@ -68,7 +71,7 @@ void Flt_Init::render() {
         screen -> draw_text(4, "[ ][ ][ ][ ]", sf::Color{255, 153, 0}); //orange color
     }
     else {
-        screen -> draw_text(4, altn, sf::Color(0, 255, 255));
+        screen -> draw_text(4, ete, sf::Color(0, 255, 255));
     }
 
     //PRAWA STRONA EKRANU
@@ -121,7 +124,19 @@ void Flt_Init::insert_data(int &button_clicked) {
     switch (button_clicked) {
         case 0:
             insert_into_flt_no(vector_to_string(flt_init_input));
-        break;
+            break;
+
+        case 1:
+            insert_into_dep(vector_to_string(flt_init_input));
+            break;
+
+        case 2:
+            insert_into_dest(vector_to_string(flt_init_input));
+            break;
+
+        case 3:
+            insert_into_altn(vector_to_string(flt_init_input));
+            break;
 
         default:
             break;
@@ -155,4 +170,60 @@ void Flt_Init::insert_into_flt_no(const std::string& input) {
     //wyczyszcenie inputu wektora
     flt_init_input.clear();
 
+}
+
+void Flt_Init::insert_into_dep(const std::string& input) {
+
+    std::string code = input;
+
+    std::cout<<"code: " << code << std::endl;
+
+    if (db.airport_in_data_base(code) == true) {
+        dep = input;
+    }
+    else {
+        flt_init_input = {'N', 'O', 'T', ' ', 'I', 'N', ' ', 'D', 'A', 'T', 'A', ' ', 'B', 'A', 'S', 'E', '!'};
+        return;
+    }
+
+    //wyczyszcenie inputu wektora
+    flt_init_input.clear();
+}
+
+void Flt_Init::insert_into_dest(const std::string &input) {
+
+    std::string code = input;
+
+    std::cout<<"code: " << code << std::endl;
+
+    if (db.airport_in_data_base(code) == true) {
+        dest = input;
+    }
+
+    else {
+        flt_init_input = {'N', 'O', 'T', ' ', 'I', 'N', ' ', 'D', 'A', 'T', 'A', ' ', 'B', 'A', 'S', 'E', '!'};
+        return;
+    }
+
+    //wyczyszcenie inputu wektora
+    flt_init_input.clear();
+}
+
+void Flt_Init::insert_into_altn(const std::string &input) {
+
+    std::string code = input;
+
+    std::cout<<"code: " << code << std::endl;
+
+    if (db.airport_in_data_base(code) == true) {
+        altn = input;
+    }
+
+    else {
+        flt_init_input = {'N', 'O', 'T', ' ', 'I', 'N', ' ', 'D', 'A', 'T', 'A', ' ', 'B', 'A', 'S', 'E', '!'};
+        return;
+    }
+
+    //wyczyszcenie inputu wektora
+    flt_init_input.clear();
 }

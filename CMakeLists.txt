@@ -19,6 +19,8 @@ add_executable(MCDU
         pages/mcdu_menu_branch/aoc_menu.cpp
         pages/mcdu_menu_branch/flt_init.cpp
         pages/input.cpp
+        database_sqlite3_files/sqlite3.c
+        data_base_manager.cpp
 )
 
 target_include_directories(MCDU PRIVATE

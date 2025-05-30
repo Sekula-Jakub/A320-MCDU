@@ -1,8 +1,8 @@
 #pragma once
+#include <data_base_manager.h>
 #include <screen.h>
 #include <string>
 #include <vector>
-#include "../input.h"
 
 class Flt_Init {
 private:
@@ -17,6 +17,8 @@ private:
     std::string dest;
     std::string altn;
     std::string ete;
+
+    DatabaseManager db; //baza danych
 
     //podstrony
 
@@ -49,4 +51,6 @@ public:
     void insert_into_dep(const std::string& input);
 
     void insert_into_dest(const std::string& input);
+
+    void insert_into_altn(const std::string& input);
 };
