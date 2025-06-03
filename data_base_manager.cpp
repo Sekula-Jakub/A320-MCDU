@@ -17,28 +17,36 @@ DatabaseManager::~DatabaseManager() {
     }
 }
 
-bool DatabaseManager::airport_in_data_base(const std::string& icaoCode) {
+//czy lotnisko w bazie danych
+bool DatabaseManager::airport_in_data_base(const std::string& icaoCode) const {
 
-    //sprawdzenie czy baza jest otwarta
+    //sprawdzenie czy baza danych jest otwarta
     if (!db) {
         return false;
     }
 
     //wskaznik na zapytanie SQL
     sqlite3_stmt* stmt = nullptr;
+
+    //zapytanie SQL: Ilosc rekordow z tabeli airports gdzie code = podany kod
     const char* sql = "SELECT COUNT(*) FROM airports WHERE code = ?";
 
-    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK)
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) {
         return false;
+    }
 
     sqlite3_bind_text(stmt, 1, icaoCode.c_str(), -1, SQLITE_TRANSIENT);
 
     bool exists = false;
+
     if (sqlite3_step(stmt) == SQLITE_ROW) {
-        exists = sqlite3_column_int(stmt, 0) > 0;
+        if ( sqlite3_column_int(stmt, 0) > 0) {
+            exists = true;
+        }
     }
 
     sqlite3_finalize(stmt);
+
     return exists;
 
 }

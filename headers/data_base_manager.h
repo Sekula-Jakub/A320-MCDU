@@ -11,7 +11,7 @@ class DatabaseManager {
         ~DatabaseManager();
 
         //czy lotnisko jest w bazie
-        bool airport_in_data_base(const std::string& icao_Code);
+        bool airport_in_data_base(const std::string& icao_Code) const;
 
     private:
         sqlite3* db;  //wskaznik na baze danych
