@@ -4,6 +4,7 @@
 #include "../input.h"
 #include <../../database_sqlite3_files/sqlite3.h>
 #include "../../headers/data_base_manager.h"
+#include <vector>
 
 Flt_Init::Flt_Init(Screen* screen_ptr) {
     screen = screen_ptr;
@@ -116,7 +117,6 @@ void Flt_Init::getInput(int &button_clicked) {
     get_input(button_clicked, flt_init_input);
     std::cout << "flt_init_input.size() = \n" << flt_init_input.size() << std::endl;
     //std::cout << vector_to_string(flt_init_input) << std::endl;
-
 }
 
 void Flt_Init::insert_data(int &button_clicked) {
@@ -137,6 +137,12 @@ void Flt_Init::insert_data(int &button_clicked) {
         case 3:
             insert_into_altn(vector_to_string(flt_init_input));
             break;
+
+        case 4: {
+            std::string temp = vector_to_string(flt_init_input);
+            insert_into_ete(temp);
+            break;
+        }
 
         default:
             break;
@@ -226,4 +232,39 @@ void Flt_Init::insert_into_altn(const std::string &input) {
 
     //wyczyszcenie inputu wektora
     flt_init_input.clear();
+}
+
+void Flt_Init::insert_into_ete(std::string &input) {
+    int number;
+
+    //wyjatki
+    //TRY -> to co moze wyrzucic wyjatek
+    try {
+        size_t pos;
+
+        //proba zamiany
+        number = std::stoi(input, &pos);
+
+        //sprawdzenie, czy caly string zostal zamieniony na liczbe
+        if (pos != input.length()) {
+            throw std::invalid_argument("Niepełna konwersja");
+        }
+
+        //sprawdzenie zakresu liczby
+        if (number < 1 || number > 9999) {
+            throw std::out_of_range("Poza zakresem");
+        }
+
+        //sformatowanie wygladu liczby
+        while (input.size() < 4) {
+            input.insert(input.begin(), '0');
+        }
+
+        ete = input;
+        flt_init_input.clear();
+    }
+    //w przypadku wystapienia bledu
+    catch (...) {
+        flt_init_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+    }
 }

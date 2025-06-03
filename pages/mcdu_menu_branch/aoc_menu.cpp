@@ -5,8 +5,9 @@
 Aoc_menu::Aoc_menu(Screen* screen_ptr) {
     screen = screen_ptr;
 
-    //zaalokowanie pamieci
+    //zaalokowanie pamieci na podstrony
     flt_init = new Flt_Init(screen);
+    wx = new Wx(screen);
 
     std::cout << "[DEBUG] Konstruktor AOC_MENU wywołany" << std::endl;
 
@@ -49,5 +50,11 @@ void Aoc_menu::input_handler(int button_clicked, Active_Screen &current_page) {
         flt_init -> render();
         std::cout << "Flt Init" <<std::endl;
         current_page = Active_Screen::flt_init_page;
+    }
+
+    else if (button_clicked == 6) {
+        wx -> render();
+        std::cout<<"Wx"<<std::endl;
+        current_page = Active_Screen::wx_page;
     }
 }

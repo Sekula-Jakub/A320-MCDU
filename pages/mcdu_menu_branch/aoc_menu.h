@@ -1,6 +1,7 @@
 #pragma once
-#include <screen.h>
+#include "screen.h"
 #include "flt_init.h"
+#include "wx.h"
 //class Screen;
 
 class Aoc_menu {
@@ -9,6 +10,7 @@ private:
 
     //podstrony
     Flt_Init* flt_init;
+    Wx* wx;
 
     friend class Screen;
 

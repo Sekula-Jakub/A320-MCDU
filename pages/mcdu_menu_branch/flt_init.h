@@ -1,6 +1,6 @@
 #pragma once
-#include <data_base_manager.h>
-#include <screen.h>
+#include "data_base_manager.h"
+#include "screen.h"
 #include <string>
 #include <vector>
 
@@ -53,4 +53,6 @@ public:
     void insert_into_dest(const std::string& input);
 
     void insert_into_altn(const std::string& input);
+
+    void insert_into_ete(std::string& input);
 };

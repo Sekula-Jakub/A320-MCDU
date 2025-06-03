@@ -135,10 +135,12 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
 
     if (current_page == Active_Screen::atsu_menu_page) {
         mcdu_menu -> atsu -> input_handler(button_clicked, current_page);
+        button_clicked = -1;
     }
 
     if (current_page == Active_Screen::aoc_menu_page) {
         mcdu_menu -> atsu -> aoc_menu -> input_handler(button_clicked, current_page);
+        button_clicked = -1;
     }
 
     if (current_page == Active_Screen::flt_init_page) {
@@ -150,6 +152,21 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
             button_clicked = -1;
         }
         //std::cout<<"button_clicked: "<<button_clicked<<std::endl;
+    }
+
+    if (current_page == Active_Screen::wx_page) {
+        mcdu_menu -> atsu -> aoc_menu -> wx -> input_handler(button_clicked, current_page);
+        button_clicked = -1;
+    }
+
+    if (current_page == Active_Screen::weather_request_page) {
+        if (button_clicked != -1) {
+            mcdu_menu -> atsu -> aoc_menu -> wx -> weather_req -> input_handler(button_clicked, current_page);
+            mcdu_menu -> atsu -> aoc_menu -> wx -> weather_req -> getInput(button_clicked);
+            mcdu_menu -> atsu -> aoc_menu -> wx -> weather_req -> insert_data(button_clicked);
+            mcdu_menu -> atsu -> aoc_menu -> wx -> weather_req -> render();
+        }
+        button_clicked = -1;
     }
 
     window.draw(page_title);
