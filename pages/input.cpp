@@ -35,7 +35,6 @@ void get_input(int &button_clicked, std::vector<char> &vector) {
         }
     }
 
-
     //button_clicked = -1;
 }
 

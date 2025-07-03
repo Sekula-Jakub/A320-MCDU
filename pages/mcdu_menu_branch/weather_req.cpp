@@ -77,6 +77,9 @@ void Weather_req::input_handler(int button_clicked, Active_Screen& current_page)
               tar = false;
           }
       }
+    else if (button_clicked == 11) {
+        send_data();
+    }
 }
 
 void Weather_req::getInput(int &button_clicked) {
@@ -101,4 +104,14 @@ void Weather_req::insert_data(int &button_clicked) {
       //wyczyszcenie inputu wektora
       weather_req_input.clear();
   }
+}
+
+void Weather_req::send_data() {
+    if (!ident.empty()) {
+        ident.clear();
+        metar = false;
+        tar = false;
+        weather_req_input.clear();
+        std::cout<<"ident sent"<<std::endl;
+    }
 }

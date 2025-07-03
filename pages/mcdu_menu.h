@@ -2,6 +2,7 @@
 #include "mcdu_menu_branch/atsu.h"
 #include "mcdu_menu_branch/fmgc.h"
 #include "active_screen.h"
+#include "../headers/screen.h"
 
 class Mcdu_Menu {
 private:
@@ -11,7 +12,7 @@ private:
     Atsu* atsu;
     Fmgc* fmgc;
 
-    //deklaracja klasy przyjaciela, żeby screen mogl wywolywac mcdu_manu->atsu
+    //deklaracja klasy przyjaciela, żeby screen mogl wywolywac mcdu_menu->atsu
     friend class Screen;
 
 public:

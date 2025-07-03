@@ -1,6 +1,6 @@
 #pragma once
-
-class Screen;
+#include "../../headers/screen.h"
+//class Screen;
 
 class Fmgc {
 private:

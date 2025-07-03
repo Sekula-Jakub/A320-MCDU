@@ -8,6 +8,8 @@ enum class Active_Screen {
     aoc_menu_page,
     flt_init_page,
     wx_page,
-    weather_request_page
+    weather_request_page,
+    data_page,
+    init_page
 };
 

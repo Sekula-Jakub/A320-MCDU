@@ -21,6 +21,8 @@ add_executable(MCDU
         pages/mcdu_menu_branch/wx.cpp
         pages/mcdu_menu_branch/weather_req.cpp
         pages/input.cpp
+        pages/data_page.cpp
+        pages/init_page.cpp
         database_sqlite3_files/sqlite3.c
         data_base_manager.cpp
 )

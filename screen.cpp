@@ -2,11 +2,15 @@
 #include "headers/screen.h"
 #include <iostream>
 #include "pages/mcdu_menu.h"
+#include "pages/data_page.h"
+#include "pages/init_page.h"
 
 //konstruktor
 Screen::Screen() {
 
     mcdu_menu = new Mcdu_Menu(this);
+    data_page = new Data_Page(this);
+    init_page = new Init_Page(this);
 
     Active_Screen current_page = Active_Screen::null;
 
@@ -121,7 +125,7 @@ void Screen::draw_title(const std::string text, sf::Color color) {
 
 void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
 
-    //Mcdu_Menu page
+    //MCDU MENU PAGE
     if (button_clicked == 23 && current_page != Active_Screen::mcdu_menu_page) {
         button_clicked = -1;
         current_page = Active_Screen::mcdu_menu_page;
@@ -129,6 +133,21 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         std::cout << "mcdu menu" <<std::endl;
     }
 
+    //DATA PAGE
+    if (button_clicked == 16 && current_page != Active_Screen::data_page) {
+        button_clicked = -1;
+        data_page -> render();
+        current_page = Active_Screen::data_page;
+    }
+
+    //INIT PAGE
+    if (button_clicked == 15 && current_page != Active_Screen::init_page) {
+        button_clicked = -1;
+        init_page -> render();
+        current_page = Active_Screen::init_page;
+    }
+
+    //MCDU MENU PAGE - PODMENU
     if (current_page == Active_Screen::mcdu_menu_page) {
         mcdu_menu -> input_handler(button_clicked, current_page);
     }
@@ -169,6 +188,7 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         button_clicked = -1;
     }
 
+    //wypisane zupdatowanych napisow
     window.draw(page_title);
 
     for(int i=0; i<37; i++) {

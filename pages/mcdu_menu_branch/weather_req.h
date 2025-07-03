@@ -39,6 +39,10 @@ public:
 
     //zatwierdzenie danych
     void insert_data(int &button_clicked);
+
+    //zatwierdzenie i wyslanie
+    void send_data();
+
 };
 
 

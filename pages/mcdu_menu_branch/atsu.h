@@ -1,7 +1,7 @@
 #pragma once
 #include "aoc_menu.h"
 #include "../active_screen.h"
-
+#include "../../headers/screen.h"
 //class Screen;
 
 class Atsu {

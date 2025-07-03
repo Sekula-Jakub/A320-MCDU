@@ -2,7 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include "../pages/active_screen.h"
 
+//forward declaration
 class Mcdu_Menu;
+class Data_Page;
+class Init_Page;
 
 class Screen {
     private:
@@ -19,6 +22,8 @@ class Screen {
 
         //podstrony
         Mcdu_Menu* mcdu_menu;
+        Data_Page* data_page;
+        Init_Page* init_page;
 
     public:
 
