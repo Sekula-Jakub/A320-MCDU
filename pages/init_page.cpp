@@ -8,10 +8,13 @@
 Init_Page::Init_Page(Screen* screen_ptr, Flt_Init* flt_init_ptr) {
     screen = screen_ptr;
     flt_init = flt_init_ptr;
+
+    //Zaalokowanie pamieci
+    init_page_b = new Init_Page_B(screen, this);
 }
 
 Init_Page::~Init_Page() {
-
+    delete init_page_b;
 }
 
 void Init_Page::render() {
@@ -20,12 +23,12 @@ void Init_Page::render() {
     screen -> draw_title("", sf::Color::White);
 
     //wyczyszczenie napisow
-    for (int i=0; i<36; i++) {
+    for (int i=0; i<37; i++) {
         screen -> draw_text(i,"", sf::Color::White);
     }
 
     //tytuł
-    screen -> draw_title("      INIT", sf::Color::White);
+    screen -> draw_title("      INIT                   <- ->", sf::Color::White);
 
     //LEWA STRONA
     //CO RTE
@@ -221,6 +224,8 @@ void Init_Page::insert_into_cost_index(const std::string& input) {
 
 void Init_Page::insert_into_crz_fl(const std::string& input) {
 
+    int fl_integer;
+
     if (input[0] =='F' && input[1] =='L') {
 
         if (input.size() > 5) {
@@ -234,7 +239,19 @@ void Init_Page::insert_into_crz_fl(const std::string& input) {
                 return;
             }
         }
-        crz_fl = input;
+
+        //nowy string od 2 znaku inputa potrzebny do konwersji
+        std::string nowy = input.substr(2);
+        fl_integer = std::stoi(nowy);
+
+        //warunek flight level
+        if(fl_integer > 0 && fl_integer <= 390) {
+            crz_fl = input + " / " + temperature_conversion(fl_integer);
+        }
+        else {
+            init_page_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+            return;
+        }
     }
 
     else {
@@ -250,7 +267,13 @@ void Init_Page::insert_into_crz_fl(const std::string& input) {
                 }
             }
 
-            crz_fl = "FL" + input;
+            if(stoi(input) > 0 && stoi(input) <= 390) {
+                crz_fl = "FL" + input + " / " + temperature_conversion(stoi(input));
+            }
+            else {
+                init_page_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+                return;
+            }
         }
     }
 
@@ -270,6 +293,14 @@ std::string Init_Page::temperature_conversion(int flight_level) {
 
     int temp = round(temp_sea_level - temp_decrease * attutude_meters);
     return std::to_string(temp);
+}
+
+void Init_Page::input_handler(int button_clicked, Active_Screen& current_page) {
+    if (button_clicked == 28) {
+        init_page_b -> render();
+        std::cout << "Init_page_B" <<std::endl;
+        current_page = Active_Screen::init_page_b;
+    }
 }
 
 

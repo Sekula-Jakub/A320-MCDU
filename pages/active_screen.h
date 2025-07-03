@@ -10,6 +10,7 @@ enum class Active_Screen {
     wx_page,
     weather_request_page,
     data_page,
-    init_page
+    init_page,
+    init_page_b
 };
 

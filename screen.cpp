@@ -149,19 +149,25 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
 
     //INIT RREQUEST
     if (current_page == Active_Screen::init_page && button_clicked != -1) {
-        std::cout<<"dupa"<<std::endl;
         init_page -> init_request(button_clicked);
         init_page -> getInput(button_clicked);
-        if (init_page -> init_request_pressed ==true) {
+        if (init_page -> init_request_pressed == true) {
             init_page -> insert_data(button_clicked);
         }
         init_page -> render();
+        init_page -> input_handler(button_clicked, current_page);
+        button_clicked = -1;
+    }
+
+    if (current_page == Active_Screen::init_page_b && button_clicked != -1) {
+        init_page -> init_page_b -> input_handler(button_clicked, current_page);
         button_clicked = -1;
     }
 
     //MCDU MENU PAGE - PODMENU
-    if (current_page == Active_Screen::mcdu_menu_page) {
+    if (current_page == Active_Screen::mcdu_menu_page && button_clicked != -1) {
         mcdu_menu -> input_handler(button_clicked, current_page);
+        button_clicked = -1;
     }
 
     if (current_page == Active_Screen::atsu_menu_page) {

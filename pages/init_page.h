@@ -3,6 +3,7 @@
 #include <string>
 #include "mcdu_menu_branch/aoc_menu.h"
 #include <vector>
+#include "init_page_b.h"
 
 class Init_Page {
 private:
@@ -10,8 +11,6 @@ private:
 
     //wskaźnik do Flt_Init
     Flt_Init *flt_init{};
-
-    //friend class Screen;
 
     //parametry
     std::string co_rte;
@@ -22,6 +21,9 @@ private:
     std::string crz_fl;
 
 public:
+
+    //podstrony
+    Init_Page_B* init_page_b;
 
     //flaga init_request
     bool init_request_pressed = false;
@@ -53,5 +55,7 @@ public:
     void insert_into_crz_fl(const std::string& input);
 
     std::string temperature_conversion(int attitude);
+
+    void input_handler(int button_clicked, Active_Screen& current_page);
 
 };
