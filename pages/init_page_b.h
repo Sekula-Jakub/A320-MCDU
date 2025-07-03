@@ -27,7 +27,20 @@ public:
 
     void render();
 
-    double tow_calculations();
+    double tow_calculations(double taxi, double zfw, double block);
 
     void input_handler(int button_clicked, Active_Screen& current_page);
+
+    //obsluga inputu urzytkownika
+    void getInput(int &button_clicked);
+
+    //zatwierdzenie danych
+    void insert_data(int &button_clicked);
+
+    void insert_into_zfw_zfwcg(const std::string& input);
+
+    void insert_into_block_fuel(const std::string& input);
+
+    static double string_to_double(const std::string& input);
+
 };

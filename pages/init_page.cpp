@@ -1,7 +1,6 @@
 #include "init_page.h"
 #include <iostream>
 #include <cmath> //do zaokrąglenia temperatury
-
 #include "input.h"
 
 //konstruktor

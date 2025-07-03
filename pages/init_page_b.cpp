@@ -15,6 +15,25 @@ Init_Page_B::~Init_Page_B() {
 }
 
 void Init_Page_B::render() {
+
+    //wyciagniecie samego ZFW, czyli pierwszych 4 znaków
+    std::string zfw = zfw_zfwcg.substr(0,4);
+
+    //policzenie TOW gdy wymagane pola nie są puste
+    if (!taxi.empty() && !zfw.empty() && !block_fuel.empty()) {
+
+        double taxi_double = string_to_double(taxi);
+        std::cout<<taxi_double<<std::endl;
+
+        double zfw_double = string_to_double(zfw);
+        std::cout<<zfw_double<<std::endl;
+
+        double block_fuel_double = string_to_double(block_fuel);
+        std::cout<<block_fuel_double<<std::endl;
+
+        tow = std::to_string(tow_calculations(taxi_double, zfw_double, block_fuel_double)).substr(0,4);
+    }
+
     //wyczyszczenie poprzednich wartosci
     screen -> draw_title("", sf::Color::White);
 
@@ -60,7 +79,7 @@ void Init_Page_B::render() {
         screen -> draw_text(24, "   [ ][ ].[ ]/[ ][ ].[ ]", sf::Color{255, 153, 0}); //orange color
     }
     else {
-        screen -> draw_text(24, zfw_zfwcg, sf::Color(0, 255, 255)); //blue color
+        screen -> draw_text(24, "        " + zfw_zfwcg, sf::Color(0, 255, 255)); //blue color
     }
 
     //BLOCK
@@ -69,7 +88,7 @@ void Init_Page_B::render() {
         screen -> draw_text(25, "               [ ][ ].[ ]", sf::Color{255, 153, 0}); //orange color
     }
     else {
-        screen -> draw_text(25, block_fuel, sf::Color(0, 255, 255)); //blue color
+        screen -> draw_text(25, "               " + block_fuel, sf::Color(0, 255, 255)); //blue color
     }
 
     //TOW/LW
@@ -78,7 +97,7 @@ void Init_Page_B::render() {
         screen -> draw_text(15, "                       --.-/ ", sf::Color::White);
     }
     else {
-        screen -> draw_text(16, tow, sf::Color(0, 255, 255)); //blue color
+        screen -> draw_text(15, "                      " + tow, sf::Color::Green);
     }
     screen -> draw_text(27, "                --.-", sf::Color::White);
 
@@ -89,6 +108,10 @@ void Init_Page_B::render() {
     //EXTRA TIME
     screen -> draw_text(35, "        EXTRA / TIME", sf::Color::White);
     screen -> draw_text(29, "      ---.- / ----", sf::Color::White);
+
+    //input uzytkownika
+    screen -> draw_text(36, vector_to_string(init_page_b_input), sf::Color::White);
+
 }
 
 void Init_Page_B::input_handler(int button_clicked, Active_Screen& current_page) {
@@ -98,3 +121,96 @@ void Init_Page_B::input_handler(int button_clicked, Active_Screen& current_page)
         current_page = Active_Screen::init_page;
     }
 }
+
+void Init_Page_B::getInput(int &button_clicked) {
+    get_input(button_clicked, init_page_b_input);
+    std::cout << "flt_init_input.size() = \n" << init_page_b_input.size() << std::endl;
+}
+
+void Init_Page_B::insert_data(int &button_clicked) {
+    switch (button_clicked) {
+        case 6:
+            insert_into_zfw_zfwcg(vector_to_string(init_page_b_input));
+        break;
+
+        case 7:
+            insert_into_block_fuel(vector_to_string(init_page_b_input));
+        break;
+
+        default:
+            break;
+    }
+}
+
+void Init_Page_B::insert_into_zfw_zfwcg(const std::string &input) {
+    //Warunki sprawdzające poprawnośc wpisanych danych
+    if (input.empty() || input.size() != 9) {
+        init_page_b_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+        return;
+    }
+
+    if (input[2] != '.' || input[7] != '.') {
+        init_page_b_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+        return;
+    }
+
+    for (int i=0; i<9; i++) {
+        if (i == 2 || i == 4 || i == 7) {
+            continue;
+        }
+        if (input[i] <'0' || input[i] > '9') {
+            init_page_b_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+            return;
+        }
+    }
+    zfw_zfwcg = input;
+
+    //wyczyszcenie inputu wektora
+    init_page_b_input.clear();
+}
+
+void Init_Page_B::insert_into_block_fuel(const std::string &input) {
+    //Warunki sprawdzające poprawnośc wpisanych danych
+    if (input.empty() || input.size() < 3 || input.size() > 4) {
+        init_page_b_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+        return;
+    }
+
+    if (input[1] != '.' && input[2] != '.') {
+        init_page_b_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+        return;
+    }
+
+    if (input.size() == 4) {
+        for (int i=0; i<4; i++) {
+            if (i == 2) {
+                continue;
+            }
+            if (input[i] < '0' || input[i] > '9') {
+                init_page_b_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+                return;
+            }
+        }
+    }
+    else if (input.size() == 3) {
+        if (input[0] < '0' || input[0] > '9' || input[2] < '0' || input[2] > '9') {
+            init_page_b_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+            return;
+        }
+    }
+
+    block_fuel = input;
+
+    //wyczyszcenie inputu wektora
+    init_page_b_input.clear();
+}
+
+double Init_Page_B::string_to_double(const std::string& input) {
+    return std::stod(input);
+}
+
+double Init_Page_B::tow_calculations(double taxi, double zfw, double block) {
+    return zfw + block - taxi;
+}
+
+

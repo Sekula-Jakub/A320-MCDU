@@ -159,8 +159,14 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         button_clicked = -1;
     }
 
+    //INIT PAGE B
     if (current_page == Active_Screen::init_page_b && button_clicked != -1) {
         init_page -> init_page_b -> input_handler(button_clicked, current_page);
+        init_page -> init_page_b -> getInput(button_clicked);
+        init_page -> init_page_b -> insert_data(button_clicked);
+        if (button_clicked != 26) {
+            init_page -> init_page_b -> render();
+        }
         button_clicked = -1;
     }
 
