@@ -10,7 +10,7 @@ Screen::Screen() {
 
     mcdu_menu = new Mcdu_Menu(this);
     data_page = new Data_Page(this);
-    init_page = new Init_Page(this);
+    init_page = new Init_Page(this, mcdu_menu -> atsu -> aoc_menu -> flt_init);
 
     Active_Screen current_page = Active_Screen::null;
 
@@ -145,6 +145,18 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         button_clicked = -1;
         init_page -> render();
         current_page = Active_Screen::init_page;
+    }
+
+    //INIT RREQUEST
+    if (current_page == Active_Screen::init_page && button_clicked != -1) {
+        std::cout<<"dupa"<<std::endl;
+        init_page -> init_request(button_clicked);
+        init_page -> getInput(button_clicked);
+        if (init_page -> init_request_pressed ==true) {
+            init_page -> insert_data(button_clicked);
+        }
+        init_page -> render();
+        button_clicked = -1;
     }
 
     //MCDU MENU PAGE - PODMENU

@@ -161,13 +161,24 @@ void Flt_Init::insert_into_flt_no(const std::string& input) {
         return;
     }
 
-    if (input.size() >=3) {
+    if (input.size() >=3 && input.size() <=7) {
         for (int i=0; i<3; i++) {
             if (input[i] <'A' || input[i] > 'Z') {
                 flt_init_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
                 return;
             }
         }
+        for (int i=3; i<input.size(); i++) {
+            if (input[i] < '0' || input[i] > '9') {
+                flt_init_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+                return;
+            }
+        }
+    }
+
+    if (input.size() > 7) {
+        flt_init_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
+        return;
     }
 
     flt_no = input;

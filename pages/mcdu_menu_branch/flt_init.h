@@ -11,6 +11,9 @@ private:
     //input jako string
     std::string input_string;
 
+    //klasa zaprzyjaźniona
+    friend class Init_Page;
+
     //parametry
     std::string flt_no;
     std::string dep;
