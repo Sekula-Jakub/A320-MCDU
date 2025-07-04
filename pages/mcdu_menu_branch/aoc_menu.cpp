@@ -27,7 +27,7 @@ void Aoc_menu::render() const {
         screen -> draw_text(i,"", sf::Color::White);
     }
 
-    screen -> draw_title("AOC MENU", sf::Color::White);
+    screen -> draw_title("                          AOC MENU", sf::Color::White);
 
     //LEWA STRONA EKRANU
     screen -> draw_text(0, "<FLT INIT", sf::Color::White);

@@ -21,7 +21,7 @@ void Fmgc::render() const {
         screen -> draw_text(i,"", sf::Color::White);
     }
 
-    screen -> draw_title("A320 - 200", sf::Color::White);
+    screen -> draw_title("                          A320 - 200", sf::Color::White);
 
     screen -> draw_text(6, "ENG", sf::Color::White);
     screen -> draw_text(0, "V2527-A5", sf::Color::Green);

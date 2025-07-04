@@ -4,6 +4,7 @@
 #include "pages/mcdu_menu.h"
 #include "pages/data_page.h"
 #include "pages/init_page.h"
+#include "pages/flight_plan.h"
 
 //konstruktor
 Screen::Screen() {
@@ -11,6 +12,7 @@ Screen::Screen() {
     mcdu_menu = new Mcdu_Menu(this);
     data_page = new Data_Page(this);
     init_page = new Init_Page(this, mcdu_menu -> atsu -> aoc_menu -> flt_init);
+    flight_plan = new Flight_Plan(this, init_page);
 
     Active_Screen current_page = Active_Screen::null;
 
@@ -29,7 +31,7 @@ Screen::Screen() {
     page_title.setFont(font);
     page_title.setCharacterSize(13);
     page_title.setFillColor(sf::Color::White);
-    page_title.setPosition(170, 26);
+    page_title.setPosition(100, 26);
 
     //teksty glowne
     for (int i = 0; i < 37; i++) {
@@ -140,6 +142,14 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         current_page = Active_Screen::data_page;
     }
 
+    //FLIGHT PLAN
+    if (button_clicked == 18 && current_page != Active_Screen::flight_plan_page) {
+        std::cout<<"Flight Plan klikniety"<<std::endl;
+        flight_plan -> render();
+        button_clicked = -1;
+        current_page = Active_Screen::flight_plan_page;
+    }
+
     //INIT PAGE
     if (button_clicked == 15 && current_page != Active_Screen::init_page) {
         button_clicked = -1;
@@ -147,7 +157,7 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         current_page = Active_Screen::init_page;
     }
 
-    //INIT RREQUEST
+    //INIT RREQUEST ON INIT PAGE
     if (current_page == Active_Screen::init_page && button_clicked != -1) {
         init_page -> init_request(button_clicked);
         init_page -> getInput(button_clicked);

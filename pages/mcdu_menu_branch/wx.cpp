@@ -25,7 +25,7 @@ void Wx::render() const {
     }
 
     //tytul
-    screen -> draw_title("AOC REQUESTS", sf::Color::White);
+    screen -> draw_title("                     AOC REQUESTS", sf::Color::White);
     //<WEATHER REQ
     screen -> draw_text(0, "<WEATHER REQ", sf::Color::White);
 }

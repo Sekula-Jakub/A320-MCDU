@@ -6,6 +6,7 @@
 class Mcdu_Menu;
 class Data_Page;
 class Init_Page;
+class Flight_Plan;
 
 class Screen {
     private:
@@ -24,6 +25,8 @@ class Screen {
         Mcdu_Menu* mcdu_menu;
         Data_Page* data_page;
         Init_Page* init_page;
+        Flight_Plan* flight_plan;
+
 
     public:
 

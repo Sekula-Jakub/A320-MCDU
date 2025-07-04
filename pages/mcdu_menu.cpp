@@ -27,7 +27,7 @@ void Mcdu_Menu::render() {
     }
 
     //tytuł
-    screen -> draw_title("MCDU MENU", sf::Color::White);
+    screen -> draw_title("                        MCDU MENU", sf::Color::White);
     //tresc strony
     screen -> draw_text(0, "<FMGC", sf::Color::Green);
     screen -> draw_text(1, "<ATSU", sf::Color::White);

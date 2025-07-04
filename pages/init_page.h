@@ -10,15 +10,18 @@ private:
     Screen* screen;    //wskaznik do obiektu klasy Screen
 
     //wskaźnik do Flt_Init
-    Flt_Init *flt_init{};
+    Flt_Init *flt_init;
 
     //parametry
     std::string co_rte;
     std::string alternative;
     std::string from_to;
+    std::string from;
+    std::string to;
     std::string flt_number;
     std::string cost_index;
     std::string crz_fl;
+
 
 public:
 
@@ -57,5 +60,10 @@ public:
     std::string temperature_conversion(int attitude);
 
     void input_handler(int button_clicked, Active_Screen& current_page);
+
+    //gettery
+    std::string getFltNumber();
+    std::string getDep();
+    std::string getDest();
 
 };

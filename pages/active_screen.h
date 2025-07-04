@@ -11,6 +11,7 @@ enum class Active_Screen {
     weather_request_page,
     data_page,
     init_page,
-    init_page_b
+    init_page_b,
+    flight_plan_page
 };
 

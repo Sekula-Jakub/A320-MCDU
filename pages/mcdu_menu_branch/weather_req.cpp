@@ -24,7 +24,7 @@ void Weather_req::render() const {
     }
 
     //tytul
-    screen -> draw_title("AOC WEATHER REQ", sf::Color::White);
+    screen -> draw_title("                     AOC WEATHER REQ", sf::Color::White);
     //<WEATHER REQ
     screen -> draw_text(6, "IDENT", sf::Color::White);
     if(ident.empty()) {

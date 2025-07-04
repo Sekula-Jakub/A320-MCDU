@@ -8,7 +8,7 @@ Init_Page::Init_Page(Screen* screen_ptr, Flt_Init* flt_init_ptr) {
     screen = screen_ptr;
     flt_init = flt_init_ptr;
 
-    //Zaalokowanie pamieci
+    //Zaalokowanie pamieci na podstrone
     init_page_b = new Init_Page_B(screen, this);
 }
 
@@ -27,7 +27,7 @@ void Init_Page::render() {
     }
 
     //tytuł
-    screen -> draw_title("      INIT                   <- ->", sf::Color::White);
+    screen -> draw_title("                              INIT                   <- ->", sf::Color::White);
 
     //LEWA STRONA
     //CO RTE
@@ -120,6 +120,8 @@ void Init_Page::init_request(int button_clicked) {
             alternative = flt_init -> altn;
             std::cout<<alternative<<std::endl;
             from_to = flt_init -> dep + '/' + flt_init -> dest;
+            from = flt_init -> dep;
+            to = flt_init -> dest;
             std::cout<<from_to<<std::endl;
             init_request_pressed = true;
         }
@@ -300,6 +302,19 @@ void Init_Page::input_handler(int button_clicked, Active_Screen& current_page) {
         std::cout << "Init_page_B" <<std::endl;
         current_page = Active_Screen::init_page_b;
     }
+}
+
+//gettery, żeby nie robić danych public
+std::string Init_Page::getFltNumber() {
+    return flt_number;
+}
+
+std::string Init_Page::getDep() {
+    return from;
+}
+
+std::string Init_Page::getDest() {
+    return to;
 }
 
 

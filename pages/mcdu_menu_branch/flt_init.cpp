@@ -26,7 +26,7 @@ void Flt_Init::render() {
         screen -> draw_text(i,"", sf::Color::White);
     }
 
-    screen -> draw_title("AOC FLT INIT", sf::Color::White);
+    screen -> draw_title("                  AOC FLT INIT", sf::Color::White);
 
     //LEWA STRONA EKRANU
 
