@@ -10,7 +10,7 @@ Flight_Plan::Flight_Plan(Screen* screen_ptr, Init_Page* init_page_ptr) {
     init_page = init_page_ptr;
 
     //zaalokowanie pamieci na podstrone
-    departure_page_a = new Departure_Page_A(screen);
+    departure_page_a = new Departure_Page_A(screen, this);
 }
 
 //destruktor
@@ -73,6 +73,14 @@ void Flight_Plan::render_ready() {
     screen -> draw_text(35, "DIST           EFOB", sf::Color::White);
     screen -> draw_text(29, get_distance() + "   ------", sf::Color::White);
 
+    //przypisanie wrtości do departure i arrival
+    departure = init_page -> getDep();
+    arrival = init_page -> getDest();
+
+    coordinates_dep = get_coordinates(departure);
+    coordinates_arr = get_coordinates(arrival);
+
+    std::cout<<coordinates_dep<<std::endl;
 }
 
 void Flight_Plan::input_handler(int button_clicked, Active_Screen& current_page) {

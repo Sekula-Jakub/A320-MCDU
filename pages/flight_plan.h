@@ -13,10 +13,14 @@ private:
 
     DatabaseManager db; //baza danych
 
-    //odleglosc
-    int distance;
-
 public:
+
+    std::string departure;
+    std::string arrival;
+
+    std::string coordinates_dep;
+    std::string coordinates_arr;
+
     //podstrony
     Departure_Page_A* departure_page_a;
 

@@ -5,13 +5,17 @@
 class Departure_Page_A {
 private:
     Screen* screen;     //wskaźnik do obiektu klasy Screen
+    Flight_Plan* flight_plan;
 
     //Wskaźnik do InitPage do
     Init_Page* init_page;
 
+    //współrzedne lotniska
+    std::string coordinates;
+
 public:
     //konstruktor
-    Departure_Page_A(Screen* screen);
+    Departure_Page_A(Screen* screen, Flight_Plan* flight_plan);
 
     //destruktor
     ~Departure_Page_A();
