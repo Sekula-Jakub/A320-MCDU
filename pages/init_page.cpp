@@ -27,7 +27,7 @@ void Init_Page::render() {
     }
 
     //tytuł
-    screen -> draw_title("                              INIT                   <- ->", sf::Color::White);
+    screen -> draw_title("                              INIT A                  <- ->", sf::Color::White);
 
     //LEWA STRONA
     //CO RTE
@@ -316,5 +316,13 @@ std::string Init_Page::getDep() {
 std::string Init_Page::getDest() {
     return to;
 }
+
+bool Init_Page::getIsFilled() const {
+    if (!flt_number.empty() && !from.empty() && !to.empty()) {
+        return true;
+    }
+    return false;
+}
+
 
 

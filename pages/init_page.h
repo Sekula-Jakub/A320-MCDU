@@ -22,7 +22,6 @@ private:
     std::string cost_index;
     std::string crz_fl;
 
-
 public:
 
     //podstrony
@@ -65,5 +64,6 @@ public:
     std::string getFltNumber();
     std::string getDep();
     std::string getDest();
+    bool getIsFilled() const;
 
 };

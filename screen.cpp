@@ -145,7 +145,13 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
     //FLIGHT PLAN
     if (button_clicked == 18 && current_page != Active_Screen::flight_plan_page) {
         std::cout<<"Flight Plan klikniety"<<std::endl;
-        flight_plan -> render();
+        if (init_page -> getIsFilled() == false) {
+            flight_plan -> render_empty();
+        }
+        else {
+            flight_plan -> render_ready();
+
+        }
         button_clicked = -1;
         current_page = Active_Screen::flight_plan_page;
     }
@@ -155,6 +161,13 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         button_clicked = -1;
         init_page -> render();
         current_page = Active_Screen::init_page;
+    }
+
+    //DEPARTURE A PAGE ON FLIGHT PLAN PAGE
+    if (current_page == Active_Screen::flight_plan_page && button_clicked != -1 && init_page -> getIsFilled() == true) {
+        std::cout<<"dep klikniety"<<std::endl;
+        flight_plan -> input_handler(button_clicked, current_page);
+        button_clicked = -1;
     }
 
     //INIT RREQUEST ON INIT PAGE

@@ -23,8 +23,6 @@ private:
 
     DatabaseManager db; //baza danych
 
-    //podstrony
-
 public:
     //pusty wektor na input
     std::vector<char> flt_init_input = {};

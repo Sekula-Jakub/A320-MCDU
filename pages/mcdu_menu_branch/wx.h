@@ -11,7 +11,7 @@ class Wx {
     Weather_req* weather_req;
 
     //konstruktor
-    explicit Wx(Screen* screen);
+    Wx(Screen* screen);
 
     //destruktor
     ~Wx();

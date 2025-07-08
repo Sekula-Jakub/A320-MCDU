@@ -43,7 +43,7 @@ void Init_Page_B::render() {
     }
 
     //tytuł
-    screen -> draw_title("                              INIT                   <- ->", sf::Color::White);
+    screen -> draw_title("                              INIT B                 <- ->", sf::Color::White);
 
     //LEWA STRONA
     //TAXI

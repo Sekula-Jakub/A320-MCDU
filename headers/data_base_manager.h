@@ -13,6 +13,9 @@ class DatabaseManager {
         //czy lotnisko jest w bazie
         bool airport_in_data_base(const std::string& icao_Code) const;
 
+        //znajdź koordynaty lotniska
+        std::string get_coordinates_from_data_base(const std::string& icao_Code) const;
+
     private:
         sqlite3* db;  //wskaznik na baze danych
 };

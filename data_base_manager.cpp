@@ -66,3 +66,34 @@ bool DatabaseManager::airport_in_data_base(const std::string& icaoCode) const {
     //zwrócić wynik
     return exists;
 }
+
+std::string DatabaseManager::get_coordinates_from_data_base(const std::string& icao_Code) const {
+    //sprawdzenie czy baza danych jest otwarta
+    if (!db) {
+        return "";
+    }
+
+    //Przygotowanie wskaźnika na zapytanie SQL
+    sqlite3_stmt* stmt = nullptr;
+
+    //Przygotowanie zapytanie: Pobranie kolumny 'coordinates' dla danego kodu lotniska
+    //argument -1 oznacza, że SQlite ma sam obliczyć długośc zapytania
+    if (sqlite3_prepare_v2(db, "SELECT coordinates FROM airports WHERE code = ?", -1, &stmt, nullptr) != SQLITE_OK) {
+        //w razie niepowodzenia przygotowania zapytania
+        return "";
+    }
+
+    //podstawienie kodu lotniska do zapytania w miejsce '?'
+    sqlite3_bind_text(stmt, 1, icao_Code.c_str(), -1, SQLITE_TRANSIENT);
+
+    std::string coordinates;
+
+    //wykonanie zapytanie i sprawdzenie czy istnieje rekord
+    if (sqlite3_step(stmt) == SQLITE_ROW) {
+        coordinates = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+    }
+
+    sqlite3_finalize(stmt);
+
+    return coordinates;
+}
