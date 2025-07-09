@@ -2,7 +2,7 @@
 #include "screen.h"
 #include "data_base_manager.h"
 
-class Departure_Page_A {
+class Arrival_Page_A {
 private:
     Screen* screen;     //wskaźnik do obiektu klasy Screen
 
@@ -17,10 +17,10 @@ private:
 
 public:
     //konstruktor
-    Departure_Page_A(Screen* screen, Flight_Plan* flight_plan);
+    Arrival_Page_A(Screen* screen, Flight_Plan* flight_plan);
 
     //destruktor
-    ~Departure_Page_A();
+    ~Arrival_Page_A();
 
     void render();
 

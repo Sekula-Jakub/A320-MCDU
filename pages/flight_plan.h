@@ -2,6 +2,7 @@
 #include "../headers/screen.h"
 #include <string>
 #include "data_base_manager.h"
+#include "flight_plan_branch/arrival_page_a.h"
 #include "flight_plan_branch/departure_page_a.h"
 
 class Flight_Plan {
@@ -23,6 +24,7 @@ public:
 
     //podstrony
     Departure_Page_A* departure_page_a;
+    Arrival_Page_A* arrival_page_a;
 
     //konstruktor
     Flight_Plan(Screen* screen, Init_Page* init_page);

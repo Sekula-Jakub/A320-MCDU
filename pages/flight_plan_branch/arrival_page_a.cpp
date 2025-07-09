@@ -1,21 +1,20 @@
-#include "departure_page_a.h"
-
+#include "arrival_page_a.h"
 #include "../flight_plan.h"
 #include "../init_page.h"
 #include "../../headers/data_base_manager.h"
 
 //konstruktor
-Departure_Page_A::Departure_Page_A(Screen* screen_ptr, Flight_Plan* flight_plan_ptr) {
+Arrival_Page_A::Arrival_Page_A(Screen* screen_ptr, Flight_Plan* flight_plan_ptr) {
     screen = screen_ptr;
     flight_plan = flight_plan_ptr;
 }
 
 //destruktor
-Departure_Page_A::~Departure_Page_A() {
+Arrival_Page_A::~Arrival_Page_A() {
 
 }
 
-void Departure_Page_A::render() {
+void Arrival_Page_A::render() {
     //wyczyszczenie poprzednich wartosci
     screen -> draw_title("", sf::Color::White);
 
@@ -24,17 +23,17 @@ void Departure_Page_A::render() {
         screen -> draw_text(i,"", sf::Color::White);
     }
 
-    screen -> draw_title("                    LAT REV FROM " + flight_plan -> departure, sf::Color::White);
+    screen -> draw_title("                    LAT REV FROM " + flight_plan -> arrival, sf::Color::White);
 
-    coordinates = flight_plan -> coordinates_dep;
+    coordinates = flight_plan -> coordinates_arr;
     screen -> draw_text(6, "                               " + coordinates, sf::Color::Green);
 
     //LEWA STRONA
-    //DEPARTURE
-    screen -> draw_text(0, "<DEPARTURE", sf::Color::White);
-
     //OFFSET
     screen -> draw_text(1, "<OFFSET", sf::Color::White);
+
+    //ALTN
+    screen -> draw_text(2, "<ALTN", sf::Color::White);
 
     //ENABLE ALTN
     screen -> draw_text(9, "ENABLE", sf::Color(0, 255, 255));   //blue color
@@ -44,16 +43,14 @@ void Departure_Page_A::render() {
     screen -> draw_text(5, "<RETURN", sf::Color::White);
 
     //PRAWA STRONA
-    screen -> draw_text(24, "         FIX INFO>", sf::Color::White);
-    screen -> draw_text(31, "   LL XING/INCR/NO", sf::Color::White);
-    screen -> draw_text(25, " [     ] / [   ] / [   ]", sf::Color(0, 255, 255));     //blue color
+    screen -> draw_text(24, "       ARRIVAL>", sf::Color::White);
+
+    //NEXT WPT
     screen -> draw_text(32, "              NEXT WPT", sf::Color::White);
     screen -> draw_text(26, "              [        ]", sf::Color(0, 255, 255));     //blue color
-    screen -> draw_text(33, "              NEW DEST", sf::Color::White);
-    screen -> draw_text(27, "              [        ]", sf::Color(0, 255, 255));     //blue color
 }
 
-void Departure_Page_A::input_handler(int button_clicked, Active_Screen &current_page) const {
+void Arrival_Page_A::input_handler(int button_clicked, Active_Screen &current_page) const {
     if (button_clicked == 5) {
         flight_plan -> render_ready();
         current_page = Active_Screen::flight_plan_page;

@@ -21,6 +21,7 @@ add_executable(MCDU
         pages/mcdu_menu_branch/wx.cpp
         pages/mcdu_menu_branch/weather_req.cpp
         pages/flight_plan_branch/departure_page_a.cpp
+        pages/flight_plan_branch/arrival_page_a.cpp
         pages/input.cpp
         pages/data_page.cpp
         pages/init_page.cpp

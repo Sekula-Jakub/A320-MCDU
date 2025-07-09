@@ -163,10 +163,22 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         current_page = Active_Screen::init_page;
     }
 
-    //DEPARTURE A PAGE ON FLIGHT PLAN PAGE
+    //DEPARTURE_A PAGE ON FLIGHT PLAN PAGE
     if (current_page == Active_Screen::flight_plan_page && button_clicked != -1 && init_page -> getIsFilled() == true) {
         std::cout<<"dep klikniety"<<std::endl;
         flight_plan -> input_handler(button_clicked, current_page);
+        button_clicked = -1;
+    }
+
+    //DEPARTURE PAGE A
+    if (current_page == Active_Screen::departure_page_a_page) {
+        flight_plan -> departure_page_a -> input_handler(button_clicked, current_page);
+        button_clicked = -1;
+    }
+
+    //ARRIVAL PAGE A
+    if (current_page == Active_Screen::arrival_page_a_page) {
+        flight_plan -> arrival_page_a -> input_handler(button_clicked, current_page);
         button_clicked = -1;
     }
 

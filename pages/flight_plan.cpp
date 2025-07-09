@@ -9,8 +9,9 @@ Flight_Plan::Flight_Plan(Screen* screen_ptr, Init_Page* init_page_ptr) {
     screen = screen_ptr;
     init_page = init_page_ptr;
 
-    //zaalokowanie pamieci na podstrone
+    //zaalokowanie pamieci na podstrony
     departure_page_a = new Departure_Page_A(screen, this);
+    arrival_page_a = new Arrival_Page_A(screen, this);
 }
 
 //destruktor
@@ -87,6 +88,10 @@ void Flight_Plan::input_handler(int button_clicked, Active_Screen& current_page)
     if (button_clicked == 0) {
         departure_page_a -> render();
         current_page = Active_Screen::departure_page_a_page;
+    }
+    else if (button_clicked == 5) {
+        arrival_page_a -> render();
+        current_page = Active_Screen::arrival_page_a_page;
     }
 }
 
