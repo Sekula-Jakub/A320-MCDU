@@ -1,16 +1,12 @@
 #include "fmgc.h"
-#include <screen.h>
 #include <SFML/Graphics.hpp>
 
 Fmgc::Fmgc(Screen* screen_ptr) {
     screen = screen_ptr;
-
 }
 
-Fmgc::~Fmgc() {
-
-}
-
+//domyślny destruktor
+Fmgc::~Fmgc() = default;
 
 void Fmgc::render() const {
     //wyczyszczenie poprzednich wartosci

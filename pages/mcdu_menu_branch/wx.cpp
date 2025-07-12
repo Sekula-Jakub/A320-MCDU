@@ -10,10 +10,8 @@ Wx::Wx(Screen* screen_ptr) {
     weather_req = new Weather_req(screen);
 }
 
-//destruktor
-Wx::~Wx() {
-      return;
-}
+//domyślny destruktor
+Wx::~Wx() = default;
 
 void Wx::render() const {
     //wyczyszczenie poprzednich wartosci

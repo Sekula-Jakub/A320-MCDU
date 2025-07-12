@@ -34,8 +34,6 @@ void get_input(int &button_clicked, std::vector<char> &vector) {
             vector.pop_back();
         }
     }
-
-    //button_clicked = -1;
 }
 
 std::string vector_to_string(const std::vector<char> &vector) {

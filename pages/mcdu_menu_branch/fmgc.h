@@ -1,21 +1,21 @@
-#pragma once
-#include "../../headers/screen.h"
-//class Screen;
+#ifndef FMGC_H
+#define FMGC_H
+
+#include "../screen.h"
 
 class Fmgc {
-private:
-    Screen* screen;    //wskaznik do obiektu klasy Screen
+    private:
+        Screen* screen;    //wskaznik do obiektu klasy Screen
 
-public:
+    public:
+        //konstruktor
+        Fmgc(Screen* screen_ptr);
 
-    bool active = false;
+        //destruktor
+        ~Fmgc();
 
-    //konstruktor
-    explicit Fmgc(Screen* screen_ptr);
-
-    //destruktor
-    ~Fmgc();
-
-    //renderowanie
-    void render() const;
+        //renderowanie
+        void render() const;
 };
+
+#endif

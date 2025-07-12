@@ -1,11 +1,11 @@
 #include <SFML/Graphics.hpp>
-#include "headers/mcdu.h"
-#include "headers/font_manager.h"
+#include "mcdu.h"
+#include "font_manager.h"
 #include <iostream>
 
 int main() {
 
-    //zaladowanie czcionki
+    //zaladowanie czcionki przy pomocy klasy FontManager
     FontManager::loadFont("fonts/Inter_28pt-Black.ttf");
 
     //renderowanie okna
@@ -37,9 +37,14 @@ int main() {
         //aktualizacja logiki mcdu
         mcdu.update(window);
 
-        //renderowanie
+        //RENDEROWANIE
+        //wyczyszcenie okna window
         window.clear();
+
+        //wyrenderowaniu mcdu
         mcdu.render(window);
+
+        //wyświetlenie okna window
         window.display();
     }
 

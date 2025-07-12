@@ -12,6 +12,7 @@ Init_Page::Init_Page(Screen* screen_ptr, Flt_Init* flt_init_ptr) {
     init_page_b = new Init_Page_B(screen, this);
 }
 
+//destruktor
 Init_Page::~Init_Page() {
     delete init_page_b;
 }
@@ -189,14 +190,15 @@ void Init_Page::insert_into_flt_number(const std::string& input) {
     init_page_input.clear();
 }
 
+//walidowanie danych do cost_index
 void Init_Page::insert_into_cost_index(const std::string& input) {
 
     int number;
 
     //wyjatki
-    //TRY -> to co moze wyrzucic wyjatek
+    //TRY -> to co moze wyrzucic wyjatek po nieudanej próbie konwersji stringa na int
     try {
-        size_t pos;
+        size_t pos; //indeks pierwszego znaku po konwertowanej liczbie
 
         //proba zamiany
         number = std::stoi(input, &pos);
@@ -223,10 +225,13 @@ void Init_Page::insert_into_cost_index(const std::string& input) {
     }
 }
 
+//walidacja danych do crz_fl (cruise flight level)
 void Init_Page::insert_into_crz_fl(const std::string& input) {
 
+    //flight level jako liczba całkowita
     int fl_integer;
 
+    //jesli input zaczyna sie od FL (np. FL210), to jest OK i można działać dalej
     if (input[0] =='F' && input[1] =='L') {
 
         if (input.size() > 5) {
@@ -287,7 +292,7 @@ void Init_Page::insert_into_crz_fl(const std::string& input) {
 std::string Init_Page::temperature_conversion(int flight_level) {
 
     const double temp_sea_level = 15.0;
-    const double temp_decrease = 0.0065;
+    const double temp_decrease = 0.0065;    //spadek temperatury na jeden metr
 
     //zamiana z FL na metry
     float attutude_meters = flight_level * 100 * 0.3048;
@@ -296,7 +301,7 @@ std::string Init_Page::temperature_conversion(int flight_level) {
     return std::to_string(temp);
 }
 
-void Init_Page::input_handler(int button_clicked, Active_Screen& current_page) {
+void Init_Page::input_handler(int button_clicked, Active_Screen& current_page) const {
     if (button_clicked == 28) {
         init_page_b -> render();
         std::cout << "Init_page_B" <<std::endl;

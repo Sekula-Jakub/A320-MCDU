@@ -5,11 +5,10 @@ Data_Page::Data_Page(Screen* screen_ptr) {
     screen = screen_ptr;
 }
 
-Data_Page::~Data_Page() {
+//domyślny destruktor
+Data_Page::~Data_Page() = default;
 
-}
-
-void Data_Page::render() {
+void Data_Page::render() const {
     //wyczyszczenie poprzednich wartosci
     screen -> draw_title("", sf::Color::White);
 

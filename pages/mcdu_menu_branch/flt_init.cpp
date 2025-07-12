@@ -2,17 +2,15 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "../input.h"
-#include <../../database_sqlite3_files/sqlite3.h>
-#include "../../headers/data_base_manager.h"
+#include <../database_sqlite3_files/sqlite3.h>
+#include "../data_base_manager.h"
 #include <vector>
 
 Flt_Init::Flt_Init(Screen* screen_ptr) {
     screen = screen_ptr;
 }
 
-Flt_Init::~Flt_Init() {
-
-}
+Flt_Init::~Flt_Init() = default;
 
 void Flt_Init::render() {
 

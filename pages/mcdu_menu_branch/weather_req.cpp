@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "weather_req.h"
 #include <iostream>
-#include "../../headers/data_base_manager.h"
+#include "../data_base_manager.h"
 #include "../input.h"
 
 //konstruktor
@@ -9,10 +9,8 @@ Weather_req::Weather_req(Screen* screen_ptr) {
     screen = screen_ptr;
 }
 
-//destruktor
-Weather_req::~Weather_req() {
-    return;
-}
+//domyślny destruktor
+Weather_req::~Weather_req() = default;
 
 void Weather_req::render() const {
     //wyczyszczenie poprzednich wartosci
@@ -33,10 +31,6 @@ void Weather_req::render() const {
     else {
         screen -> draw_text(0, ident, sf::Color(0, 255, 255));
     }
-
-
-    char metar_no_yes = 'N';
-    char tar_no_yes = 'N';
 
     if(metar == false) {
         screen -> draw_text(1, "* METAR <N>", sf::Color(0, 255, 255));
@@ -82,11 +76,13 @@ void Weather_req::input_handler(int button_clicked, Active_Screen& current_page)
     }
 }
 
+//obsluga inputu uzytkownika
 void Weather_req::getInput(int &button_clicked) {
     get_input(button_clicked, weather_req_input);
     std::cout << "weather_req_input.size() = \n" << weather_req_input.size() << std::endl;
 }
 
+//zatwierdzenie wprowadzonych danych
 void Weather_req::insert_data(int &button_clicked) {
   if(button_clicked == 0) {
       std::string code = vector_to_string(weather_req_input);
@@ -106,6 +102,7 @@ void Weather_req::insert_data(int &button_clicked) {
   }
 }
 
+//zatwierdzenie i "wyslanie"
 void Weather_req::send_data() {
     if (!ident.empty()) {
         ident.clear();

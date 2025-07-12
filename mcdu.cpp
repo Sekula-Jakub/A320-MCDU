@@ -1,22 +1,22 @@
 #include <SFML/Graphics.hpp>
-#include "headers/mcdu.h"
+#include "mcdu.h"
 #include <iostream>
 #include <string>
 
 //konstruktor
 MCDU::MCDU() {
 
-      //tworzenie tła
+      //tworzenie głownego niebieskiego tła
       background.setSize(sf::Vector2f(450, 600));
-      background.setFillColor(sf::Color(126, 163, 191));      //Ciemnoniebieski kolor
+      background.setFillColor(sf::Color(126, 163, 191));      //niebieski kolor
       background.setPosition(0, 0);
 
-      //tworzenie wyświetlacza
+      //tworzenie czarnego tła wyświetlacza
       screen_background.setSize(sf::Vector2f(290, 234));
       screen_background.setFillColor(sf::Color(20, 20, 20));
       screen_background.setPosition(450 / 2 - 145, 600 / 2 - 275);
 
-      //tworzenie przycisków z lewej strony wyswietlacza
+      //tworzenie 6 przycisków z lewej strony wyswietlacza
       float startX = 40, startY = 45;
       float width = 30.f, height = 20.f;        //wymiary jako float
 
@@ -25,7 +25,7 @@ MCDU::MCDU() {
             startY += 35;
       }
 
-      //tworzenie przyciskow z prawej strony wyswietlacza
+      //tworzenie 6 przyciskow z prawej strony wyswietlacza
       startX = 370 + 10;
       startY = 45;
 
@@ -162,6 +162,9 @@ MCDU::MCDU() {
       }
 
 }
+
+//destruktor domyślny
+MCDU::~MCDU() = default;
 
 void MCDU::update(sf::RenderWindow& window) {
       //update po przyciskach func_buttton

@@ -1,5 +1,5 @@
 #include "atsu.h"
-#include <screen.h>
+#include "../screen.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
@@ -7,10 +7,9 @@
 Atsu::Atsu(Screen* screen_ptr) {
     screen = screen_ptr;
 
-    //zaalokowanie pamieci
+    //zaalokowanie pamieci na podstrone i przekazanie wskaźnika do ekranu creen
     aoc_menu = new Aoc_menu(screen);
-    std::cout << "[DEBUG] Konstruktor ATSU wywołany" << std::endl;
-
+    //std::cout << "[DEBUG] Konstruktor ATSU wywołany" << std::endl;
 }
 
 //destruktor
@@ -18,6 +17,7 @@ Atsu::~Atsu() {
     delete aoc_menu;
 }
 
+//renderowanie ekranu
 void Atsu::render() const {
     //wyczyszczenie poprzednich wartosci
     screen -> draw_title("", sf::Color::White);
@@ -41,5 +41,4 @@ void Atsu::input_handler(int button_clicked, Active_Screen &current_page) {
         std::cout << "Aoc_menu" <<std::endl;
         current_page = Active_Screen::aoc_menu_page;
     }
-
 }

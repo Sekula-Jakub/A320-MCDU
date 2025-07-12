@@ -1,8 +1,10 @@
 #include "flight_plan.h"
 #include <iostream>
 #include "init_page.h"
-#include "../headers/data_base_manager.h"
+#include "../data_base_manager.h"
 #include <cmath>
+#include "departure_page_a.h"
+#include "arrival_page_a.h"
 
 //konstruktor
 Flight_Plan::Flight_Plan(Screen* screen_ptr, Init_Page* init_page_ptr) {
@@ -16,7 +18,8 @@ Flight_Plan::Flight_Plan(Screen* screen_ptr, Init_Page* init_page_ptr) {
 
 //destruktor
 Flight_Plan::~Flight_Plan() {
-
+    delete departure_page_a;
+    delete arrival_page_a;
 }
 
 void Flight_Plan::render_empty() {
@@ -139,24 +142,26 @@ double Flight_Plan::get_longitude(std::string coordinates) {
 }
 
 double Flight_Plan::calculate_distance() {
+    //pobranie lotnisk dep i dest z init_page
     const std::string dep = init_page -> getDep();
     const std::string dest = init_page -> getDest();
 
+    //wywołanie funkcji z data_base_manager do znajdowania koordynatów lotnisk o podanym kodzie
     std::string coordinates_dep = get_coordinates(dep);
     std::string coordinates_dest = get_coordinates(dest);
 
-    //departure
+    //kordynaty departure: latitude i longitude
     double lat1 = get_latitude(coordinates_dep);
     double lon1 = get_longitude(coordinates_dep);
 
-    //destination
+    //koordynaty destination: latitude i longitude
     double lat2 = get_latitude(coordinates_dest);
     double lon2 = get_longitude(coordinates_dest);
 
-    //promień Ziemi w milach morskich (NM)
+    //promień Ziemi w milach morskich (NM Nautical Miles)
     double R = 3440.1;
 
-    //Róznice w stopniach
+    //Róznice w stopniach potrzebna do wzoru
     double d_lat = (lat2 - lat1) * M_PI / 180.0;
     double d_lon = (lon2 - lon1) * M_PI / 180.0;
 
@@ -165,15 +170,16 @@ double Flight_Plan::calculate_distance() {
     lat2 = lat2 * M_PI / 180.0;
 
     //Wzór Haversine'a
+    //przy pomocy: https://www.geeksforgeeks.org/dsa/haversine-formula-to-find-distance-between-two-points-on-a-sphere/
     double a = std::pow(std::sin(d_lat / 2), 2) + std::pow(std::sin(d_lon / 2), 2) * std::cos(lat1) * std::cos(lat2);
 
     double c = 2 * std::asin(std::sqrt(a));     //asin - arcus sinus
 
     return R * c;
-
 }
 
 std::string Flight_Plan::get_distance() {
     double d = calculate_distance();
+    //zamiana d na string zaokrąglony do czesci calkowitej
     return std::to_string(static_cast<int>(d));
 }

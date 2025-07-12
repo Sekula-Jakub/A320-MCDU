@@ -1,7 +1,5 @@
 #include "arrival_page_a.h"
 #include "../flight_plan.h"
-#include "../init_page.h"
-#include "../../headers/data_base_manager.h"
 
 //konstruktor
 Arrival_Page_A::Arrival_Page_A(Screen* screen_ptr, Flight_Plan* flight_plan_ptr) {
@@ -10,9 +8,7 @@ Arrival_Page_A::Arrival_Page_A(Screen* screen_ptr, Flight_Plan* flight_plan_ptr)
 }
 
 //destruktor
-Arrival_Page_A::~Arrival_Page_A() {
-
-}
+Arrival_Page_A::~Arrival_Page_A() = default;
 
 void Arrival_Page_A::render() {
     //wyczyszczenie poprzednich wartosci
@@ -43,7 +39,7 @@ void Arrival_Page_A::render() {
     screen -> draw_text(5, "<RETURN", sf::Color::White);
 
     //PRAWA STRONA
-    screen -> draw_text(24, "       ARRIVAL>", sf::Color::White);
+    screen -> draw_text(24, "          ARRIVAL>", sf::Color::White);
 
     //NEXT WPT
     screen -> draw_text(32, "              NEXT WPT", sf::Color::White);

@@ -1,29 +1,42 @@
-#pragma once
-#include "screen.h"
-#include "data_base_manager.h"
+#ifndef DEPARTURE_PAGE_A_H
+#define DEPARTURE_PAGE_A_H
+
+//forward declaration
+class Departure_Page_B;
+
+#include "../screen.h"
+#include "flight_plan.h"
 
 class Departure_Page_A {
-private:
-    Screen* screen;     //wskaźnik do obiektu klasy Screen
+    private:
+        Screen* screen;     //wskaźnik do obiektu klasy Screen
 
-    //Wskaźnik do poprzedniej strony
-    Flight_Plan* flight_plan;
+        //Wskaźnik do poprzedniej strony
+        Flight_Plan* flight_plan;
 
-    //Wskaźnik do InitPage do
-    Init_Page* init_page;
+        //Wskaźnik do InitPage
+        Init_Page* init_page;
 
-    //współrzedne lotniska
-    std::string coordinates;
+        //współrzedne lotniska
+        std::string coordinates;
 
-public:
-    //konstruktor
-    Departure_Page_A(Screen* screen, Flight_Plan* flight_plan);
+        //klasa zaprzyjazniona
+        friend class Departure_Page_B;
 
-    //destruktor
-    ~Departure_Page_A();
 
-    void render();
+    public:
+        //podstrona
+        Departure_Page_B* departure_page_b;
 
-    void input_handler(int button_clicked, Active_Screen &current_page) const;
+        //konstruktor
+        Departure_Page_A(Screen* screen_ptr, Flight_Plan* flight_plan_ptr);
 
+        //destruktor
+        ~Departure_Page_A();
+
+        void render();
+
+        void input_handler(int button_clicked, Active_Screen &current_page) const;
 };
+
+#endif

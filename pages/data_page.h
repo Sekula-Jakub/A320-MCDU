@@ -1,18 +1,22 @@
-#pragma once
-#include "../headers/screen.h"
+#ifndef DATA_PAGE_H
+#define DATA_PAGE_H
+
+#include "../screen.h"
 
 class Data_Page {
-private:
-    Screen* screen;    //wskaznik do obiektu klasy Screen
+    private:
+        Screen* screen;    //wskaznik do obiektu klasy Screen
 
-    friend class Screen;
+        friend class Screen;
 
-public:
-    //konstruktor
-    Data_Page(Screen* screen_ptr);
+    public:
+        //konstruktor
+        Data_Page(Screen* screen_ptr);
 
-    //destruktor
-    ~Data_Page();
+        //destruktor
+        ~Data_Page();
 
-    void render();
+        void render() const;
 };
+
+#endif

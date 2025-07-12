@@ -21,6 +21,7 @@ add_executable(MCDU
         pages/mcdu_menu_branch/wx.cpp
         pages/mcdu_menu_branch/weather_req.cpp
         pages/flight_plan_branch/departure_page_a.cpp
+        pages/flight_plan_branch/departure_page_b.cpp
         pages/flight_plan_branch/arrival_page_a.cpp
         pages/input.cpp
         pages/data_page.cpp
@@ -32,8 +33,9 @@ add_executable(MCDU
 )
 
 target_include_directories(MCDU PRIVATE
-        ${PROJECT_SOURCE_DIR}/headers
+        ${PROJECT_SOURCE_DIR}/pages
         ${PROJECT_SOURCE_DIR}/pages/mcdu_menu_branch
+        ${PROJECT_SOURCE_DIR}/pages/flight_plan_branch
 )
 
 target_link_libraries(MCDU sfml-graphics)

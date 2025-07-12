@@ -1,8 +1,12 @@
 #include <SFML/Graphics.hpp>
-#include "headers/font_manager.h"
+#include "font_manager.h"
+#include <iostream>
 
+//definicja zmiennej statycznej
+//automatyczna inicjalizacja tej zmiennej
 sf::Font FontManager::font;
 
+//Załadowanie czcionki z pliku
 void FontManager::loadFont(const std::string& path) {
     if (!font.loadFromFile(path)) {
         std::cerr << "Failed to load font: " << path << std::endl;
@@ -10,7 +14,7 @@ void FontManager::loadFont(const std::string& path) {
     }
 }
 
-// Zwracanie czcionki
+// Zwracanie referencji do załadowanej wcześniej czcionki
 sf::Font& FontManager::getFont() {
     return font;
 }

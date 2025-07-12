@@ -3,16 +3,14 @@
 #include "input.h"
 #include <iostream>
 
-//konstruktor
+//konstruktor, przekazanie wskaznika na screen i init_page, zeby miec dostep do wprowadzonych wczesniej danych
 Init_Page_B::Init_Page_B(Screen *screen_ptr, Init_Page* init_page_ptr) {
     screen = screen_ptr;
     init_page = init_page_ptr;
 }
 
-//destruktor
-Init_Page_B::~Init_Page_B() {
-
-}
+//domyślny destruktor
+Init_Page_B::~Init_Page_B() = default;
 
 void Init_Page_B::render() {
 

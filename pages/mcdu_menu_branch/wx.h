@@ -1,24 +1,27 @@
-#pragma once
-#include "screen.h"
+#ifndef WX_H
+#define WX_H
+
+#include "../screen.h"
 #include "weather_req.h"
 
 class Wx {
     private:
-    Screen* screen;
+        Screen* screen;
 
     public:
-    //podstrony
-    Weather_req* weather_req;
+        //podstrony
+        Weather_req* weather_req;
 
-    //konstruktor
-    Wx(Screen* screen);
+        //konstruktor
+        Wx(Screen* screen);
 
-    //destruktor
-    ~Wx();
+        //destruktor
+        ~Wx();
 
-    //renderowanie
-    void render() const;
+        //renderowanie
+        void render() const;
 
-    void input_handler(int button_clicked, Active_Screen& current_page);
+        void input_handler(int button_clicked, Active_Screen& current_page);
 };
 
+#endif

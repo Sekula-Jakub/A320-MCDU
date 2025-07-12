@@ -1,16 +1,16 @@
-#include <../cmake-build-debug/_deps/sfml-src/include/SFML/Graphics.hpp>
 #include "mcdu_menu.h"
-#include <../headers/screen.h>
 #include <iostream>
 
 //konstruktor
 Mcdu_Menu::Mcdu_Menu(Screen* screen_ptr) {
     screen = screen_ptr;
-    //Zaalokowanie pamieci
+
+    //Zaalokowanie pamieci na podstrony
     atsu = new Atsu(screen); //Przekazanie wskaznika na ekran
     fmgc = new Fmgc(screen);
 }
 
+//destruktor
 Mcdu_Menu::~Mcdu_Menu() {
     delete atsu;
     delete fmgc;
@@ -36,7 +36,7 @@ void Mcdu_Menu::render() {
     screen -> draw_text(29, "          RETURN>", sf::Color::White);
 }
 
-void Mcdu_Menu::input_handler(int button_clicked, Active_Screen& current_page) {
+void Mcdu_Menu::input_handler(int button_clicked, Active_Screen& current_page) const {
 
     if (button_clicked == 1) {
         atsu -> render();
@@ -49,5 +49,4 @@ void Mcdu_Menu::input_handler(int button_clicked, Active_Screen& current_page) {
         std::cout << "Fmgc"<<std::endl;
         current_page = Active_Screen::fmgc_page;
     }
-
 }

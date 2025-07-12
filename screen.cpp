@@ -1,20 +1,23 @@
 #include <SFML/Graphics.hpp>
-#include "headers/screen.h"
+#include "screen.h"
 #include <iostream>
+//głowne strony
 #include "pages/mcdu_menu.h"
 #include "pages/data_page.h"
 #include "pages/init_page.h"
 #include "pages/flight_plan.h"
+#include "flight_plan_branch/departure_page_a.h"
+#include "flight_plan_branch/departure_page_b.h"
+#include "flight_plan_branch/arrival_page_a.h"
 
 //konstruktor
 Screen::Screen() {
 
+    //alokowanie pamięci na główne strony
     mcdu_menu = new Mcdu_Menu(this);
     data_page = new Data_Page(this);
     init_page = new Init_Page(this, mcdu_menu -> atsu -> aoc_menu -> flt_init);
     flight_plan = new Flight_Plan(this, init_page);
-
-    Active_Screen current_page = Active_Screen::null;
 
     //wczytanie czcionki
     if (font.loadFromFile("fonts/Inter_24pt-Regular.ttf") == false) {
@@ -109,6 +112,15 @@ Screen::Screen() {
 Screen::~Screen() {
     delete mcdu_menu;
     mcdu_menu = nullptr;
+
+    delete data_page;
+    data_page = nullptr;
+
+    delete init_page;
+    init_page = nullptr;
+
+    delete flight_plan;
+    flight_plan = nullptr;
 }
 
 void Screen::draw_text(int index, const std::string &text, sf::Color color) {
@@ -117,12 +129,12 @@ void Screen::draw_text(int index, const std::string &text, sf::Color color) {
         return;
     }
     texts[index].setString(text);
-    texts[index].setColor(color);
+    texts[index].setFillColor(color);
 }
 
 void Screen::draw_title(const std::string text, sf::Color color) {
         page_title.setString(text);
-        page_title.setColor(color);
+        page_title.setFillColor(color);
 }
 
 void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
@@ -176,6 +188,12 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         button_clicked = -1;
     }
 
+    //DEPARTURE PAGE B
+    if (current_page == Active_Screen::departure_page_b_page) {
+        flight_plan -> departure_page_a -> departure_page_b -> input_handler(button_clicked, current_page);
+        button_clicked = -1;
+    }
+
     //ARRIVAL PAGE A
     if (current_page == Active_Screen::arrival_page_a_page) {
         flight_plan -> arrival_page_a -> input_handler(button_clicked, current_page);
@@ -223,7 +241,7 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
 
     if (current_page == Active_Screen::flt_init_page) {
         if (button_clicked != -1) {
-            std::cout<<"wchodze\n";
+            //std::cout<<"wchodze\n";
             mcdu_menu -> atsu -> aoc_menu -> flt_init -> getInput(button_clicked);
             mcdu_menu -> atsu -> aoc_menu -> flt_init -> insert_data(button_clicked);
             mcdu_menu -> atsu -> aoc_menu -> flt_init -> render();

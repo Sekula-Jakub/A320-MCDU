@@ -1,18 +1,19 @@
 #include "departure_page_a.h"
-
 #include "../flight_plan.h"
-#include "../init_page.h"
-#include "../../headers/data_base_manager.h"
+#include "departure_page_b.h"
 
 //konstruktor
 Departure_Page_A::Departure_Page_A(Screen* screen_ptr, Flight_Plan* flight_plan_ptr) {
     screen = screen_ptr;
     flight_plan = flight_plan_ptr;
+
+    //zaalokowanie pamiecie na podstrone
+    departure_page_b = new Departure_Page_B(screen, this);
 }
 
-//destruktor
+//domyślny destruktor
 Departure_Page_A::~Departure_Page_A() {
-
+    delete departure_page_b;
 }
 
 void Departure_Page_A::render() {
@@ -57,5 +58,9 @@ void Departure_Page_A::input_handler(int button_clicked, Active_Screen &current_
     if (button_clicked == 5) {
         flight_plan -> render_ready();
         current_page = Active_Screen::flight_plan_page;
+    }
+    else if (button_clicked == 0) {
+        departure_page_b -> render();
+        current_page = Active_Screen::departure_page_b_page;
     }
 }

@@ -1,30 +1,32 @@
-#pragma once
+#ifndef ATSU_H
+#define ATSU_H
+
 #include "aoc_menu.h"
 #include "../active_screen.h"
-#include "../../headers/screen.h"
-//class Screen;
+#include "../screen.h"
 
 class Atsu {
-private:
-    Screen* screen;    //wskaznik do obiektu klasy Screen
+    private:
+        Screen* screen;    //wskaznik do obiektu klasy Screen
 
-    //podstrony
-    Aoc_menu* aoc_menu;
+        //wskaźnik do podstrony
+        Aoc_menu* aoc_menu;
 
-    //deklaracja przyjaciela
-    friend class Screen;
+        //deklaracja przyjaciela, żeby screen.cpp mógł wywoływać atsu -> aoc_menu
+        friend class Screen;
 
-public:
+    public:
+        //konstruktor
+        Atsu(Screen* screen_ptr);
 
-    //konstruktor
-    explicit Atsu(Screen* screen_ptr);
+        //destruktor
+        ~Atsu();
 
-    //destruktor
-    ~Atsu();
+        //renderowanie
+        void render() const;
 
-    //renderowanie
-    void render() const;
-
-    void input_handler(int button_clicked, Active_Screen& current_page);
+        void input_handler(int button_clicked, Active_Screen& current_page);
 };
+
+#endif
 

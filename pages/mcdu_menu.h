@@ -1,31 +1,33 @@
-#pragma once
-#include "mcdu_menu_branch/atsu.h"
-#include "mcdu_menu_branch/fmgc.h"
+#ifndef MCDU_MENU_H
+#define MCDU_MENU_H
+
+#include "atsu.h"
+#include "fmgc.h"
 #include "active_screen.h"
-#include "../headers/screen.h"
+#include "../screen.h"
 
 class Mcdu_Menu {
-private:
-    Screen* screen;    //wskaznik do obiektu klasy Screen
+    private:
+        Screen* screen;    //wskaznik do obiektu klasy Screen
 
-    //podstrony
-    Atsu* atsu;
-    Fmgc* fmgc;
+        //wskazniki na podstrony
+        Atsu* atsu;
+        Fmgc* fmgc;
 
-    //deklaracja klasy przyjaciela, żeby screen mogl wywolywac mcdu_menu->atsu
-    friend class Screen;
+        //deklaracja klasy przyjaciela, żeby screen.cpp mogl wywolywac mcdu_menu->atsu
+        friend class Screen;
 
-public:
+    public:
+        //konstruktor
+        explicit Mcdu_Menu(Screen* screen_ptr);
 
-    //konstruktor
-    explicit Mcdu_Menu(Screen* screen_ptr);
+        //destruktor
+        ~Mcdu_Menu();
 
-    //destruktor
-    ~Mcdu_Menu();
+        void input_handler(int button_clicked, Active_Screen& current_page) const;
 
-    void input_handler(int button_clicked, Active_Screen& current_page);
-
-    void render();
-
+        void render();
 };
+
+#endif
 
