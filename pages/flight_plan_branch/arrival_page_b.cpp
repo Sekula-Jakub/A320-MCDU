@@ -71,13 +71,13 @@ void Arrival_Page_B::render() {
             screen -> draw_text(25, "         " + trans, sf::Color::Yellow);
       }
 
-      screen -> draw_text(8, "A P P R        A V A I L A B L E", sf::Color::White);
+      screen -> draw_text(7, "A P P R        A V A I L A B L E", sf::Color::White);
 
       //APPR AVAILABLE
       if (chosen == false) {
             for (int i=0; i<available_runways.size(); i++) {
-                  if (i + 2 <= 4) {
-                        screen -> draw_text(i + 2, "<" + available_runways[i].number + "           " + available_runways[i].length + 'm', sf::Color(0, 255, 255));     //blue color
+                  if (i + 1 <= 4) {
+                        screen -> draw_text(i + 1, "<" + available_runways[i].number + "           " + available_runways[i].length + 'm', sf::Color(0, 255, 255));     //blue color
                   }
             }
       }
@@ -102,9 +102,9 @@ void Arrival_Page_B::input_handler(int button_clicked, Active_Screen &current_pa
             current_page = Active_Screen::arrival_page_a_page;
       }
       //czy przycisk klikniety jest na jakims z dostepnych pasow startowych
-      if (button_clicked >= 2 && button_clicked <= available_runways.size() + 2 && chosen == false) {
+      if (button_clicked >= 1 && button_clicked <= available_runways.size() && chosen == false) {
             chosen = true;
-            chosen_runway = button_clicked - 2;
+            chosen_runway = button_clicked - 1;
             appr = available_runways[chosen_runway].number;
             via = "NONE";
             star = "NONE";

@@ -17,7 +17,8 @@ enum class Active_Screen {
     departure_page_a_page,
     departure_page_b_page,
     arrival_page_a_page,
-    arrival_page_b_page
+    arrival_page_b_page,
+    performance_page
 };
 
 #endif

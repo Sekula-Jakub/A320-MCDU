@@ -6,6 +6,7 @@
 #include "pages/data_page.h"
 #include "pages/init_page.h"
 #include "pages/flight_plan.h"
+#include "pages/performance.h"
 #include "flight_plan_branch/departure_page_a.h"
 #include "flight_plan_branch/departure_page_b.h"
 #include "flight_plan_branch/arrival_page_a.h"
@@ -19,6 +20,7 @@ Screen::Screen() {
     data_page = new Data_Page(this);
     init_page = new Init_Page(this, mcdu_menu -> atsu -> aoc_menu -> flt_init);
     flight_plan = new Flight_Plan(this, init_page);
+    performance = new Performance(this, flight_plan);
 
     //wczytanie czcionki
     if (font.loadFromFile("fonts/Inter_24pt-Regular.ttf") == false) {
@@ -174,6 +176,13 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         button_clicked = -1;
         init_page -> render();
         current_page = Active_Screen::init_page;
+    }
+
+    //PERFORMANCE PAGE
+    if (button_clicked == 14 && current_page != Active_Screen::performance_page) {
+        performance -> render();
+        current_page = Active_Screen::performance_page;
+        button_clicked = -1;
     }
 
     //DEPARTURE_A PAGE ON FLIGHT PLAN PAGE

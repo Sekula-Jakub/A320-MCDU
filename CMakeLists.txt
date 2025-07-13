@@ -29,6 +29,7 @@ add_executable(MCDU
         pages/init_page.cpp
         pages/init_page_b.cpp
         pages/flight_plan.cpp
+        pages/performance.cpp
         database_sqlite3_files/sqlite3.c
         data_base_manager.cpp
 )

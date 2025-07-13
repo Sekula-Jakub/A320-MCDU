@@ -10,6 +10,7 @@ class Mcdu_Menu;
 class Data_Page;
 class Init_Page;
 class Flight_Plan;
+class Performance;
 
 class Screen {
     private:
@@ -29,7 +30,7 @@ class Screen {
         Data_Page* data_page;
         Init_Page* init_page;
         Flight_Plan* flight_plan;
-
+        Performance* performance;
 
     public:
 
