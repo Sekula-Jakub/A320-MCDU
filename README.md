@@ -1,7 +1,7 @@
 # A320-MCDU
 ### Projekt używający C++ i biblioteki SFML do stworzenia programu okienkowego symulującego działanie komputera pokładowego Airbusa A320.
 ### Przykładowy wygląd programu
-![obrazek1](Readme_images/Obraz4.png)
+![obrazek1](Readme_images/Obraz7.png)
 ### Cel projektu
 Celem projektu jest stworzenie funkcjonalnego komputera pokładowego MCDU 
 (Multipurpose Control and Disply Unit) obsługującego jedynie podstawowe zadania 
