@@ -185,6 +185,14 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         button_clicked = -1;
     }
 
+    //PERFORMANCE INSERT DATA
+    if (current_page == Active_Screen::performance_page && button_clicked != -1) {
+        performance -> getInput(button_clicked);
+        performance -> insert_data(button_clicked);
+        button_clicked = -1;
+        performance -> render();
+    }
+
     //DEPARTURE_A PAGE ON FLIGHT PLAN PAGE
     if (current_page == Active_Screen::flight_plan_page && button_clicked != -1 && init_page -> getIsFilled() == true) {
         std::cout<<"dep klikniety"<<std::endl;

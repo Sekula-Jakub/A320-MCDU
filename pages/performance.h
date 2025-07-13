@@ -40,9 +40,10 @@ class Performance {
         //zatwierdzenie danych
         void insert_data(int &button_clicked);
 
-        void insert_into_V1(const std::string& input);
+        void insert_into_V1_VR_V2(const std::string& input, int button_clicked);
         void insert_into_VR(const std::string& input);
         void insert_into_V2(const std::string& input);
+        void insert_into_trans(const std::string& input);
         void insert_into_flaps(const std::string& input);
         void insert_into_flex(const std::string& input);
 

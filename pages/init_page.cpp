@@ -130,6 +130,7 @@ void Init_Page::init_request(int button_clicked) {
 }
 
 void Init_Page::getInput(int &button_clicked) {
+    //wywołanie funkcji z klasy input
     get_input(button_clicked, init_page_input);
     std::cout << "flt_init_input.size() = \n" << init_page_input.size() << std::endl;
 }
