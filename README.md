@@ -22,3 +22,34 @@ podczas wypełniania odpowiednich stron.
 
 ### Podgląd 
 ![obrazek2](Readme_images/Obraz6.png)
+
+### Uruchamianie
+#### instalacja wymaganych pakietów
+```
+sudo apt update
+sudo apt install buil-essencial cmake libsfml-dev git
+```
+
+#### Pobranie projektu z GitHub
+```
+git clone https://github.com/Sekula-Jakub/A320-MCDU.git
+```
+
+#### Utworzenie katalogu build i skonfigurowanie projektu
+```
+cd A320-MCDU
+mkdir build
+cd build
+cmake ..
+```
+
+#### Zbudowanie projektu
+```
+make
+```
+
+#### Uruchomienie programu z głównego katalogu
+```
+cd ..
+./build/MCDU
+```
