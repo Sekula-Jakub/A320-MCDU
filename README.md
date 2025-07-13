@@ -20,6 +20,10 @@ Projekt działa w oparciu o bibliotekę SFML oraz bazę danych stworzoną przy
 pomocy SQLite. Z bazy pobierane są informacje na temat lotnisk wybieranych
 podczas wypełniania odpowiednich stron.
 
+
+### Instrukcja
+Sczegółowa instrukcja użytkowania znajduje się w pliku [instrukcja.pdf](instrukcja.pdf)
+
 ### Podgląd 
 ![obrazek2](Readme_images/Obraz6.png)
 
