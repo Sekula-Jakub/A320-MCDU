@@ -24,10 +24,13 @@ podczas wypełniania odpowiednich stron.
 ![obrazek2](Readme_images/Obraz6.png)
 
 ### Uruchamianie
-#### instalacja wymaganych pakietów
+#### Instalacja wymaganych pakietów
 ```
 sudo apt update
-sudo apt install buil-essencial cmake libsfml-dev git
+sudo apt install build-essential cmake git \
+    libx11-dev libxrandr-dev libfreetype6-dev \
+    libgl1-mesa-dev libudev-dev libopenal-dev \
+    libvorbis-dev libflac-dev
 ```
 
 #### Pobranie projektu z GitHub
