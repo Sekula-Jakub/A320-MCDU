@@ -14,6 +14,9 @@ Flight_Plan::Flight_Plan(Screen* screen_ptr, Init_Page* init_page_ptr) {
     //zaalokowanie pamieci na podstrony
     departure_page_a = new Departure_Page_A(screen, this);
     arrival_page_a = new Arrival_Page_A(screen, this);
+
+    dep_runway = {};
+    arr_runway = {};
 }
 
 //destruktor
@@ -22,6 +25,7 @@ Flight_Plan::~Flight_Plan() {
     delete arrival_page_a;
 }
 
+//Przed uzupelnieniem init page
 void Flight_Plan::render_empty() {
     //wyczyszczenie poprzednich wartosci
     screen -> draw_title("", sf::Color::White);
@@ -36,7 +40,18 @@ void Flight_Plan::render_empty() {
     screen -> draw_text(3, "            filling the Flight Plan page", sf::Color::Red);
 }
 
+//po uzupelnieniu init page
 void Flight_Plan::render_ready() {
+
+    //przypisanie wartości do departure i arrival
+    departure = init_page -> getDep();
+    arrival = init_page -> getDest();
+
+    coordinates_dep = get_coordinates(departure);
+    coordinates_arr = get_coordinates(arrival);
+
+    std::cout<<coordinates_dep<<std::endl;
+
     //wyczyszczenie poprzednich wartosci
     screen -> draw_title("", sf::Color::White);
 
@@ -51,13 +66,13 @@ void Flight_Plan::render_ready() {
     //LEWA STRONA
     //DEP
     screen -> draw_text(6, "FROM", sf::Color::White);
-    screen -> draw_text(0, init_page -> getDep(), sf::Color::Green);
+    screen -> draw_text(0, departure + dep_runway, sf::Color::Green);
 
     screen -> draw_text(1, " - - - F - P L N   D I S O N T I N U I T Y - - ", sf::Color::White);
 
     //DEST
     screen -> draw_text(11, "DEST", sf::Color::White);
-    screen -> draw_text(5, init_page -> getDest(), sf::Color::Green);
+    screen -> draw_text(5, arrival + arr_runway, sf::Color::Green);
 
     //ŚRODEK
     //DEP TIME
@@ -76,15 +91,6 @@ void Flight_Plan::render_ready() {
     //DIST
     screen -> draw_text(35, "DIST           EFOB", sf::Color::White);
     screen -> draw_text(29, get_distance() + "   ------", sf::Color::White);
-
-    //przypisanie wrtości do departure i arrival
-    departure = init_page -> getDep();
-    arrival = init_page -> getDest();
-
-    coordinates_dep = get_coordinates(departure);
-    coordinates_arr = get_coordinates(arrival);
-
-    std::cout<<coordinates_dep<<std::endl;
 }
 
 void Flight_Plan::input_handler(int button_clicked, Active_Screen& current_page) {

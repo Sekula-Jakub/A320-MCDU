@@ -9,6 +9,7 @@
 #include "flight_plan_branch/departure_page_a.h"
 #include "flight_plan_branch/departure_page_b.h"
 #include "flight_plan_branch/arrival_page_a.h"
+#include "flight_plan_branch/arrival_page_b.h"
 
 //konstruktor
 Screen::Screen() {
@@ -197,6 +198,12 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
     //ARRIVAL PAGE A
     if (current_page == Active_Screen::arrival_page_a_page) {
         flight_plan -> arrival_page_a -> input_handler(button_clicked, current_page);
+        button_clicked = -1;
+    }
+
+    //ARRIVAL PAGE B
+    if (current_page == Active_Screen::arrival_page_b_page) {
+        flight_plan -> arrival_page_a -> arrival_page_b -> input_handler(button_clicked, current_page);
         button_clicked = -1;
     }
 

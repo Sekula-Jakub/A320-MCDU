@@ -10,6 +10,7 @@ int main() {
 
     //renderowanie okna
     sf::RenderWindow window(sf::VideoMode(450, 600), "Airbus A320 MCDU");
+    window.setFramerateLimit(30);
 
     //dodanie ikony do okna
     sf::Image icon;

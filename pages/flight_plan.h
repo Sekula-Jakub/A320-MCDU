@@ -23,6 +23,9 @@ class Flight_Plan {
         std::string departure;
         std::string arrival;
 
+        std::string dep_runway;
+        std::string arr_runway;
+
         std::string coordinates_dep;
         std::string coordinates_arr;
 

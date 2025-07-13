@@ -23,6 +23,7 @@ add_executable(MCDU
         pages/flight_plan_branch/departure_page_a.cpp
         pages/flight_plan_branch/departure_page_b.cpp
         pages/flight_plan_branch/arrival_page_a.cpp
+        pages/flight_plan_branch/arrival_page_b.cpp
         pages/input.cpp
         pages/data_page.cpp
         pages/init_page.cpp

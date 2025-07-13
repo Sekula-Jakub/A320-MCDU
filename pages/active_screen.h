@@ -16,7 +16,8 @@ enum class Active_Screen {
     flight_plan_page,
     departure_page_a_page,
     departure_page_b_page,
-    arrival_page_a_page
+    arrival_page_a_page,
+    arrival_page_b_page
 };
 
 #endif

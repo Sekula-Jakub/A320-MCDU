@@ -1,7 +1,11 @@
 #ifndef ARRIVAL_PAGE_A_H
 #define ARRIVAL_PAGE_A_H
 
+//forward declaration
+class Arrival_Page_B;
+
 #include "../screen.h"
+#include "flight_plan.h"
 
 class Arrival_Page_A {
     private:
@@ -16,7 +20,13 @@ class Arrival_Page_A {
         //współrzedne lotniska
         std::string coordinates;
 
+    //klasa zaprzyjazniona
+    friend class Arrival_Page_B;
+
     public:
+        //podstrona
+        Arrival_Page_B* arrival_page_b;
+
         //konstruktor
         Arrival_Page_A(Screen* screen, Flight_Plan* flight_plan);
 

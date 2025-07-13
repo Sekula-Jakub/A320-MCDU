@@ -5,7 +5,15 @@
 #include <../database_sqlite3_files/sqlite3.h>
 #include <vector>
 
+struct Runway_Data {
+    std::string number;
+    std::string length;
+};
+
 class DatabaseManager {
+    private:
+        sqlite3* db;  //wskaznik na baze danych
+
     public:
         //konstruktor - otwieranie bazy
         DatabaseManager();
@@ -20,10 +28,8 @@ class DatabaseManager {
         std::string get_coordinates_from_data_base(const std::string& icao_Code) const;
 
         //wyszukaj dostepne pasy startowe
-        std::vector<std::string> get_runway_numbers_from_data_base(const std::string& icao_Code) const;
+        std::vector<Runway_Data> get_runway_data_from_data_base(const std::string& icao_Code) const;
 
-    private:
-        sqlite3* db;  //wskaznik na baze danych
 };
 
 #endif

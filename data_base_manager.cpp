@@ -98,20 +98,20 @@ std::string DatabaseManager::get_coordinates_from_data_base(const std::string& i
     return coordinates;
 }
 
-std::vector<std::string> DatabaseManager::get_runway_numbers_from_data_base(const std::string& icao_code) const {
+std::vector<Runway_Data> DatabaseManager::get_runway_data_from_data_base(const std::string& icao_code) const {
     //pusty wektor na wyniki
-    std::vector<std::string> runway_numbers = {};
+    std::vector<Runway_Data> runway_data_list;
 
     //sprawdzanie czy baza danych jest otwarta
     if (!db) {
         //jesli nie zwrocenie pustego wektora
-        return runway_numbers;
+        return runway_data_list;
     }
 
     //wskaźnik do przygotowanego zapytania
     sqlite3_stmt* stmt = nullptr;
 
-    const char* sql = "SELECT runways.runway_number FROM runways JOIN airports ON runways.airport_id = airports.id WHERE airports.code = ?";
+    const char* sql = "SELECT runways.runway_number, runways.length_m FROM runways JOIN airports ON runways.airport_id = airports.id WHERE airports.code = ?";
 
     // Przygotowanie zapytania SQL:
     // sqlite3_prepare_v2 kompiluje zapytanie do postaci binarnej
@@ -122,7 +122,7 @@ std::vector<std::string> DatabaseManager::get_runway_numbers_from_data_base(cons
     // - nullptr: nieużywany wskaźnik do nieprzetworzonej części zapytania
     if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) {
         //zwrocenie pustego wektora
-        return runway_numbers;
+        return runway_data_list;
     }
 
     // Wiążemy parametr zapytania (?) z wartością:
@@ -136,15 +136,22 @@ std::vector<std::string> DatabaseManager::get_runway_numbers_from_data_base(cons
     //zapytanie w pętli dla każdego wiersza wyniku
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         //pobranie tekstu z 1 kolumny wyniku, czyli o indeksie 0
-        const unsigned char *result = sqlite3_column_text(stmt, 0);
+        const unsigned char *number = sqlite3_column_text(stmt, 0);
+        //pobranie tekstu z 2 kolumny wyniku, czyli o indeksie 1
+        const unsigned char *length = sqlite3_column_text(stmt, 1);
 
         //jesli wynik nie jest null
-        if (result != nullptr) {
-            runway_numbers.emplace_back(reinterpret_cast<const char*>(result));
+        if (number != nullptr && length != nullptr) {
+            Runway_Data runway;
+            runway.number = reinterpret_cast<const char*>(number);
+            runway.length = reinterpret_cast<const char*>(length);
+
+            //dodanie do wektora
+            runway_data_list.emplace_back(runway);
         }
     }
     sqlite3_finalize(stmt);
 
     //zwrocenie numerow pasów
-    return runway_numbers;
+    return runway_data_list;
 }

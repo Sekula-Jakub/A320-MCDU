@@ -1,14 +1,20 @@
 #include "arrival_page_a.h"
+#include "arrival_page_b.h"
 #include "../flight_plan.h"
 
 //konstruktor
 Arrival_Page_A::Arrival_Page_A(Screen* screen_ptr, Flight_Plan* flight_plan_ptr) {
     screen = screen_ptr;
     flight_plan = flight_plan_ptr;
+
+    //zaalokowanie pamieci na podstrone
+    arrival_page_b = new Arrival_Page_B(screen, this);
 }
 
 //destruktor
-Arrival_Page_A::~Arrival_Page_A() = default;
+Arrival_Page_A::~Arrival_Page_A() {
+    delete arrival_page_b;
+}
 
 void Arrival_Page_A::render() {
     //wyczyszczenie poprzednich wartosci
@@ -50,5 +56,9 @@ void Arrival_Page_A::input_handler(int button_clicked, Active_Screen &current_pa
     if (button_clicked == 5) {
         flight_plan -> render_ready();
         current_page = Active_Screen::flight_plan_page;
+    }
+    else if (button_clicked == 6) {
+        arrival_page_b -> render();
+        current_page = Active_Screen::arrival_page_b_page;
     }
 }

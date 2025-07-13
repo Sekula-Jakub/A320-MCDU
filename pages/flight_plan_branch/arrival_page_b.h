@@ -1,31 +1,32 @@
-#ifndef DEPARTURE_PAGE_B_H
-#define DEPARTURE_PAGE_B_H
+#ifndef ARRIVAL_PAGE_B_H
+#define ARRIVAL_PAGE_B_H
 
 //forward declaration
-class Departure_Page_A;
+class Arrival_Page_A;
 
 #include "../screen.h"
 #include <vector>
 #include "../data_base_manager.h"
 
-class Departure_Page_B {
+class Arrival_Page_B {
     private:
         Screen* screen;        //wskaźnik do obiektu klasy Screen
 
         //wskaźnik do poprzedniej strony
-        Departure_Page_A* departure_page_a;
+        Arrival_Page_A* arrival_page_a;
 
         //wektor z dostepnymi pasami startowymi i ich długościami
         std::vector<Runway_Data> available_runways;
 
-        //departure
-        std::string departure;
+        //arrival
+        std::string arrival;
 
         DatabaseManager db; //baza danych
 
         //parametry
-        std::string rwy;
-        std::string sid;
+        std::string appr;
+        std::string via;
+        std::string star;
         std::string trans;
 
         //flaga czy kliknieto na pas
@@ -36,10 +37,10 @@ class Departure_Page_B {
 
     public:
         //konstruktor
-        Departure_Page_B(Screen* screen_ptr, Departure_Page_A* departure_page_a_ptr);
+        Arrival_Page_B(Screen* screen_ptr, Arrival_Page_A* arrival_page_a_ptr);
 
         //destruktor
-        ~Departure_Page_B();
+        ~Arrival_Page_B();
 
         void render();
 
@@ -48,4 +49,4 @@ class Departure_Page_B {
         void runway_select(int button_clicked);
 };
 
-#endif
+#endif //ARRIVAL_PAGE_B_H
