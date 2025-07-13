@@ -87,10 +87,10 @@ std::string Flt_Init :: getDateUTC() {
     std::time_t t = std::time(nullptr);
     std::tm* utc = std::gmtime(&t);
 
-    char date[11]; //10 + '\0'
+    char date[64]; //10 + '\0'
 
     //sprintf zapisuje dane do bufora (chara)
-    std::sprintf(date, "      %02d/%02d/%04d", utc->tm_mday, utc->tm_mon + 1, utc->tm_year + 1900);
+    std::snprintf(date, sizeof(date), "      %02d/%02d/%04d", utc->tm_mday, utc->tm_mon + 1, utc->tm_year + 1900);
 
     std::string dateUTC = date;
 
@@ -101,10 +101,10 @@ std::string Flt_Init :: getTimeUTC() {
     std::time_t t = std::time(nullptr);
     std::tm* utc = std::gmtime(&t);
 
-    char time[5]; //4 + '\n'
+    char time[64]; //4 + '\n'
 
     //sprintf zapisuje dane do bufora (chara)
-    std::sprintf(time, "                %02d%02d", utc->tm_hour, utc->tm_min);
+    std::snprintf(time, sizeof(time), "                %02d%02d", utc->tm_hour, utc->tm_min);
 
     std::string timeUTC = time;
 
