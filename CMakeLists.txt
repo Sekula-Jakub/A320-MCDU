@@ -41,3 +41,7 @@ target_include_directories(MCDU PRIVATE
 )
 
 target_link_libraries(MCDU sfml-graphics)
+
+# Skopiuj katalog fonts/ do katalogu budowania
+file(COPY ${CMAKE_SOURCE_DIR}/fonts DESTINATION ${CMAKE_BINARY_DIR})
+it
