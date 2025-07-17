@@ -1,3 +1,7 @@
+//main.cpp
+//Głowna pątla programu. Inicjalizuje okno programu z użycium SFML, ładuje czcionkę,
+//tworzy obiekt klasy MCDU i obsluguje aktualizacje.
+
 #include <SFML/Graphics.hpp>
 #include "mcdu.h"
 #include "font_manager.h"
@@ -10,6 +14,8 @@ int main() {
 
     //renderowanie okna
     sf::RenderWindow window(sf::VideoMode(450, 600), "Airbus A320 MCDU");
+
+    //ograniczenie odświeżania ekranu do 30 kl/s dla zmniejszenia zuzycia zasobów
     window.setFramerateLimit(30);
 
     //dodanie ikony do okna
@@ -18,7 +24,7 @@ int main() {
         std::cerr << "Nie można załadować ikony!" << std::endl;
     }
     else {
-        window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+        window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());    // getPixelsPtr() - wskaźnik do danych pikseli w pamięci
     }
 
     //stworzenie obiektu mcdu klasy MCDU
@@ -48,6 +54,5 @@ int main() {
         //wyświetlenie okna window
         window.display();
     }
-
     return 0;
 }

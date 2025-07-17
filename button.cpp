@@ -1,9 +1,12 @@
+//button.cpp
+//Implementacjla klasy Button
+
 #include <SFML/Graphics.hpp>
 #include "button.h"
 #include "font_manager.h"
 
 //konstruktor
-Button::Button(float x, float y, float width, float height, const std::string& button_text, float text_x, float text_y) {
+Button::Button(const float x, const float y, const float width, const float height, const std::string& button_text, const float text_x, const float text_y) {
     button_rectangle_shape.setSize(sf::Vector2f(width, height));
     button_rectangle_shape.setPosition(x, y);
     button_rectangle_shape.setFillColor(sf::Color(20, 20, 20));
@@ -28,9 +31,11 @@ Button::~Button() = default;
 bool Button::isMouseOver_rectangle(const sf::RenderWindow &window) const {
 
     //Pobranie pozycji myszy i względem okna i konwersja z int na float, bo tego wymaga SFML
+    //static_cast<sf::Vector2f> - zamienia wektor całkowita na zmiennoprzecinkowy (czyli Vector2f)
     sf::Vector2f mousePosition_float = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
 
     //czy pozycja myszy mieści się w przycisku
+    //.getGlobalBounds() - zwraca prostokat okreslajacy pozycje i rozmiar przycisku na ekranie
     return button_rectangle_shape.getGlobalBounds().contains(mousePosition_float);
 }
 

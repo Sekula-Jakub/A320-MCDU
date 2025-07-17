@@ -1,10 +1,14 @@
-# ifndef DBMANAGER_H
-# define DBMANAGER_H
+//data_base_manager.h
+//Klasa odpowiedzialna za za zarządzanie połączeniem oraz wykonująca operacja na bazie danych SQlite
+
+#ifndef DBMANAGER_H
+#define DBMANAGER_H
 
 #include <string>
 #include <../database_sqlite3_files/sqlite3.h>
 #include <vector>
 
+//struktora potrzebna do pobierania z bazy informacji o pasach startowych
 struct Runway_Data {
     std::string number;
     std::string length;

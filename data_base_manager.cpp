@@ -1,3 +1,6 @@
+//data_base_manager.cpp
+//Implementacja klasy DatabaseManager
+
 #include "data_base_manager.h"
 #include <iostream>
 #include "database_sqlite3_files/sqlite3.h"
@@ -54,7 +57,7 @@ bool DatabaseManager::airport_in_data_base(const std::string& icao_code) const {
     bool exists = false;
 
     if (sqlite3_step(stmt) == SQLITE_ROW) {             //wykonanie zapytania SELECT
-        if ( sqlite3_column_int(stmt, 0) > 0) {     //odczytanie pierwszej kolumny
+        if ( sqlite3_column_int(stmt, 0) > 0) {     //odczytanie pierwszej kolumny czyli o indeksie 0
             exists = true;                              //Jesli > 0 to lotnisko istnieje
         }
     }
@@ -69,6 +72,7 @@ bool DatabaseManager::airport_in_data_base(const std::string& icao_code) const {
 std::string DatabaseManager::get_coordinates_from_data_base(const std::string& icao_code) const {
     //sprawdzenie czy baza danych jest otwarta
     if (!db) {
+        //zwroc pusty string
         return "";
     }
 
@@ -88,7 +92,10 @@ std::string DatabaseManager::get_coordinates_from_data_base(const std::string& i
     std::string coordinates;
 
     //wykonanie zapytanie i sprawdzenie czy istnieje rekord
+    // sqlite3_column_text(stmt, 0) - zwraca wskaźnik na tekst z pierwszej kolumny, czyli o indeksie 0
     if (sqlite3_step(stmt) == SQLITE_ROW) {
+        // reinterpret_cast<const char*> konwertuje typ wskaźnika z const unsigned char* na const char*
+        //zmienna coordinates (string) - tworzy wlasna kopie tekstu
         coordinates = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
     }
 

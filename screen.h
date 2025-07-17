@@ -1,3 +1,7 @@
+//screen.h
+//Klasa odpowiedzialna za zarządzanie wyświetlaczem.
+//Obsługuje różne podstrony
+
 #ifndef SCREEN_H
 #define SCREEN_H
 
@@ -5,7 +9,6 @@
 #include "active_screen.h"
 
 // Forward declaration klas używanych jako wskaźniki w klasie Screen
-// Dzięki temu nie trzeba dołączać pełnych nagłówków tych klas w tym pliku
 class Mcdu_Menu;
 class Data_Page;
 class Init_Page;
@@ -25,7 +28,7 @@ class Screen {
 
         sf::Font font;      //czcionka
 
-        //podstrony
+        //wskaźniki do podstron
         Mcdu_Menu* mcdu_menu;
         Data_Page* data_page;
         Init_Page* init_page;
@@ -34,6 +37,7 @@ class Screen {
 
     public:
 
+        //aktualnie aktywna strona ekranu. Ustawienie na null. Uzycie enum class z pliku active.screen.h
         Active_Screen current_page = Active_Screen::null;
 
         //konstruktor

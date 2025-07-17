@@ -1,3 +1,7 @@
+//font_manager.h
+//Klasa do zarządzania czcionką
+//Umożliwia załadowanie czcionki tylko raz i udostępnienie jej globalnie dzięki obiektowi sf::Font
+
 #ifndef FONT_MANAGER_H
 #define FONT_MANAGER_H
 

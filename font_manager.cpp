@@ -1,8 +1,11 @@
+//font_manager.cpp
+//Implementacja klasy FontManager
+
 #include <SFML/Graphics.hpp>
 #include "font_manager.h"
 #include <iostream>
 
-//definicja zmiennej statycznej
+//definicja globalnej zmiennej statycznej
 //automatyczna inicjalizacja tej zmiennej
 sf::Font FontManager::font;
 

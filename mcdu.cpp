@@ -1,3 +1,6 @@
+//mcdu.cpp
+//Implementacja klasy MCDU
+
 #include <SFML/Graphics.hpp>
 #include "mcdu.h"
 #include <iostream>
@@ -18,9 +21,10 @@ MCDU::MCDU() {
 
       //tworzenie 6 przycisków z lewej strony wyswietlacza
       float startX = 40, startY = 45;
-      float width = 30.f, height = 20.f;        //wymiary jako float
+      float width = 30.f, height = 20.f;        //wymiary jako float a nie double
 
       for (int i=0; i<6; i++) {
+            //emplace back - dodanie nowego przycisku bezpośrednio do wektora (bez kopiowania)
             func_buttons.emplace_back(startX, startY, width, height, "-", startX + width / 2 - 3, startY + height / 2 - 8);
             startY += 35;
       }
@@ -167,6 +171,7 @@ MCDU::MCDU() {
 MCDU::~MCDU() = default;
 
 void MCDU::update(sf::RenderWindow& window) {
+
       //update po przyciskach func_buttton
       for (int i=0; i<func_buttons.size(); i++) {
             if (func_buttons[i].isClicked(window)) {
@@ -199,11 +204,14 @@ void MCDU::update(sf::RenderWindow& window) {
                   std::cout << "Kliknieto przycisk " << button_clicked <<std::endl;
             }
       }
-
 }
 
+//renderowanie okna
 void MCDU::render(sf::RenderWindow& window) {
+      //rysowanie niebieskiego tła
       window.draw(background);
+
+      //rysowanie czarnego ła ekranu
       window.draw(screen_background);
 
       //wyswietlacz

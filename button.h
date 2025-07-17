@@ -1,3 +1,6 @@
+//button.h
+//Deklaracja klasy Button, reprezentującej przycisk wraz z obsługą kliknięć i wyświetlaniem
+
 #ifndef BUTTON_H
 #define BUTTON_H
 
@@ -21,7 +24,7 @@ class Button {
         //destruktor
         ~Button();
 
-        //mysz nad przyciskiem
+        //czy mysz jest nad przyciskiem
         //nad prostokatem
         bool isMouseOver_rectangle(const sf::RenderWindow& window) const;
         //nad kółkiem

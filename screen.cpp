@@ -1,6 +1,10 @@
+//screen.cpp
+//Implementacja klasy Screen
+
 #include <SFML/Graphics.hpp>
 #include "screen.h"
 #include <iostream>
+
 //głowne strony
 #include "pages/mcdu_menu.h"
 #include "pages/data_page.h"
@@ -16,6 +20,7 @@
 Screen::Screen() {
 
     //alokowanie pamięci na główne strony
+    //Przekazanie w argumentach wskaźnika do obiektu Screen
     mcdu_menu = new Mcdu_Menu(this);
     data_page = new Data_Page(this);
     init_page = new Init_Page(this, mcdu_menu -> atsu -> aoc_menu -> flt_init);
@@ -42,7 +47,6 @@ Screen::Screen() {
     //teksty glowne
     for (int i = 0; i < 37; i++) {
         texts[i].setFont(font);
-        //texts[i].setString("dupa");
         texts[i].setFillColor(sf::Color::White);
     }
 
@@ -126,6 +130,7 @@ Screen::~Screen() {
     flight_plan = nullptr;
 }
 
+//update tekstu
 void Screen::draw_text(int index, const std::string &text, sf::Color color) {
     //obsluga bledu
     if (index > 36 || index < 0) {
@@ -135,11 +140,13 @@ void Screen::draw_text(int index, const std::string &text, sf::Color color) {
     texts[index].setFillColor(color);
 }
 
+//update tytułu strony
 void Screen::draw_title(const std::string text, sf::Color color) {
         page_title.setString(text);
         page_title.setFillColor(color);
 }
 
+//wyswietlenie zawartosci ekranu w zalezności od button_clicked
 void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
 
     //MCDU MENU PAGE
@@ -147,7 +154,6 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
         button_clicked = -1;
         current_page = Active_Screen::mcdu_menu_page;
         mcdu_menu -> render();
-        std::cout << "mcdu menu" <<std::endl;
     }
 
     //DATA PAGE
@@ -159,13 +165,11 @@ void Screen::display_screen(sf::RenderWindow &window, int& button_clicked) {
 
     //FLIGHT PLAN
     if (button_clicked == 18 && current_page != Active_Screen::flight_plan_page) {
-        std::cout<<"Flight Plan klikniety"<<std::endl;
         if (init_page -> getIsFilled() == false) {
             flight_plan -> render_empty();
         }
         else {
             flight_plan -> render_ready();
-
         }
         button_clicked = -1;
         current_page = Active_Screen::flight_plan_page;
