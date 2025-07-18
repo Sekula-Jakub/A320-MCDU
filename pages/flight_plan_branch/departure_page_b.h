@@ -1,3 +1,7 @@
+//departure_page_b.h
+//Wyswietla strone Departure Page B
+//Pobiera dostepne pasy startowe z bazy danych i umozliwia wybor jednego z nich
+
 #ifndef DEPARTURE_PAGE_B_H
 #define DEPARTURE_PAGE_B_H
 

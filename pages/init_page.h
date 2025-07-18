@@ -1,3 +1,7 @@
+//init_page.h
+//Renderuje ekran Init Page A
+//Umozliwia wprowadzanie parametrow lotu
+
 #ifndef INIT_PAGE_H
 #define INIT_PAGE_H
 

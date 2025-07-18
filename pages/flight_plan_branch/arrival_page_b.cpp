@@ -1,3 +1,6 @@
+//arrival_page_b.cpp
+//Implementacja klasy Arrival_Page_B
+
 #include "arrival_page_b.h"
 #include "arrival_page_a.h"
 #include "../data_base_manager.h"
@@ -97,6 +100,7 @@ void Arrival_Page_B::render() {
 }
 
 void Arrival_Page_B::input_handler(int button_clicked, Active_Screen &current_page){
+      //Return przycisk
       if (button_clicked == 5 && chosen == false) {
             arrival_page_a -> render();
             current_page = Active_Screen::arrival_page_a_page;
@@ -111,6 +115,7 @@ void Arrival_Page_B::input_handler(int button_clicked, Active_Screen &current_pa
             trans = "NONE";
             this -> render();
       }
+      //Zatwierdzenie wyboru pasa
       if (button_clicked == 11 && chosen == true) {
             chosen = false;
 

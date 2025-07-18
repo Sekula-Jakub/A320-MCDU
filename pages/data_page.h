@@ -1,3 +1,6 @@
+//data_page.h
+//Renderuje ekran Data, korzystając ze wskaźnika do obiektu klasy Screen
+
 #ifndef DATA_PAGE_H
 #define DATA_PAGE_H
 

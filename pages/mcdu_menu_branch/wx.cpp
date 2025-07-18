@@ -1,6 +1,8 @@
+//wx.cpp
+//Implementacja klasy Wx
+
 #include <SFML/Graphics.hpp>
 #include "wx.h"
-#include <iostream>
 
 //konstruktor
 Wx::Wx(Screen* screen_ptr) {
@@ -10,8 +12,11 @@ Wx::Wx(Screen* screen_ptr) {
     weather_req = new Weather_req(screen);
 }
 
-//domyślny destruktor
-Wx::~Wx() = default;
+//destruktor
+Wx::~Wx() {
+    delete weather_req;
+    weather_req = nullptr;
+}
 
 void Wx::render() const {
     //wyczyszczenie poprzednich wartosci
@@ -28,7 +33,7 @@ void Wx::render() const {
     screen -> draw_text(0, "<WEATHER REQ", sf::Color::White);
 }
 
-void Wx::input_handler(int button_clicked, Active_Screen& current_page) {
+void Wx::input_handler(int button_clicked, Active_Screen& current_page) const {
       if(button_clicked == 0) {
            weather_req -> render();
            current_page = Active_Screen::weather_request_page;

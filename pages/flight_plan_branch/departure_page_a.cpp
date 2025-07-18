@@ -1,3 +1,6 @@
+//departure_page_a.cpp
+//Implementacja klasy Departure_Page_A
+
 #include "departure_page_a.h"
 #include "../flight_plan.h"
 #include "departure_page_b.h"
@@ -55,10 +58,12 @@ void Departure_Page_A::render() {
 }
 
 void Departure_Page_A::input_handler(int button_clicked, Active_Screen &current_page) const {
+    //Return przycisk
     if (button_clicked == 5) {
         flight_plan -> render_ready();
         current_page = Active_Screen::flight_plan_page;
     }
+    //Departure przycisk
     else if (button_clicked == 0) {
         departure_page_b -> render();
         current_page = Active_Screen::departure_page_b_page;

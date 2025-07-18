@@ -1,3 +1,6 @@
+//fmgc.h
+//Renderuje ekran Fmgc
+
 #ifndef FMGC_H
 #define FMGC_H
 

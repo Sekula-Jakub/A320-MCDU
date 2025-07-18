@@ -1,3 +1,6 @@
+//init_page.cpp
+//Implementacja klasy Init_Page
+
 #include "init_page.h"
 #include <iostream>
 #include <cmath> //do zaokrąglenia temperatury

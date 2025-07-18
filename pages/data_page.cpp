@@ -1,3 +1,6 @@
+//data_pahe.cpp
+//Implementacja klasy Data_Page
+
 #include "data_page.h"
 
 //konstruktor

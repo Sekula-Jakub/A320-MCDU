@@ -1,3 +1,6 @@
+//weather_req.cpp
+//Implementacja klasy Weather_req
+
 #include <SFML/Graphics.hpp>
 #include "weather_req.h"
 #include <iostream>

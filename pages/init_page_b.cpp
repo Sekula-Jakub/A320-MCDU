@@ -1,3 +1,6 @@
+//init_page_b.cpp
+//Implementacja klasy Init_Page_B
+
 #include "init_page_b.h"
 #include "init_page.h"
 #include "input.h"

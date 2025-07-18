@@ -1,3 +1,6 @@
+//flight_plan.cpp
+//Implementacja klasy Flight_Plan
+
 #include "flight_plan.h"
 #include <iostream>
 #include "init_page.h"

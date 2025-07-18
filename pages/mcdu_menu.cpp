@@ -1,3 +1,6 @@
+//mcdu_menu.cpp
+//Implementacja klasy Mcdu_Menu
+
 #include "mcdu_menu.h"
 #include <iostream>
 

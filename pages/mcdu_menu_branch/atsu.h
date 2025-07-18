@@ -1,3 +1,7 @@
+//atsu.h
+//Renderuje ekran Atsu
+//Zawiera wskzniki do podstron i tworzy te podstrony alokujac do nich pamiec
+
 #ifndef ATSU_H
 #define ATSU_H
 

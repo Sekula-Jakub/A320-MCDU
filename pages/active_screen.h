@@ -1,3 +1,6 @@
+//active_screen.h
+//enum class - typ wyliczeniowy Active_Screen zawierajacy nazwy stron programu
+
 #ifndef ACTIVE_SCREEN_H
 #define ACTIVE_SCREEN_H
 

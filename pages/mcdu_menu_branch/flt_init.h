@@ -1,3 +1,7 @@
+//flt_init.h
+//Renderuje ekran Flight Init
+//Umożliwia wprowadzenie danych lotu
+
 #ifndef FLT_INIT_H
 #define FLT_INIT_H
 
@@ -36,7 +40,7 @@ class Flt_Init {
         ~Flt_Init();
 
         //renderowanie
-        void render();
+        void render() const;
 
         //data i czas
         static std::string getDateUTC();
@@ -46,7 +50,7 @@ class Flt_Init {
         void getInput(int &button_clicked);
 
         //zatwierdzenie danych
-        void insert_data(int &button_clicked);
+        void insert_data(const int &button_clicked);
 
         //wstawianie w pole wektora z inputu
         void insert_into_flt_no(const std::string& input);

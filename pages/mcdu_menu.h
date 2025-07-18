@@ -1,3 +1,7 @@
+//mcdu_menu.h
+//Wyswietla strone Mcdu Menu
+//Zawiera wskazniki do podstron i tworzy te podstrony alokujac do nich pamiec w konstruktorze
+
 #ifndef MCDU_MENU_H
 #define MCDU_MENU_H
 

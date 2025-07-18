@@ -1,6 +1,10 @@
+//performance.cpp
+//Implementacja klasy Performance
+
 #include "performance.h"
 #include <iostream>
 #include "input.h"
+#include "flight_plan.h"\
 
 //konstruktor
 Performance::Performance(Screen* screen_ptr, Flight_Plan* flight_plan_ptr) {

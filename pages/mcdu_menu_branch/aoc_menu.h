@@ -1,3 +1,7 @@
+//aoc_menu.h
+//Renderuje ekran Aoc Menu
+//Zawiera wskzniki do podstron i tworzy te podstrony alokujac do nich pamiec
+
 #ifndef AOC_MENU_H
 #define AOC_MENU_H
 
@@ -26,7 +30,7 @@ class Aoc_menu {
         //renderowanie
         void render() const;
 
-        void input_handler(int button_clicked, Active_Screen& current_page);
+        void input_handler(int button_clicked, Active_Screen& current_page) const;
 };
 
 #endif

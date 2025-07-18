@@ -1,3 +1,6 @@
+//flt_init.cpp
+//Implementacja klasy Flt_Init
+
 #include "flt_init.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -6,13 +9,15 @@
 #include "../data_base_manager.h"
 #include <vector>
 
+//konstruktor
 Flt_Init::Flt_Init(Screen* screen_ptr) {
     screen = screen_ptr;
 }
 
+//domyslny destruktor
 Flt_Init::~Flt_Init() = default;
 
-void Flt_Init::render() {
+void Flt_Init::render() const {
 
     std::cout << "[DEBUG] flt_no = " << flt_no << std::endl;
 
@@ -83,13 +88,18 @@ void Flt_Init::render() {
     screen -> draw_text(36, vector_to_string(flt_init_input), sf::Color::White);
 }
 
-std::string Flt_Init :: getDateUTC() {
-    std::time_t t = std::time(nullptr);
-    std::tm* utc = std::gmtime(&t);
+//Zwraca aktualna date w formacie dd/mm/yyyy
+std::string Flt_Init::getDateUTC() {
+    const std::time_t t = std::time(nullptr);     //pobranie aktualnego czasu
+    const std::tm* utc = std::gmtime(&t);         //konwersja na czas UTC
 
-    char date[64]; //10 + '\0'
+    //Bufor do ktorego bedzie zapisana data w odpowiednim formacie
+    char date[64];
 
     //sprintf zapisuje dane do bufora (chara)
+    //%02d - liczba z dwoma cyframi, z zerem z przodu jeśli potrzeba np 05, 08
+    //tm_mon + 1 — bo miesiące są w zakresie 0-11
+    //tm_year + 1900 — bo liczony od 1900
     std::snprintf(date, sizeof(date), "      %02d/%02d/%04d", utc->tm_mday, utc->tm_mon + 1, utc->tm_year + 1900);
 
     std::string dateUTC = date;
@@ -97,15 +107,18 @@ std::string Flt_Init :: getDateUTC() {
     return dateUTC;
 }
 
-std::string Flt_Init :: getTimeUTC() {
-    std::time_t t = std::time(nullptr);
-    std::tm* utc = std::gmtime(&t);
+//Zwraca aktualny czas UTC w formacie hhmm
+std::string Flt_Init::getTimeUTC() {
+    const std::time_t t = std::time(nullptr);     //pobranie aktualnego czasu
+    const std::tm* utc = std::gmtime(&t);         //konwersja na czas UTC
 
-    char time[64]; //4 + '\n'
+    //Bufopr na wynikowy tekst czasu
+    char time[64];
 
     //sprintf zapisuje dane do bufora (chara)
     std::snprintf(time, sizeof(time), "                %02d%02d", utc->tm_hour, utc->tm_min);
 
+    //string do ktoego zapisujemy bufor znakowy
     std::string timeUTC = time;
 
     return timeUTC;
@@ -117,7 +130,7 @@ void Flt_Init::getInput(int &button_clicked) {
     //std::cout << vector_to_string(flt_init_input) << std::endl;
 }
 
-void Flt_Init::insert_data(int &button_clicked) {
+void Flt_Init::insert_data(const int &button_clicked) {
 
     switch (button_clicked) {
         case 0:
@@ -154,7 +167,7 @@ void Flt_Init::insert_into_flt_no(const std::string& input) {
         return;
     }
 
-    if (input.size() <= 3 && input.size() > 0) {
+    if (input.size() <= 3 && !input.empty()) {
         flt_init_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
         return;
     }

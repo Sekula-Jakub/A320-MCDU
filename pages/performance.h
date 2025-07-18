@@ -1,10 +1,13 @@
+//performance.h
+//Renderuje strone Performance
+//Umozliwia wprowadzenie danych startowych
+
 #ifndef PERFORMANCE_H
 #define PERFORMANCE_H
 
 #include "../screen.h"
 #include <string>
 #include <vector>
-#include "flight_plan.h"
 
 class Performance {
     private:

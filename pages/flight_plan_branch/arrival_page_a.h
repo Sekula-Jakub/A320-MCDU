@@ -1,3 +1,7 @@
+//arrival_page_a.h
+//Wyswietla strone Arrival Page A
+//Zawiera wskaznik i alokuje pamiec na nastepna podstrone
+
 #ifndef ARRIVAL_PAGE_A_H
 #define ARRIVAL_PAGE_A_H
 
@@ -15,7 +19,7 @@ class Arrival_Page_A {
         Flight_Plan* flight_plan;
 
         //Wskaźnik do InitPage do
-        Init_Page* init_page;
+        Init_Page* init_page{};
 
         //współrzedne lotniska
         std::string coordinates;

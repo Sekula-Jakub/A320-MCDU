@@ -1,3 +1,6 @@
+//input.cpp
+//Implementacja klasy Input
+
 #include "input.h"
 #include <vector>
 #include <iostream>

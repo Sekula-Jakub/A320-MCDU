@@ -1,3 +1,7 @@
+//departure_page_a.h
+//Wyswietla strone Departure Page A
+//Zawiera wskaznik i alokuje pamiec na nastepna podstrone
+
 #ifndef DEPARTURE_PAGE_A_H
 #define DEPARTURE_PAGE_A_H
 

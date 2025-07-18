@@ -10,7 +10,6 @@ DatabaseManager::DatabaseManager() {
     //Ścieżka do pliku bazy danych
     const std::string dbPath = "database.db";
 
-    //
     if (sqlite3_open(dbPath.c_str(), &db)) {        // .c_str -> metoda zwracająca wskaźnik na tablicę znaków zakończoną znakiem '\0'
         std::cout<<"Can't open database "<<std::endl;
         db = nullptr; //wskaznik na null w razie niepowodzenia otwarcia

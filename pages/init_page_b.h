@@ -1,3 +1,7 @@
+//init_page_b.h
+//Renderuje ekran Init Page B
+//Umozliwia wprowadzenie danych na temat wagi i wyważenia samolotu
+
 #ifndef INIT_PAGE_B_H
 #define INIT_PAGE_B_H
 

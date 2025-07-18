@@ -1,3 +1,6 @@
+//fmgc.cpp
+//Implementacja klasy Fmgc
+
 #include "fmgc.h"
 #include <SFML/Graphics.hpp>
 

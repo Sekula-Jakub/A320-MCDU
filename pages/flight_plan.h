@@ -1,3 +1,7 @@
+//flight_plan.h
+//Renderuje ekran Flight Plan
+//Pobiera z bazy danych dane lotnisk i liczy odleglosc miedzy nimi
+
 #ifndef FLIGHT_PLAN_H
 #define FLIGHT_PLAN_H
 

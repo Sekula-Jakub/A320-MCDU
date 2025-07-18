@@ -1,3 +1,6 @@
+//atsu.cpp
+//Implementacja klasy Atsu
+
 #include "atsu.h"
 #include "../screen.h"
 #include <SFML/Graphics.hpp>
@@ -15,6 +18,7 @@ Atsu::Atsu(Screen* screen_ptr) {
 //destruktor
 Atsu::~Atsu() {
     delete aoc_menu;
+    aoc_menu = nullptr;
 }
 
 //renderowanie ekranu

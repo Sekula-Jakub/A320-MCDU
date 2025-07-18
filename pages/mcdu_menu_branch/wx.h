@@ -1,3 +1,7 @@
+//wx.h
+//Renderuje ekran Aoc Menu
+//Zawiera wskznik do podstrony i tworzy podstrone alokujac do nich pamiec
+
 #ifndef WX_H
 #define WX_H
 
@@ -21,7 +25,7 @@ class Wx {
         //renderowanie
         void render() const;
 
-        void input_handler(int button_clicked, Active_Screen& current_page);
+        void input_handler(int button_clicked, Active_Screen& current_page) const;
 };
 
 #endif

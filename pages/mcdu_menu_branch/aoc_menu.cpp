@@ -1,7 +1,11 @@
+//aoc_menu.cpp
+//Implementacja klasy Aoc_Menu
+
 #include "aoc_menu.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+//konstruktor
 Aoc_menu::Aoc_menu(Screen* screen_ptr) {
     screen = screen_ptr;
 
@@ -12,8 +16,12 @@ Aoc_menu::Aoc_menu(Screen* screen_ptr) {
     //std::cout << "[DEBUG] Konstruktor AOC_MENU wywołany" << std::endl;
 }
 
+//destruktor
 Aoc_menu::~Aoc_menu() {
     delete flt_init;
+    flt_init = nullptr;
+    delete wx;
+    wx = nullptr;
 }
 
 
@@ -43,7 +51,7 @@ void Aoc_menu::render() const {
 
 }
 
-void Aoc_menu::input_handler(int button_clicked, Active_Screen &current_page) {
+void Aoc_menu::input_handler(int button_clicked, Active_Screen &current_page) const {
 
     if (button_clicked == 0) {
         flt_init -> render();

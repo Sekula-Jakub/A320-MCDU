@@ -1,3 +1,7 @@
+//arrival_page_b.h
+//Wyswietla strone Arrival Page B
+//Pobiera dostepne pasy startowe z bazy danych i umozliwia wybor jednego z nich
+
 #ifndef ARRIVAL_PAGE_B_H
 #define ARRIVAL_PAGE_B_H
 
@@ -33,7 +37,7 @@ class Arrival_Page_B {
         bool chosen = false;
 
         //ktory pas wybrany
-        int chosen_runway;
+        int chosen_runway{};
 
     public:
         //konstruktor

@@ -1,9 +1,12 @@
+//departure_page_b.cpp
+//Implementacja klasy Departure_Page_B
+
 #include "departure_page_b.h"
 #include "departure_page_a.h"
 #include "../data_base_manager.h"
 
 //konstruktor
-Departure_Page_B::Departure_Page_B(Screen* screen_ptr, Departure_Page_A* departure_page_a_ptr) {
+Departure_Page_B::Departure_Page_B(Screen* screen_ptr, Departure_Page_A* departure_page_a_ptr): chosen_runway(0) {
       screen = screen_ptr;
       departure_page_a = departure_page_a_ptr;
 }
@@ -88,6 +91,7 @@ void Departure_Page_B::render() {
 }
 
 void Departure_Page_B::input_handler(int button_clicked, Active_Screen &current_page){
+      //Return przycisk
       if (button_clicked == 5 && chosen == false) {
             departure_page_a -> render();
             current_page = Active_Screen::departure_page_a_page;
@@ -101,6 +105,7 @@ void Departure_Page_B::input_handler(int button_clicked, Active_Screen &current_
             trans = "NONE";
             this -> render();
       }
+      //Zatwierdzenie wyboru pasa
       if (button_clicked == 11 && chosen == true) {
             chosen = false;
 

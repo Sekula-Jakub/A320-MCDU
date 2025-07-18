@@ -1,3 +1,6 @@
+//input.h
+//Klasa obslugujaca wprowadzanie inputu przez użytkownika
+
 #ifndef INPUT_H
 #define INPUT_H
 
