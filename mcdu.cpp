@@ -177,7 +177,6 @@ void MCDU::update(sf::RenderWindow& window) {
             if (func_buttons[i].isClicked(window)) {
                   button_clicked = i;
                   std::cout << "Kliknieto przycisk " << button_clicked <<std::endl;
-
             }
       }
 
