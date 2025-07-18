@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include "screen.h"
 #include <iostream>
+#include <algorithm>
+#include <vector>
 
 //głowne strony
 #include "pages/mcdu_menu.h"
@@ -44,11 +46,20 @@ Screen::Screen() {
     page_title.setFillColor(sf::Color::White);
     page_title.setPosition(100, 26);
 
+    //ZAKRESOWA PĘTLA FOR
     //teksty glowne
-    for (int i = 0; i < 37; i++) {
-        texts[i].setFont(font);
-        texts[i].setFillColor(sf::Color::White);
+    for (auto& text : texts) {
+        text.setFont(font);
     }
+
+    //ITERATORY
+    auto begin_it = std::begin(texts);
+    auto end_it = std::end(texts);
+
+    //ALGORYTMY STL - for each
+    std::for_each(begin_it, end_it, [&](sf::Text& text) {
+        text.setFillColor(sf::Color::White);
+    });
 
     //===========LEWA STRONA===========
     //main texts

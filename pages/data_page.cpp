@@ -8,6 +8,11 @@ Data_Page::Data_Page(Screen* screen_ptr) {
     screen = screen_ptr;
 }
 
+//konstruktor kopiujacy
+Data_Page::Data_Page(const Data_Page &other) {
+    screen = other.screen;  // prosta kopia wskaźnika
+}
+
 //domyślny destruktor
 Data_Page::~Data_Page() = default;
 

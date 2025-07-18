@@ -45,7 +45,7 @@ class Init_Page {
         //destruktor
         ~Init_Page();
 
-        void render();
+        void render() const;
 
         //INIT REQUEST
         void init_request(int button_clicked);

@@ -9,6 +9,7 @@
 #include "fmgc.h"
 #include "active_screen.h"
 #include "../screen.h"
+#include "data_page.h"
 
 class Mcdu_Menu {
     private:
@@ -16,7 +17,8 @@ class Mcdu_Menu {
 
         //wskazniki na podstrony
         Atsu* atsu;
-        Fmgc* fmgc;
+
+        Data_Page data_page_copy;   //kopia obiektu Data_Page
 
         //deklaracja klasy przyjaciela, żeby screen.cpp mogl wywolywac mcdu_menu->atsu
         friend class Screen;
@@ -30,7 +32,7 @@ class Mcdu_Menu {
 
         void input_handler(int button_clicked, Active_Screen& current_page) const;
 
-        void render();
+        void render() const;
 };
 
 #endif

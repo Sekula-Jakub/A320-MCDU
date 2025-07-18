@@ -256,6 +256,8 @@ void Flt_Init::insert_into_altn(const std::string &input) {
     flt_init_input.clear();
 }
 
+//WYJĄTKI
+//Insert into estimated time enroute
 void Flt_Init::insert_into_ete(std::string &input) {
     int number;
 

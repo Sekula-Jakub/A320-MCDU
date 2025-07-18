@@ -25,7 +25,10 @@ Flight_Plan::Flight_Plan(Screen* screen_ptr, Init_Page* init_page_ptr) {
 //destruktor
 Flight_Plan::~Flight_Plan() {
     delete departure_page_a;
+    departure_page_a = nullptr;
+
     delete arrival_page_a;
+    arrival_page_a = nullptr;
 }
 
 //Przed uzupelnieniem init page

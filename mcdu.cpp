@@ -24,6 +24,7 @@ MCDU::MCDU() {
       float width = 30.f, height = 20.f;        //wymiary jako float a nie double
 
       for (int i=0; i<6; i++) {
+            //WEKTORY
             //emplace back - dodanie nowego przycisku bezpośrednio do wektora (bez kopiowania)
             func_buttons.emplace_back(startX, startY, width, height, "-", startX + width / 2 - 3, startY + height / 2 - 8);
             startY += 35;

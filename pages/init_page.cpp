@@ -18,9 +18,10 @@ Init_Page::Init_Page(Screen* screen_ptr, Flt_Init* flt_init_ptr) {
 //destruktor
 Init_Page::~Init_Page() {
     delete init_page_b;
+    init_page_b = nullptr;
 }
 
-void Init_Page::render() {
+void Init_Page::render() const {
 
     //wyczyszczenie poprzednich wartosci
     screen -> draw_title("", sf::Color::White);

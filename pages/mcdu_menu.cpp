@@ -5,21 +5,20 @@
 #include <iostream>
 
 //konstruktor
-Mcdu_Menu::Mcdu_Menu(Screen* screen_ptr) {
+Mcdu_Menu::Mcdu_Menu(Screen* screen_ptr): screen(screen_ptr), data_page_copy(Data_Page(screen_ptr)) {
     screen = screen_ptr;
 
     //Zaalokowanie pamieci na podstrony
     atsu = new Atsu(screen); //Przekazanie wskaznika na ekran
-    fmgc = new Fmgc(screen);
 }
 
 //destruktor
 Mcdu_Menu::~Mcdu_Menu() {
     delete atsu;
-    delete fmgc;
+    atsu = nullptr;
 }
 
-void Mcdu_Menu::render() {
+void Mcdu_Menu::render() const {
 
     //wyczyszczenie poprzednich wartosci
     screen -> draw_title("", sf::Color::White);
@@ -37,6 +36,7 @@ void Mcdu_Menu::render() {
     screen -> draw_text(24, "          CONFIG>", sf::Color::White);
     screen -> draw_text(25, "            MAINT>", sf::Color::White);
     screen -> draw_text(29, "          RETURN>", sf::Color::White);
+
 }
 
 void Mcdu_Menu::input_handler(int button_clicked, Active_Screen& current_page) const {
@@ -48,8 +48,9 @@ void Mcdu_Menu::input_handler(int button_clicked, Active_Screen& current_page) c
     }
 
     else if (button_clicked == 0) {
-        fmgc -> render();
-        std::cout << "Fmgc"<<std::endl;
+        data_page_copy.render();
+        std::cout << "Fmgc page - copy of Data Page"<<std::endl;
         current_page = Active_Screen::fmgc_page;
     }
+
 }
