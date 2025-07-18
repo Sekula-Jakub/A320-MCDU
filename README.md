@@ -1,7 +1,9 @@
 # KOMPUTER POKŁADOWY SAMOLOTU AIRBUS A320 - MCDU
-### Projekt używający C++ i biblioteki SFML do stworzenia programu okienkowego symulującego działanie MCDU - Multipurpose Control and Disply Unit
+### Projekt w języku C++ z użyciem biblioteki SFML, tworzący program okienkowy symulujący działanie MCDU - Multipurpose Control and Disply Unit
+
 ### Przykładowy wygląd programu
 ![obrazek1](Readme_images/Obraz7.png)
+
 ### Cel projektu
 Celem projektu jest stworzenie symulowanego komputera pokładowego MCDU 
 (Multipurpose Control and Disply Unit) obsługującego jedynie podstawowe zadania 
@@ -13,9 +15,11 @@ Projekt inspirowany interfejsem MCDU samolotu Airbus A320-200.
 Układ graficzny został samodzielnie odwzorowany na podstawie ogólnodostępnych źródeł.
 
 ### Działanie 
-Projekt działa w oparciu o bibliotekę SFML oraz bazę danych stworzoną przy 
-pomocy SQLite. Z bazy pobierane są informacje na temat lotnisk wybieranych
-podczas wypełniania odpowiednich stron.
+Projekt wykorzystuje:
+- bibliotekę **SFML** do obsługi grafiki i zdarzeń,
+- **SQLite** jako lokalną bazę danych.
+
+Z bazy danych pobierane są informacje o lotniskach, które użytkownik może wybrać w ramach interakcji z programem.
 
 ### Instrukcja
 Sczegółowa instrukcja użytkowania znajduje się w pliku [instrukcja.pdf](instrukcja.pdf)
@@ -36,18 +40,14 @@ sudo apt install build-essential cmake git \
 #### Pobranie projektu z GitHub
 ```
 git clone https://github.com/Sekula-Jakub/A320-MCDU.git
+cd A320-MCDU
 ```
 
-#### Utworzenie katalogu build i skonfigurowanie projektu
+#### Budowanie projektu
 ```
-cd A320-MCDU
 mkdir build
 cd build
 cmake ..
-```
-
-#### Zbudowanie projektu
-```
 make
 ```
 
@@ -59,4 +59,7 @@ cd ..
 
 ### Źródła danych do bazy danych
 Dane (kody lotnisk, współrzędne geograficzne) pochodzą z AIP IFR PANSA
-(https://www.ais.pansa.pl/publikacje/aip-polska/) 
+
+#### https://www.ais.pansa.pl/publikacje/aip-polska/
+
+Dane zostały wykorzystane wyłącznie do celów edukacyjnych.
