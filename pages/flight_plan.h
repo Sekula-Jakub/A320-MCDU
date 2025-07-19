@@ -56,7 +56,7 @@ class Flight_Plan {
         double calculate_distance();
 
         //wyłuskanie latitude
-        double get_latitude(std::string coordinates);
+        static double get_latitude(std::string coordinates);
 
         //wyłuskanie longitude
         double get_longitude(std::string coordinates);

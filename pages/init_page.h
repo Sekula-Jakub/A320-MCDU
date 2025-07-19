@@ -7,9 +7,9 @@
 
 #include "../screen.h"
 #include <string>
-#include "mcdu_menu_branch/aoc_menu.h"
 #include <vector>
 #include "init_page_b.h"
+#include "flt_init.h"
 
 class Init_Page {
     private:
@@ -40,7 +40,7 @@ class Init_Page {
         std::vector<char> init_page_input = {};
 
         //konstruktor
-        Init_Page(Screen* screen_ptr, Flt_Init* flt_init);
+        Init_Page(Screen* screen_ptr, Flt_Init* flt_init_ptr);
 
         //destruktor
         ~Init_Page();

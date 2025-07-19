@@ -292,3 +292,4 @@ void Flt_Init::insert_into_ete(std::string &input) {
         flt_init_input = {'F', 'O', 'R', 'M', 'A', 'T', ' ', 'E', 'R', 'R', 'O', 'R', '!'};
     }
 }
+

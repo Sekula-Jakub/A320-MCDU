@@ -62,6 +62,13 @@ class Flt_Init {
         void insert_into_altn(const std::string& input);
 
         void insert_into_ete(std::string& input);
+
+        //gettery
+        std::string get_dep();
+
+        std::string get_dest();
+
+        std::string get_altn();
 };
 
 #endif

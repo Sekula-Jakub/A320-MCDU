@@ -3,14 +3,15 @@
 //Umozliwia wprowadzenie kodu lotniska
 //Sprawdza, czy wprowadzony kod istnieje w bazie danych
 
-
 #ifndef WEATHER_REQ_H
 #define WEATHER_REQ_H
 
 #include "../screen.h"
 #include "../data_base_manager.h"
+#include "flt_init.h"
 
-class Weather_req {
+//DZIEDZICZENIE
+class Weather_req : public Flt_Init{
     private:
         Screen* screen;
 

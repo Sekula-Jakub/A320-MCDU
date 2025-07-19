@@ -8,7 +8,7 @@
 #include "../input.h"
 
 //konstruktor
-Weather_req::Weather_req(Screen* screen_ptr) {
+Weather_req::Weather_req(Screen* screen_ptr): Flt_Init(screen_ptr) {
     screen = screen_ptr;
 }
 
@@ -48,6 +48,13 @@ void Weather_req::render() const {
     else {
         screen -> draw_text(2, "* TAR <Y>", sf::Color(0, 255, 255));
     }
+
+    //WYWOŁANIE METOD Z KLASY Flt_Init
+    //DATE AND TIME
+    screen -> draw_text(30, "                      UTC", sf::Color::White);
+    screen -> draw_text(24, getTimeUTC(), sf::Color::Green);
+    screen -> draw_text(32, "                     DATE", sf::Color::White);
+    screen -> draw_text(26, getDateUTC(), sf::Color::Green);
 
     //SEND button
     screen -> draw_text(29, "              SEND *", sf::Color(0, 255, 255));

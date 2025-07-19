@@ -118,7 +118,7 @@ void Init_Page::init_request(int button_clicked) {
     std::cout<<"Oto metoda init_request"<<std::endl;
     if (button_clicked == 7) {
         std::cout<<"Kliknieto dobry przycisk"<<std::endl;
-        if (!flt_init->dep.empty() && !flt_init->dest.empty() && !flt_init->altn.empty()) {
+        if (!flt_init -> dep.empty() && !flt_init -> dest.empty() && !flt_init -> altn.empty()) {
             std::cout<<"jest OK"<<std::endl;
             co_rte = "NONE";
             std::cout<<co_rte<<std::endl;
