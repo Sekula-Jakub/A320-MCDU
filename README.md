@@ -45,16 +45,23 @@ cd A320-MCDU
 
 #### Budowanie projektu
 ```
-mkdir build
-cd build
+mkdir MCDU_build
+cd MCDU_build
+```
+#### Skonfigurowanie projektu
+```
 cmake ..
-make
+```
+
+#### Zbudowanie projektu
+```
+cmake --build .
 ```
 
 #### Uruchomienie programu z głównego katalogu
 ```
 cd ..
-./build/MCDU
+./MCDU_build/MCDU
 ```
 
 ### Źródła danych do bazy danych
